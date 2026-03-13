@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapters | IEEE SB VJEC</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .chapters-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--glass-border);
+            background: var(--glass);
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .chapter-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .chapter-content.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .chapter-text h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-light);
+        }
+
+        .chapter-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .chapter-content.active {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chapter-team {
+            grid-column: 1 / -1;
+            margin-top: 4rem;
+        }
+
+        .team-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, var(--primary-light), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            transition: var(--transition);
+            max-width: 250px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .member-img-container {
+            height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .member-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .placeholder-icon {
+            font-size: 3rem;
+            color: var(--glass-border);
+            position: absolute;
+            z-index: 1;
+        }
+
+        .member-info {
+            padding: 1rem;
+        }
+
+        .member-info h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="loading">
+    <div id="loader" class="loader-overlay">
+        <div class="loader-content">
+            <div class="loader-circle"></div>
+            <div class="loader-text">IEEE SB VJEC</div>
+        </div>
+    </div>
+
+    <header class="header scrolled">
+        <nav class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="assets/vjec_sb_logo.jpeg" alt="Logo" class="logo-img">
+                <span class="brand-name">IEEE SB VJEC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="chapters.html" class="active">Chapters</a></li>
+                <li><a href="team.html">The Team</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <button class="mobile-toggle"><span class="bar"></span><span class="bar"></span><span
+                    class="bar"></span></button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu">
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="chapters.html">Chapters</a></li>
+            <li><a href="team.html">The Team</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <main class="container" style="margin-top: 150px; min-height: 80vh;">
+        <div class="section-header">
+            <h2 class="section-title">Academic Societies & Chapters</h2>
+            <p>Explore the diverse technical communities under our Student Branch.</p>
+        </div>
+
+        <div class="chapters-filter">
+            <button class="filter-btn active" data-target="cs">Computer Society (CS)</button>
+            <button class="filter-btn" data-target="cis">Computational Intelligence (CIS)</button>
+            <button class="filter-btn" data-target="wie">Women in Engineering (WIE)</button>
+            <button class="filter-btn" data-target="ras">Robotics & Automation (RAS)</button>
+            <button class="filter-btn" data-target="pels">Power Electronics Society(PELS)</button>
+            <button class="filter-btn" data-target="ias">Industry Applications Society(IAS)</button>
+            <button class="filter-btn" data-target="cass">Communications and Signal Processing Society(CASS)</button>
+        </div>
+
+        <div id="chapter-details">
+            <!-- CS Chapter -->
+            <div class="chapter-content active" id="cs">
+                <div class="chapter-text">
+                    <h2>IEEE CS</h2>
+                    <p>The IEEE Computer Society is the world’s leading community of computing professionals and
+                        students dedicated to advancing computer science and technology through innovation, research,
+                        and collaboration.
+                        Through workshops, technical events, and knowledge-sharing initiatives, it empowers members to
+                        develop practical skills and stay updated with emerging technologies.
+                    </p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/cs.png" alt="IEEE CS Logo" class="chapter-img"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+                <div class="chapter-team">
+                    <h3 class="team-title">Computer Society Executive Committee</h3>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/ca1.jpeg" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>DIVYA K VINOD</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/ca2.jpeg" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>SISNA P</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/chair.jpeg" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>ROHN ROY</h4>
+                                <p class="member-role">CHAIRPERSON</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="team-grid" style="margin-top: 2rem;">
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/vc.jpeg" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>ABDUL BASITH PV</h4>
+                                <p class="member-role">VICE CHAIRPERSON</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+
+                            </div>
+                            <div class="member-info">
+                                <h4>SANIKA K</h4>
+                                <p class="member-role">SECRETARY</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/js.jpeg" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>SHIVA KESAV</h4>
+                                <p class="member-role">JOINT SECRETARY</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-grid" style="margin-top: 2rem;">
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/treasurer.jpeg" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>VAISHNAVI SASI</h4>
+                                <p class="member-role">TREASURER</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/tc.jpeg" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>AASISH KRISHNA</h4>
+                                <p class="member-role">TECHNICAL COORDINATOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/tc2.jpeg" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>SREEHARSH EK</h4>
+                                <p class="member-role">TECHNICAL COORDINATOR</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-grid" style="margin-top: 2rem;">
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/wm0.jpeg" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>LEO DEEPAK SHIBU KAITHAKKAL</h4>
+                                <p class="member-role">WEBMASTER</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/wm.jpeg" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>VISMAYA ARUN</h4>
+                                <p class="member-role">WEBMASTER</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/ec1.jpeg" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>IRINE ROSE SAJI</h4>
+                                <p class="member-role">EVENT COORDINATOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/ec2.jpeg" alt="">
+                            </div>
+                            <div class="member-info">
+                                <h4>MILAN BIJUL</h4>
+                                <p class="member-role">EVENT COORDINATOR</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- CIS Chapter -->
+            <div class="chapter-content" id="cis">
+                <div class="chapter-text">
+                    <h2>IEEE CIS</h2>
+                    <p>The IEEE Computational Intelligence Society (CIS) focuses on advancing intelligent systems
+                        inspired by nature and human intelligence. It covers areas such as artificial intelligence,
+                        neural networks, machine learning, fuzzy systems, and evolutionary computation.
+                        Through workshops, technical sessions, and collaborative projects, CIS encourages students to
+                        explore intelligent technologies and develop innovative solutions to real-world problems.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/cis.png" alt="IEEE CIS Logo" class="chapter-img"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+            </div>
+
+            <!-- WIE Chapter -->
+            <div class="chapter-content" id="wie">
+                <div class="chapter-text">
+                    <h2>IEEE WIE</h2>
+                    <p>IEEE Women in Engineering (WIE) is a global network dedicated to supporting and empowering women
+                        in engineering and technology. It aims to promote diversity, leadership, and professional growth
+                        within the engineering community.
+                        Through workshops, mentorship programs, and collaborative initiatives, WIE encourages students
+                        to develop technical skills, build confidence, and create opportunities for women to excel in
+                        STEM fields.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/wie.png" alt="IEEE WIE Logo" class="chapter-img"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+            </div>
+
+            <!-- RAS Chapter -->
+            <div class="chapter-content" id="ras">
+                <div class="chapter-text">
+                    <h2>IEEE RAS</h2>
+                    <p>The IEEE Robotics and Automation Society (RAS) focuses on advancing robotics, automation, and
+                        intelligent systems that transform industries and everyday life. It promotes innovation in areas
+                        such as robotics, artificial intelligence, autonomous systems, and smart technologies.
+                        Through workshops, hands-on projects, and technical events, RAS provides students with
+                        opportunities to explore robotics technologies and develop practical skills in automation and
+                        intelligent systems.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/ras.png" alt="IEEE RAS Logo" class="chapter-img"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+            </div>
+
+            <!-- PELS Chapter -->
+            <div class="chapter-content" id="pels">
+                <div class="chapter-text">
+                    <h2>IEEE PELS</h2>
+                    <p>The IEEE Power Electronics Society (PELS) is a global community dedicated to advancing power
+                        electronics technology and its applications. It promotes innovation in areas such as energy
+                        conversion, renewable energy systems, and efficient power management.
+                        Through workshops, technical talks, and collaborative initiatives, PELS empowers students to
+                        explore modern power electronics technologies and develop practical skills relevant to the
+                        evolving energy and electronics industry.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/pels.png" alt="IEEE PELS Logo" class="chapter-img"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+            </div>
+
+            <!-- IAS Chapter -->
+            <div class="chapter-content" id="ias">
+                <div class="chapter-text">
+                    <h2>IEEE IAS</h2>
+                    <p>The IEEE Industry Applications Society (IAS) focuses on the advancement and practical application
+                        of electrical and electronic systems in industry. It brings together students and professionals
+                        to explore technologies used in industrial automation, energy systems, and electrical
+                        infrastructure.
+                        Through workshops, technical sessions, and industry-oriented initiatives, IAS helps members
+                        develop practical knowledge and skills while connecting them with real-world engineering
+                        applications.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/ias.png" alt="IEEE IAS Logo" class="chapter-img"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+            </div>
+
+            <!-- IAS Chapter -->
+            <div class="chapter-content" id="cass">
+                <div class="chapter-text">
+                    <h2>IEEE CASS</h2>
+                    <p>The IEEE Circuits and Systems Society (CASS) focuses on advancing the theory, analysis, design,
+                        and practical implementation of circuits and systems. It plays a key role in areas such as
+                        signal processing, electronics, communication systems, and integrated circuit design.
+                        Through workshops, technical talks, and collaborative projects, CASS encourages students to
+                        explore innovative technologies and develop strong foundations in electronic and computational
+                        systems.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/cas.png" alt="IEEE CASS Logo" class="chapter-img"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand" style="padding: 0; margin-bottom: 1.5rem;">
+                        <img src="assets/vjec_sb_logo.jpeg" alt="IEEE SB VJEC Logo" class="logo-img">
+                        <span class="brand-name">IEEE SB VJEC</span>
+                    </a>
+                    <p class="footer-desc">Empowering students through technology and innovation. Join our community to
+                        learn, share, and grow.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/ieeesbvjec" target="_blank" aria-label="Instagram"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://linkedin.com/company/ieeesbvjec" target="_blank" aria-label="LinkedIn"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="chapters.html">Chapters</a></li>
+                        <li><a href="team.html">The Team</a></li>
+                        <li><a href="achievements.html">Achievements</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Vimal Jyothi Engineering College, Chemperi, Kannur</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>ieee@vjec.ac.in</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+91 98765 43210</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 IEEE SB VJEC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Chapter switching logic
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-target');
+
+                // Update buttons
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Update content
+                document.querySelectorAll('.chapter-content').forEach(c => {
+                    c.classList.remove('active');
+                    if (c.id === target) c.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
