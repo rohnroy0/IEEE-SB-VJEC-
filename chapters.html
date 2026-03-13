@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chapters | IEEE SB VJEC</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         .chapters-filter {
@@ -520,20 +522,36 @@
     <script src="script.js"></script>
     <script>
         // Chapter switching logic
+        const switchChapter = (target) => {
+            // Update buttons
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('active');
+                if (b.getAttribute('data-target') === target) b.classList.add('active');
+            });
+
+            // Update content
+            document.querySelectorAll('.chapter-content').forEach(c => {
+                c.classList.remove('active');
+                if (c.id === target) c.classList.add('active');
+            });
+        };
+
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 const target = btn.getAttribute('data-target');
-
-                // Update buttons
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                // Update content
-                document.querySelectorAll('.chapter-content').forEach(c => {
-                    c.classList.remove('active');
-                    if (c.id === target) c.classList.add('active');
-                });
+                switchChapter(target);
+                history.pushState(null, null, `#${target}`);
             });
+        });
+
+        // Handle initial hash
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.slice(1);
+            if (hash) {
+                switchChapter(hash);
+                // Smooth scroll to top of content since we switched
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         });
     </script>
 </body>
