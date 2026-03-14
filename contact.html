@@ -94,6 +94,92 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Success Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            border: 1px solid var(--glass-border);
+            padding: 3rem;
+            border-radius: 24px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            transform: scale(0.9) translateY(20px);
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .popup-overlay.active .popup-content {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        .popup-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+        }
+
+        .popup-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .popup-message {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .popup-close:hover {
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -153,34 +239,41 @@
                         <div class="info-icon">📧</div>
                         <div class="info-text">
                             <h4>Email Us</h4>
-                            <p>ieee@vjec.ac.in</p>
+                            <p>alanantony@ieee.org</p>
                         </div>
                     </div>
                     <div class="info-item">
                         <div class="info-icon">📞</div>
                         <div class="info-text">
                             <h4>Call Us</h4>
-                            <p>+91 98765 43210</p>
+                            <p>+91 9562183174</p>
+                            <p>+91 8289840179</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="contact-form">
-                <form id="vjec-contact-form">
+                <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
+                    onload="if(submitted) { showSuccessPopup(); }"></iframe>
+                <form id="vjec-contact-form"
+                    action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScgkgcpKwd7_c2EpRkIG-ESkXO4vkbYVccnt-awZyMvx2RU-Q/formResponse"
+                    method="POST" target="hidden_iframe" onsubmit="submitted=true;">
                     <div class="form-group">
                         <label>Your Name</label>
-                        <input type="text" class="form-control" placeholder="John Doe" required>
+                        <input type="text" name="entry.341257229" class="form-control" placeholder="Your Name" required>
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="email" class="form-control" placeholder="john@example.com" required>
+                        <input type="email" name="entry.9002419" class="form-control" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea class="form-control" placeholder="How can we help you?" required></textarea>
+                        <textarea class="form-control" name="entry.1247887709" placeholder="How can we help you?"
+                            required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; height: 30px;">Send
+                        Message</button>
                 </form>
             </div>
         </div>
@@ -199,9 +292,6 @@
                     <div class="social-links">
                         <a href="https://instagram.com/ieeesbvjec" target="_blank" aria-label="Instagram"><i
                                 class="fab fa-instagram"></i></a>
-                        <a href="https://linkedin.com/company/ieeesbvjec" target="_blank" aria-label="LinkedIn"><i
-                                class="fab fa-linkedin-in"></i></a>
-                        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
                     </div>
                 </div>
 
@@ -224,11 +314,15 @@
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <p>ieee@vjec.ac.in</p>
+                        <p>alanantony@ieee.org</p>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt"></i>
-                        <p>+91 98765 43210</p>
+                        <p>+91 9562183174</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+91 8289840179</p>
                     </div>
                 </div>
             </div>
@@ -238,7 +332,32 @@
         </div>
     </footer>
 
+    <!-- Success Popup -->
+    <div class="popup-overlay" id="successPopup">
+        <div class="popup-content">
+            <button class="popup-close" onclick="closePopup()">&times;</button>
+            <div class="popup-icon">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3 class="popup-title">Message Sent!</h3>
+            <p class="popup-message">Thank you for reaching out. We have received your message and will get back to you
+                shortly.</p>
+            <button class="btn btn-primary" onclick="closePopup()" style="width: 100%;">Awesome!</button>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    <script>
+        let submitted = false;
+        function showSuccessPopup() {
+            document.getElementById('successPopup').classList.add('active');
+            document.getElementById('vjec-contact-form').reset();
+            submitted = false;
+        }
+        function closePopup() {
+            document.getElementById('successPopup').classList.remove('active');
+        }
+    </script>
 </body>
 
 </html>

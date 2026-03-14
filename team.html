@@ -30,6 +30,7 @@
         .team-card:hover {
             transform: translateY(-10px);
             border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
         }
 
         .member-img {
@@ -40,6 +41,19 @@
             justify-content: center;
             font-size: 3rem;
             color: var(--glass-border);
+            overflow: hidden;
+        }
+
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-card:hover .member-img img {
+            transform: scale(1.08);
+            /* slight zoom on hover for premium feel */
         }
 
         .member-info {
@@ -105,140 +119,147 @@
 
         <div class="team-grid">
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/councelor.jpeg" alt="Dr. Christopher Ezhil Singh"></div>
                 <div class="member-info">
                     <h3>Dr. Christopher Ezhil Singh</h3>
                     <p class="member-role">Counselor</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/chair.jpeg" alt="Alan Antony"></div>
                 <div class="member-info">
                     <h3>Alan Antony</h3>
                     <p class="member-role">Chairman</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/vice char.jpeg" alt="Simon Joseph"></div>
                 <div class="member-info">
                     <h3>Simon Joseph</h3>
                     <p class="member-role">Vice Chairman</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/secretery.jpeg" alt="Samanway T K"></div>
                 <div class="member-info">
                     <h3>Samanway T K</h3>
                     <p class="member-role">Secretary</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/joint secretary.jpeg" alt="Tessa Mariya"></div>
+                <div class="member-info">
+                    <h3>Tessa Mariya</h3>
+                    <p class="member-role">Joint Secretary</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/joint secretary2.jpeg" alt="Lena Jolly"></div>
                 <div class="member-info">
                     <h3>Lena Jolly</h3>
                     <p class="member-role">Joint Secretary</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/treasurer.jpeg" alt="Shiva Keshav V"></div>
                 <div class="member-info">
                     <h3>Shiva Keshav V</h3>
                     <p class="member-role">Treasurer</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/technical coordinator1.jpeg" alt="Abhiram M S"></div>
                 <div class="member-info">
                     <h3>Abhiram M S</h3>
                     <p class="member-role">Technical Coordinator</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/technical coordinator2.jpeg" alt="Adharsh K Biju"></div>
                 <div class="member-info">
                     <h3>Adharsh K Biju</h3>
                     <p class="member-role">Technical Coordinator</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/mdc.jpeg" alt="Abdul Basith P V"></div>
                 <div class="member-info">
                     <h3>Abdul Basith P V</h3>
                     <p class="member-role">Membership Development Coordinator</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/joint tc.jpeg" alt="Abhin K Shibu James"></div>
                 <div class="member-info">
                     <h3>Abhin K Shibu James</h3>
                     <p class="member-role">Joint Technical Coordinator</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/link rep.jpeg" alt="Vaishnavi sasi"></div>
                 <div class="member-info">
                     <h3>Vaishnavi sasi</h3>
                     <p class="member-role">Link Representative</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/design lead1.jpeg" alt="Abhinav R"></div>
                 <div class="member-info">
                     <h3>Abhinav R</h3>
                     <p class="member-role">Design Lead</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/design lead2.jpeg" alt="Abhinav I"></div>
                 <div class="member-info">
                     <h3>Abhinav I</h3>
                     <p class="member-role">Design Lead</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/webmaster.jpeg" alt="Rohn Roy"></div>
                 <div class="member-info">
                     <h3>Rohn Roy</h3>
                     <p class="member-role">Webmaster</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/event coord1.jpeg" alt="Ajith Mathew"></div>
                 <div class="member-info">
                     <h3>Ajith Mathew</h3>
                     <p class="member-role">Event Coordinator</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/event coord2.jpeg" alt="Milan Biju"></div>
                 <div class="member-info">
                     <h3>Milan Biju</h3>
                     <p class="member-role">Event Coordinator</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/event coord3.jpeg" alt="Elsitta Binu"></div>
                 <div class="member-info">
                     <h3>Elsitta Binu</h3>
                     <p class="member-role">Event Coordinator</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/content lead1.jpeg" alt="Leo Mathew Roy"></div>
                 <div class="member-info">
                     <h3>Leo Mathew Roy</h3>
                     <p class="member-role">Content Lead</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/content lead2.jpeg" alt="Sanika K"></div>
                 <div class="member-info">
                     <h3>Sanika K</h3>
                     <p class="member-role">Content Lead</p>
                 </div>
             </div>
             <div class="team-card">
-                <div class="member-img">👤</div>
+                <div class="member-img"><img src="assets/sb/social media.jpeg" alt="Sandra Nambiar"></div>
                 <div class="member-info">
                     <h3>Sandra Nambiar</h3>
                     <p class="member-role">Social Media Lead</p>
@@ -260,9 +281,6 @@
                     <div class="social-links">
                         <a href="https://instagram.com/ieeesbvjec" target="_blank" aria-label="Instagram"><i
                                 class="fab fa-instagram"></i></a>
-                        <a href="https://linkedin.com/company/ieeesbvjec" target="_blank" aria-label="LinkedIn"><i
-                                class="fab fa-linkedin-in"></i></a>
-                        <a href="#" target="_blank" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
                     </div>
                 </div>
 
@@ -285,11 +303,15 @@
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
-                        <p>ieee@vjec.ac.in</p>
+                        <p>alanantony@ieee.org</p>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone-alt"></i>
-                        <p>+91 98765 43210</p>
+                        <p>+91 9562183174</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+91 8289840179</p>
                     </div>
                 </div>
             </div>

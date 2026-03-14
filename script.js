@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 const target = entry.target;
                 const countTo = parseInt(target.getAttribute('data-target'));
-                const duration = 2000; // 2 seconds
+                const duration = 5000; // 5 seconds
                 let startTime = null;
 
                 const animate = (currentTime) => {
