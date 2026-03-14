@@ -1546,6 +1546,26 @@ section:nth-child(even)::before {
     line-height: 1.6;
 }
 
+.contact-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--primary-light);
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.contact-item a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+.contact-item a:hover {
+    color: var(--primary-light);
+}
+
 .footer-bottom {
     text-align: center;
     padding-top: 3rem;
