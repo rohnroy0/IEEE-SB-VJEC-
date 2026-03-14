@@ -1443,6 +1443,8 @@ section:nth-child(even)::before {
     backdrop-filter: blur(10px);
     content-visibility: auto;
     contain-intrinsic-size: 200px;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .society-item img {
@@ -1459,7 +1461,7 @@ section:nth-child(even)::before {
     background: var(--glass-heavy);
     border-color: var(--primary-light);
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 98, 155, 0.2);
 }
 
 .society-item:hover img {
