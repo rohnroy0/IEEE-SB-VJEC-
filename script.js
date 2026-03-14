@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Page Loader Logic
     window.addEventListener('load', () => {
-        setTimeout(() => {
+        requestAnimationFrame(() => {
             loader.classList.add('hidden');
             body.classList.remove('loading');
-        }, 400); // reduced simulated delay for better performance
+        });
     });
 
     // 2. Mobile Menu Toggle
@@ -53,10 +53,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 loader.classList.remove('hidden');
                 body.classList.add('loading');
 
-                // Navigate after small delay
+                // Navigate faster
                 setTimeout(() => {
                     window.location.href = target;
-                }, 300);
+                }, 150);
             });
         }
     });
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 const target = entry.target;
                 const countTo = parseInt(target.getAttribute('data-target'));
-                const duration = 5000; // 5 seconds
+                const duration = 2000; // 2 seconds for snappier feel
                 let startTime = null;
 
                 const animate = (currentTime) => {
@@ -79,12 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const progress = Math.min((currentTime - startTime) / duration, 1);
                     const currentCount = Math.floor(progress * countTo);
 
-                    target.innerText = currentCount;
+                    target.textContent = currentCount;
 
                     if (progress < 1) {
                         requestAnimationFrame(animate);
                     } else {
-                        target.innerText = countTo;
+                        target.textContent = countTo;
                     }
                 };
 

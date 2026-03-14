@@ -366,12 +366,11 @@ h4 {
     display: flex;
     align-items: center;
     padding: 120px 2rem 80px;
-    background-image: url('assets/detailed-black-bg.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    /* Removed redundant background image - using body background */
     position: relative;
     overflow: hidden;
+    contain: layout style;
+    /* Performance hint */
 }
 
 .hero-bg-elements {
@@ -382,14 +381,20 @@ h4 {
     height: 100%;
     z-index: 0;
     overflow: hidden;
+    pointer-events: none;
+    /* Decorative elements shouldn't capture events */
 }
 
 .glow-orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
+    filter: blur(60px);
+    /* slightly reduced blur for performance */
     opacity: 0.5;
     animation: orbMove 15s ease-in-out infinite alternate;
+    will-change: transform;
+    /* hardware acceleration hint */
+    pointer-events: none;
 }
 
 .orb-1 {
@@ -527,11 +532,11 @@ h4 {
 
 .text-gradient {
     background: linear-gradient(135deg, #fff, #bcc2c3);
-    backdrop-filter: blur(12px);
-
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    display: inline-block;
+    /* ensures clip works reliably */
 }
 
 .hero-description {
@@ -622,6 +627,8 @@ h4 {
     border: 1px solid var(--glass-border);
     border-radius: 20px;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    will-change: transform;
 }
 
 .h-stat {
@@ -675,6 +682,7 @@ h4 {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 98, 155, 0.2);
     overflow: hidden;
     transform: rotateY(-5deg) rotateX(5deg);
@@ -682,6 +690,7 @@ h4 {
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+    will-change: transform;
 }
 
 .glass-terminal:hover {
@@ -799,6 +808,7 @@ h4 {
     background: var(--glass);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     padding: 12px 20px;
     border-radius: 12px;
     display: flex;
@@ -806,6 +816,7 @@ h4 {
     gap: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     animation: floatCard 4s ease-in-out infinite alternate;
+    will-change: transform;
 }
 
 .fc-icon {
