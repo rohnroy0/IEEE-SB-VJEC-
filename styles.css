@@ -498,7 +498,7 @@ body.loading {
 .mobile-nav-links a {
     text-decoration: none;
     color: var(--light);
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     /* Matches user previous edit */
     font-family: var(--font-heading);
     font-weight: 700;
@@ -559,7 +559,7 @@ body.loading {
 }
 
 .mobile-submenu a {
-    font-size: 1.1rem !important;
+    font-size: 0.7rem !important;
     font-weight: 500 !important;
     padding: 0.8rem 1rem !important;
     color: var(--gray) !important;
