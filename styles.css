@@ -419,36 +419,36 @@ body.loading {
 /* Mobile Menu Dropdown */
 .mobile-menu {
     position: fixed;
-    top: -110%;
-    /* Hidden further above */
+    top: 0;
     left: 0;
     width: 100%;
     height: auto;
     max-height: 85vh;
     background: rgba(10, 10, 12, 0.85);
-    backdrop-filter: blur(30px) saturate(200%);
-    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
     z-index: 998;
-    /* Under toggle and header brand but over content */
-    padding: 1rem 1.5rem 2rem;
+    padding: 100px 1.5rem 2rem;
+    /* Integrated top padding */
     border-bottom: 1px solid var(--glass-border);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    transform: translateY(-100%);
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1),
+        opacity 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
     overflow-y: auto;
     pointer-events: none;
     display: flex;
     justify-content: center;
+    will-change: transform, opacity;
 }
 
 .mobile-menu.active {
-    top: 0;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    padding-top: 100px;
-    /* Offset for header */
+    transform: translateY(0);
 }
 
 .mobile-nav-links {
@@ -463,8 +463,10 @@ body.loading {
 
 .mobile-nav-links li {
     opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transform: translateY(15px);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+        opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    will-change: transform, opacity;
 }
 
 .mobile-menu.active .mobile-nav-links li {
@@ -504,7 +506,7 @@ body.loading {
     align-items: center;
     justify-content: space-between;
     letter-spacing: 0.5px;
-    transition: var(--transition);
+    transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     padding: 0.8rem 1.2rem;
     background: rgba(255, 255, 255, 0.03);
     border-radius: 12px;
@@ -532,7 +534,10 @@ body.loading {
     list-style: none;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+        opacity 0.4s ease,
+        padding 0.4s ease,
+        margin 0.4s ease;
     background: rgba(255, 255, 255, 0.03);
     border-radius: 16px;
     margin-top: 0.5rem;
