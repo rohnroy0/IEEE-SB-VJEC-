@@ -14,6 +14,8 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preload" href="assets/vjec_sb_logo.jpeg" as="image">
+    <link rel="preload" href="assets/detailed-black-bg.png" as="image">
 </head>
 
 <body class="loading">
@@ -29,7 +31,8 @@
     <header class="header">
         <nav class="nav-container">
             <a href="index.html" class="brand">
-                <img src="assets/vjec_sb_logo.jpeg" alt="IEEE SB VJEC Logo" class="logo-img" id="logo-placeholder">
+                <img src="assets/vjec_sb_logo.jpeg" alt="IEEE SB VJEC Logo" class="logo-img" id="logo-placeholder"
+                    width="50" height="50" fetchpriority="high">
                 <span class="brand-name">IEEE SB VJEC</span>
             </a>
 
@@ -267,31 +270,40 @@
 
                 <div class="societies-grid">
                     <div class="society-item">
-                        <img src="assets/family/cs_one.jpeg" alt="Computer Society Logo">
+                        <img src="assets/family/cs_one.jpeg" alt="Computer Society Logo" width="120" height="120"
+                            loading="lazy">
                     </div>
                     <div class="society-item">
-                        <img src="assets/family/ras.png" alt="Robotics and Automation Society Logo">
+                        <img src="assets/family/ras.png" alt="Robotics and Automation Society Logo" width="120"
+                            height="120" loading="lazy">
                     </div>
                     <div class="society-item">
-                        <img src="assets/family/cis.png" alt="Computational Intelligence Society Logo">
+                        <img src="assets/family/cis.png" alt="Computational Intelligence Society Logo" width="120"
+                            height="120" loading="lazy">
                     </div>
                     <div class="society-item">
-                        <img src="assets/family/wie.png" alt="Women in Engineering Logo">
+                        <img src="assets/family/wie.png" alt="Women in Engineering Logo" width="120" height="120"
+                            loading="lazy">
                     </div>
                     <div class="society-item">
-                        <img src="assets/family/pes.png" alt="Power & Energy Society Logo">
+                        <img src="assets/family/pes.png" alt="Power & Energy Society Logo" width="120" height="120"
+                            loading="lazy">
                     </div>
                     <div class="society-item">
-                        <img src="assets/family/ias.png" alt="Industry Applications Society Logo">
+                        <img src="assets/family/ias.png" alt="Industry Applications Society Logo" width="120"
+                            height="120" loading="lazy">
                     </div>
                     <div class="society-item">
-                        <img src="assets/family/pels.png" alt="Power Electronics Society Logo">
+                        <img src="assets/family/pels.png" alt="Power Electronics Society Logo" width="120" height="120"
+                            loading="lazy">
                     </div>
                     <div class="society-item">
-                        <img src="assets/family/cass_one.jpg" alt="Circuits and Systems Society Logo">
+                        <img src="assets/family/cass_one.jpg" alt="Circuits and Systems Society Logo" width="120"
+                            height="120" loading="lazy">
                     </div>
                     <div class="society-item">
-                        <img src="assets/family/photonics.png" alt="Photonics Society Logo">
+                        <img src="assets/family/photonics.png" alt="Photonics Society Logo" width="120" height="120"
+                            loading="lazy">
                     </div>
                 </div>
             </div>
@@ -340,7 +352,8 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="index.html" class="brand" style="padding: 0; margin-bottom: 1.5rem;">
-                        <img src="assets/vjec_sb_logo.jpeg" alt="IEEE SB VJEC Logo" class="logo-img">
+                        <img src="assets/vjec_sb_logo.jpeg" alt="IEEE SB VJEC Logo" class="logo-img" width="40"
+                            height="40" loading="lazy">
                         <span class="brand-name">IEEE SB VJEC</span>
                     </a>
                     <p class="footer-desc">Empowering students through technology and innovation. Join our community to

@@ -1084,6 +1084,8 @@ section:nth-child(even)::before {
     gap: 1.5rem;
     position: relative;
     overflow: hidden;
+    content-visibility: auto;
+    contain-intrinsic-size: 400px;
 }
 
 .event-card:hover {
@@ -1348,6 +1350,8 @@ section:nth-child(even)::before {
     transition: var(--transition);
     position: relative;
     overflow: hidden;
+    content-visibility: auto;
+    contain-intrinsic-size: 500px;
 }
 
 .vision-card::before,
@@ -1426,6 +1430,8 @@ section:nth-child(even)::before {
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(10px);
+    content-visibility: auto;
+    contain-intrinsic-size: 200px;
 }
 
 .society-item img {
@@ -1472,6 +1478,8 @@ section:nth-child(even)::before {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
+    content-visibility: auto;
+    contain-intrinsic-size: 400px;
 }
 
 .offer-item:hover {

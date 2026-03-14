@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             loader.classList.add('hidden');
             body.classList.remove('loading');
-        }, 1000); // Simulate loading time for aesthetics
+        }, 400); // reduced simulated delay for better performance
     });
 
     // 2. Mobile Menu Toggle
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Navigate after small delay
                 setTimeout(() => {
                     window.location.href = target;
-                }, 600);
+                }, 300);
             });
         }
     });
