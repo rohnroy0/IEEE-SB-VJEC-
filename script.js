@@ -13,19 +13,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. Mobile Menu Toggle
-    mobileToggle.addEventListener('click', () => {
+    // 2. Mobile Menu Toggle logic
+    const toggleMenu = () => {
         mobileToggle.classList.toggle('active');
         mobileMenu.classList.toggle('active');
         body.classList.toggle('overflow-hidden');
-    });
+    };
 
-    // Close mobile menu on link click
-    document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+    mobileToggle.addEventListener('click', toggleMenu);
+
+    // Mobile Dropdown (Chapters) logic
+    const mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle');
+    const mobileSubmenu = document.querySelector('.mobile-submenu');
+
+    if (mobileDropdownToggle) {
+        mobileDropdownToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            mobileDropdownToggle.classList.toggle('active');
+            mobileSubmenu.classList.toggle('active');
+        });
+    }
+
+    // Close mobile menu on clicking a simple link (not the dropdown toggle)
+    document.querySelectorAll('.mobile-nav-links > li > a:not(.mobile-dropdown-toggle), .mobile-submenu a').forEach(link => {
         link.addEventListener('click', () => {
             mobileToggle.classList.remove('active');
             mobileMenu.classList.remove('active');
             body.classList.remove('overflow-hidden');
+
+            // Also reset chapters dropdown if open
+            if (mobileDropdownToggle) {
+                mobileDropdownToggle.classList.remove('active');
+                mobileSubmenu.classList.remove('active');
+            }
         });
     });
 
