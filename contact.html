@@ -180,6 +180,13 @@
         .popup-close:hover {
             color: #fff;
         }
+
+        /* Button Loading State */
+        .btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
     </style>
 </head>
 
@@ -258,7 +265,7 @@
                     onload="if(submitted) { showSuccessPopup(); }"></iframe>
                 <form id="vjec-contact-form"
                     action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScgkgcpKwd7_c2EpRkIG-ESkXO4vkbYVccnt-awZyMvx2RU-Q/formResponse"
-                    method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+                    method="POST" target="hidden_iframe" onsubmit="handleFormSubmit(this);">
                     <div class="form-group">
                         <label>Your Name</label>
                         <input type="text" name="entry.341257229" class="form-control" placeholder="Your Name" required>
@@ -342,18 +349,32 @@
             <h3 class="popup-title">Message Sent!</h3>
             <p class="popup-message">Thank you for reaching out. We have received your message and will get back to you
                 shortly.</p>
-            <button class="btn btn-primary" onclick="closePopup()" style="width: 100%;">Awesome!</button>
         </div>
     </div>
 
     <script src="script.js"></script>
     <script>
         let submitted = false;
+
+        function handleFormSubmit(form) {
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            submitted = true;
+        }
+
         function showSuccessPopup() {
             document.getElementById('successPopup').classList.add('active');
-            document.getElementById('vjec-contact-form').reset();
+            const form = document.getElementById('vjec-contact-form');
+            form.reset();
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Send Message";
+
             submitted = false;
         }
+
         function closePopup() {
             document.getElementById('successPopup').classList.remove('active');
         }
