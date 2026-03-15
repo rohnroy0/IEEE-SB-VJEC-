@@ -12,8 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 3rem;
             margin-top: 4rem;
         }
@@ -79,7 +80,9 @@
         @media (max-width: 768px) {
             .team-grid {
                 gap: 2rem;
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .member-img {
