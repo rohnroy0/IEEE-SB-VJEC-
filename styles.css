@@ -1338,16 +1338,18 @@ section:nth-child(even)::before {
 
 /* Events Grid */
 .events-grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
     justify-content: center;
-    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 2.5rem;
 }
 
 .event-card {
     background: var(--surface-gradient);
     border: 1px solid var(--glass-border);
-    padding: 2.5rem;
+    padding: 3rem 2.5rem;
     border-radius: 28px;
     transition: var(--transition);
     display: flex;
@@ -1355,8 +1357,6 @@ section:nth-child(even)::before {
     gap: 1.5rem;
     position: relative;
     overflow: hidden;
-    content-visibility: auto;
-    contain-intrinsic-size: 400px;
 }
 
 .event-card:hover {
@@ -1738,8 +1738,6 @@ section:nth-child(even)::before {
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(10px);
-    content-visibility: auto;
-    contain-intrinsic-size: 200px;
     text-decoration: none;
     cursor: pointer;
 }
@@ -1775,11 +1773,15 @@ section:nth-child(even)::before {
 .offer-grid {
     display: flex;
     flex-wrap: wrap;
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
     justify-content: center;
-    gap: 2rem;
 }
 
 .offer-item {
+    flex: 1 1 280px;
+    max-width: 380px;
     background: var(--surface-gradient);
     border: 1px solid var(--glass-border);
     padding: 3.5rem 2.5rem;
@@ -1789,8 +1791,6 @@ section:nth-child(even)::before {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
-    content-visibility: auto;
-    contain-intrinsic-size: 400px;
 }
 
 .offer-item:hover {
@@ -1831,18 +1831,21 @@ section:nth-child(even)::before {
 .section-header,
 .vision-card,
 .mission-card,
-.offer-item {
+.offer-item,
+.society-item {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1),
-        transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1),
+                transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+    will-change: transform, opacity;
 }
 
 .event-card.animate-in,
 .section-header.animate-in,
 .vision-card.animate-in,
 .mission-card.animate-in,
-.offer-item.animate-in {
+.offer-item.animate-in,
+.society-item.animate-in {
     opacity: 1;
     transform: translateY(0);
 }
