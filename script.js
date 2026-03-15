@@ -4,23 +4,60 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileMenu = document.querySelector('.mobile-menu');
     const header = document.querySelector('.header');
     const body = document.body;
+    let isNavigating = false;
 
     // 1. Page Loader Logic
-    window.addEventListener('load', () => {
+    const hideLoader = () => {
         requestAnimationFrame(() => {
             loader.classList.add('hidden');
             body.classList.remove('loading');
         });
+    };
+
+    window.addEventListener('load', hideLoader);
+    
+    // Handle Bfcache (Back button)
+    window.addEventListener('pageshow', (event) => {
+        isNavigating = false; // Reset navigation lock
+        if (event.persisted) {
+            hideLoader();
+        }
     });
 
     // 2. Mobile Menu Toggle logic
     const toggleMenu = () => {
-        mobileToggle.classList.toggle('active');
+        const isOpen = mobileToggle.classList.toggle('active');
         mobileMenu.classList.toggle('active');
         body.classList.toggle('overflow-hidden');
+        
+        // Push state so back button can close menu
+        if (isOpen) {
+            history.pushState({ menuOpen: true }, '');
+        }
     };
 
     mobileToggle.addEventListener('click', toggleMenu);
+
+    // Handle back button to close menu
+    window.addEventListener('popstate', (event) => {
+        if (mobileMenu.classList.contains('active')) {
+            mobileToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            body.classList.remove('overflow-hidden');
+        }
+    });
+
+    // Close menu on resize (prevents desktop/mobile layout issues)
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 992 && mobileMenu.classList.contains('active')) {
+            mobileToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            body.classList.remove('overflow-hidden');
+            if (history.state && history.state.menuOpen) {
+                history.back();
+            }
+        }
+    });
 
     // Mobile Dropdown (Chapters) logic
     const mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle');
@@ -59,21 +96,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 4. Smooth Content Transition for Link Clicks
-    // This intercepts clicks on internal links to show the loader before navigating
+    
     document.querySelectorAll('a').forEach(link => {
         const href = link.getAttribute('href');
 
         // Only trigger for local .html links that are not fragments
         if (href && href.endsWith('.html') && !href.startsWith('#')) {
             link.addEventListener('click', (e) => {
+                if (isNavigating) {
+                    e.preventDefault();
+                    return;
+                }
+
+                // If menu is open, we're likely clicking a link to navigate
+                // No need to prevent default if history.back() is handled by browser
+                
                 e.preventDefault();
                 const target = link.href;
+                isNavigating = true;
 
                 // Show loader
                 loader.classList.remove('hidden');
                 body.classList.add('loading');
 
-                // Navigate faster
+                // Navigate
                 setTimeout(() => {
                     window.location.href = target;
                 }, 150);

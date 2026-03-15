@@ -427,6 +427,9 @@
 
         function showSuccessPopup() {
             document.getElementById('successPopup').classList.add('active');
+            // Push state so back button closes popup
+            history.pushState({ popupOpen: true }, '');
+            
             const form = document.getElementById('vjec-contact-form');
             form.reset();
 
@@ -438,8 +441,22 @@
         }
 
         function closePopup() {
-            document.getElementById('successPopup').classList.remove('active');
+            const popup = document.getElementById('successPopup');
+            if (popup.classList.contains('active')) {
+                popup.classList.remove('active');
+                if (history.state && history.state.popupOpen) {
+                    history.back();
+                }
+            }
         }
+
+        // Handle back button to close popup
+        window.addEventListener('popstate', (event) => {
+            const popup = document.getElementById('successPopup');
+            if (popup.classList.contains('active')) {
+                popup.classList.remove('active');
+            }
+        });
     </script>
 </body>
 
