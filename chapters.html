@@ -39,10 +39,18 @@
             outline: none;
         }
 
-        .filter-btn.active,
-        .filter-btn:hover {
+        .filter-btn.active {
             background: var(--primary);
             border-color: var(--primary);
+            box-shadow: 0 5px 15px var(--primary-glow);
+        }
+
+        @media (hover: hover) {
+            .filter-btn:hover {
+                background: var(--primary);
+                border-color: var(--primary);
+                transform: translateY(-2px);
+            }
         }
 
         .chapter-content {
@@ -1337,7 +1345,11 @@
             // Update buttons
             document.querySelectorAll('.filter-btn').forEach(b => {
                 b.classList.remove('active');
-                if (b.getAttribute('data-target') === target) b.classList.add('active');
+                if (b.getAttribute('data-target') === target) {
+                    b.classList.add('active');
+                    // Blur to prevent persistent focus styles on some mobile browsers
+                    b.blur();
+                }
             });
 
             // Update content
@@ -1355,21 +1367,29 @@
             });
         });
 
-        // Handle initial hash and hash changes
+        // Handle initial hash, hash changes, and popstate
         const handleHash = () => {
             const hash = window.location.hash.slice(1);
             if (hash) {
                 switchChapter(hash);
-                // Smooth scroll to the filter buttons to show the content is updated
+                // Smooth scroll to the filter section if a hash is present
                 const filterSection = document.querySelector('.chapters-filter');
-                if (filterSection) {
+                if (filterSection && window.location.hash) {
                     filterSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
+            } else {
+                // If no hash, default to the first chapter (cs)
+                switchChapter('cs');
             }
         };
 
         window.addEventListener('load', handleHash);
         window.addEventListener('hashchange', handleHash);
+        window.addEventListener('popstate', handleHash);
+        // Handle Back/Forward from Bfcache
+        window.addEventListener('pageshow', (event) => {
+            handleHash();
+        });
     </script>
 </body>
 
