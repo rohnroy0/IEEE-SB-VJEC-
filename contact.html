@@ -92,6 +92,15 @@
         @media (max-width: 992px) {
             .contact-wrapper {
                 grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+
+            .info-item {
+                gap: 1rem;
             }
         }
 
@@ -187,6 +196,31 @@
             cursor: not-allowed;
             pointer-events: none;
         }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 98, 155, 0.3);
+            user-select: none;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 98, 155, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .btn-primary:focus, .popup-close:focus {
+            outline: none;
+        }
     </style>
 </head>
 
@@ -251,7 +285,7 @@
         </ul>
     </div>
 
-    <main class="container" style="margin-top: 150px; padding-bottom: 100px;">
+    <main class="page-main container">
         <div class="section-header">
             <h2 class="section-title">Get In Touch</h2>
             <p>Have questions or suggestions? We'd love to hear from you.</p>
@@ -304,7 +338,7 @@
                         <textarea class="form-control" name="entry.1247887709" placeholder="How can we help you?"
                             required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; height: 30px;">Send
+                    <button type="submit" class="btn btn-primary" style="width: 100%; height: 50px;">Send
                         Message</button>
                 </form>
             </div>
