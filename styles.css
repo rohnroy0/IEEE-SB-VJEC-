@@ -2033,13 +2033,13 @@ section:nth-child(even)::before {
     }
 
     .main-heading {
-        font-size: clamp(2.8rem, 10vw, 3.5rem);
-        line-height: 1.1;
-        margin-bottom: 2rem;
+        font-size: clamp(3.2rem, 12vw, 4.2rem);
+        line-height: 1.05;
+        margin-bottom: 2.5rem;
     }
 
     .hero-content {
-        min-height: calc(100dvh - 140px); /* Fill screen minus header/bottom padding */
+        min-height: calc(100dvh - 100px);
         display: flex;
         flex-direction: column;
         justify-content: center;
