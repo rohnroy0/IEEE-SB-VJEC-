@@ -2177,10 +2177,6 @@ section:nth-child(even)::before {
         flex-direction: column;
     }
 
-    .main-heading {
-        font-size: 2rem;
-    }
-
     .hero-badge {
         font-size: 0.7rem;
         padding: 6px 12px;
