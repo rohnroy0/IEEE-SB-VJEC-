@@ -312,10 +312,9 @@ body.overflow-hidden {
 
 /* Instant close state when selection occurs */
 .nav-links li.hide-menu .dropdown-menu {
+    display: none !important;
     opacity: 0 !important;
     visibility: hidden !important;
-    transform: translateX(-50%) translateY(15px) !important;
-    transition: none !important;
     pointer-events: none !important;
 }
 

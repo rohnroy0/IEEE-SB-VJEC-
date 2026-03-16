@@ -47,36 +47,24 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileSubmenu.classList.remove('active');
         }
         
-        // Desktop dropdown fix - lock hidden until mouse leaves and re-enters
+        // Desktop dropdown fix - absolute lock for 1 second
         document.querySelectorAll('.nav-links li.dropdown').forEach(dropdown => {
             dropdown.classList.add('hide-menu');
             
-            // Force browser to acknowledge the class change immediately for the arrow
+            // Force arrow reset visually
             const toggleIcon = dropdown.querySelector('.dropdown-toggle i');
             if (toggleIcon) {
                 toggleIcon.style.transition = 'none';
-                toggleIcon.style.transform = 'rotate(0deg)';
-                // Force layout reflow
+                toggleIcon.style.transform = '';
+                // force reflow
                 toggleIcon.offsetHeight;
                 toggleIcon.style.transition = '';
             }
-
-            // Re-enable hover only after mouse has left the area
-            if (!dropdown.hasLeaseListener) {
-                const resetHover = () => {
-                    dropdown.classList.remove('hide-menu');
-                    dropdown.hasLeaseListener = false;
-                    dropdown.removeEventListener('mouseleave', resetHover);
-                };
-                dropdown.addEventListener('mouseleave', resetHover);
-                dropdown.hasLeaseListener = true;
-            }
             
-            // Fallback: Also remove it after a delay
+            // Remove the lock after a small window enough for scrolling/navigation to settle
             setTimeout(() => {
                 dropdown.classList.remove('hide-menu');
-                dropdown.hasLeaseListener = false;
-            }, 3000);
+            }, 1000);
         });
     };
 
