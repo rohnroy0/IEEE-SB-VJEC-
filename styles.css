@@ -719,7 +719,7 @@ h4 {
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
-        margin-top: 4rem;
+        margin-top: 2rem;
         gap: 1.5rem;
     }
 }
@@ -2020,7 +2020,7 @@ section:nth-child(even)::before {
 
     /* Index Page Mobile Fixes */
     .hero {
-        padding: 100px 1rem 60px;
+        padding: 50px 1rem 40px;
     }
 
     .main-heading {
@@ -2031,12 +2031,14 @@ section:nth-child(even)::before {
     .hero-description {
         font-size: 1rem;
         padding: 0 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .hero-actions {
         justify-content: center;
         width: 100%;
         gap: 1rem;
+        margin-bottom: 1.5rem;
     }
 
     .btn-glow,
