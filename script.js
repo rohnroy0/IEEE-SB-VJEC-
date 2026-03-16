@@ -37,6 +37,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const closeAllMenus = () => {
+        mobileToggle.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        header.classList.remove('menu-active');
+        body.classList.remove('overflow-hidden');
+        if (mobileDropdownToggle) {
+            mobileDropdownToggle.classList.remove('active');
+            mobileSubmenu.classList.remove('active');
+        }
+        
+        // Desktop dropdown fix - force hide until next hover
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+            menu.style.visibility = 'hidden';
+            menu.style.opacity = '0';
+            setTimeout(() => {
+                menu.style.visibility = '';
+                menu.style.opacity = '';
+            }, 600);
+        });
+    };
+
     mobileToggle.addEventListener('click', toggleMenu);
 
     // Handle back button to close menu
@@ -74,19 +95,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close mobile menu on clicking a simple link (not the dropdown toggle)
-    document.querySelectorAll('.mobile-nav-links > li > a:not(.mobile-dropdown-toggle), .mobile-submenu a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileToggle.classList.remove('active');
-            mobileMenu.classList.remove('active');
-            header.classList.remove('menu-active');
-            body.classList.remove('overflow-hidden');
+    // Close menus on any navigation link click
+    document.querySelectorAll('.nav-links a, .mobile-nav-links a, .dropdown-menu a, .mobile-submenu a').forEach(link => {
+        // Skip the dropdown toggles themselves as they need to open/close sections
+        if (link.classList.contains('mobile-dropdown-toggle') || link.classList.contains('dropdown-toggle')) {
+            return;
+        }
 
-            // Also reset chapters dropdown if open
-            if (mobileDropdownToggle) {
-                mobileDropdownToggle.classList.remove('active');
-                mobileSubmenu.classList.remove('active');
-            }
+        link.addEventListener('click', () => {
+            closeAllMenus();
         });
     });
 
