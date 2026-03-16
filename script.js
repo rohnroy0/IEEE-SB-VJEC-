@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleMenu = () => {
         const isOpen = mobileToggle.classList.toggle('active');
         mobileMenu.classList.toggle('active');
+        header.classList.toggle('menu-active');
         body.classList.toggle('overflow-hidden');
         
         // Push state so back button can close menu
@@ -43,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (mobileMenu.classList.contains('active')) {
             mobileToggle.classList.remove('active');
             mobileMenu.classList.remove('active');
+            header.classList.remove('menu-active');
             body.classList.remove('overflow-hidden');
         }
     });
@@ -52,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (window.innerWidth > 992 && mobileMenu.classList.contains('active')) {
             mobileToggle.classList.remove('active');
             mobileMenu.classList.remove('active');
+            header.classList.remove('menu-active');
             body.classList.remove('overflow-hidden');
             if (history.state && history.state.menuOpen) {
                 history.back();
@@ -76,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', () => {
             mobileToggle.classList.remove('active');
             mobileMenu.classList.remove('active');
+            header.classList.remove('menu-active');
             body.classList.remove('overflow-hidden');
 
             // Also reset chapters dropdown if open
