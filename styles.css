@@ -720,6 +720,7 @@ h4 {
         grid-template-columns: 1fr;
         text-align: center;
         margin-top: 4rem;
+        gap: 1.5rem;
     }
 }
 
@@ -2095,7 +2096,7 @@ section:nth-child(even)::before {
 
     .hero-visual {
         min-height: auto;
-        margin-top: 3rem;
+        margin-top: 1rem;
     }
 
     .glass-terminal {
