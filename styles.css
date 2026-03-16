@@ -304,7 +304,7 @@ body.overflow-hidden {
     margin-top: 15px;
 }
 
-.nav-links li:hover .dropdown-menu {
+.nav-links li:hover:not(.hide-menu) .dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);

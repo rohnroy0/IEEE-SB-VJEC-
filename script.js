@@ -47,14 +47,23 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileSubmenu.classList.remove('active');
         }
         
-        // Desktop dropdown fix - force hide until next hover
-        document.querySelectorAll('.dropdown-menu').forEach(menu => {
-            menu.style.visibility = 'hidden';
-            menu.style.opacity = '0';
+        // Desktop dropdown fix - lock hidden until mouse leaves and re-enters
+        document.querySelectorAll('.nav-links li.dropdown').forEach(dropdown => {
+            dropdown.classList.add('hide-menu');
+            
+            // Re-enable hover only after mouse has left the area
+            if (!dropdown.hasLeaseListener) {
+                dropdown.addEventListener('mouseleave', () => {
+                    dropdown.classList.remove('hide-menu');
+                }, { once: true });
+                dropdown.hasLeaseListener = true;
+            }
+            
+            // Fallback: Also remove it after a delay in case mouseleave doesn't fire correctly
             setTimeout(() => {
-                menu.style.visibility = '';
-                menu.style.opacity = '';
-            }, 600);
+                dropdown.classList.remove('hide-menu');
+                dropdown.hasLeaseListener = false;
+            }, 3000);
         });
     };
 
