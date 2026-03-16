@@ -719,8 +719,9 @@ h4 {
     .hero-container {
         grid-template-columns: 1fr;
         text-align: center;
-        margin-top: 3rem;
-        gap: 2rem;
+        margin-top: 0;
+        gap: 3rem;
+        width: 100%;
     }
 }
 
@@ -2020,8 +2021,11 @@ section:nth-child(even)::before {
 
     /* Index Page Mobile Fixes */
     .hero {
-        padding: 120px 1rem 80px;
-        min-height: 90vh;
+        padding: 70px 1.5rem 30px;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .main-heading {
@@ -2029,17 +2033,29 @@ section:nth-child(even)::before {
         line-height: 1.2;
     }
 
-    .hero-description {
+    .hero-content {
+        min-height: calc(100dvh - 140px); /* Fill screen minus header/bottom padding */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         font-size: 1rem;
-        padding: 0 1rem;
+        padding: 0;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    .hero-description {
+        font-size: 1.05rem;
+        padding: 0;
         margin-bottom: 2.5rem;
+        line-height: 1.6;
     }
 
     .hero-actions {
         justify-content: center;
         width: 100%;
         gap: 1.2rem;
-        margin-bottom: 4rem;
+        margin-bottom: 0;
     }
 
     .btn-glow,
@@ -2099,7 +2115,8 @@ section:nth-child(even)::before {
 
     .hero-visual {
         min-height: auto;
-        margin-top: 1rem;
+        margin-top: 2rem;
+        padding-bottom: 2rem;
     }
 
     .glass-terminal {
