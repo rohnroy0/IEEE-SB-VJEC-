@@ -467,6 +467,7 @@ body.overflow-hidden {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
+    padding-bottom: 120px; /* Extra space to ensure bottom items are reachable */
 }
 
 .mobile-nav-links li {
@@ -552,7 +553,7 @@ body.overflow-hidden {
 }
 
 .mobile-submenu.active {
-    max-height: 500px;
+    max-height: 1000px; /* Increased to accommodate all 9 chapters */
     padding: 1rem;
     margin-top: 1rem;
     border: 1px solid var(--glass-border);
