@@ -51,15 +51,28 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.nav-links li.dropdown').forEach(dropdown => {
             dropdown.classList.add('hide-menu');
             
+            // Force browser to acknowledge the class change immediately for the arrow
+            const toggleIcon = dropdown.querySelector('.dropdown-toggle i');
+            if (toggleIcon) {
+                toggleIcon.style.transition = 'none';
+                toggleIcon.style.transform = 'rotate(0deg)';
+                // Force layout reflow
+                toggleIcon.offsetHeight;
+                toggleIcon.style.transition = '';
+            }
+
             // Re-enable hover only after mouse has left the area
             if (!dropdown.hasLeaseListener) {
-                dropdown.addEventListener('mouseleave', () => {
+                const resetHover = () => {
                     dropdown.classList.remove('hide-menu');
-                }, { once: true });
+                    dropdown.hasLeaseListener = false;
+                    dropdown.removeEventListener('mouseleave', resetHover);
+                };
+                dropdown.addEventListener('mouseleave', resetHover);
                 dropdown.hasLeaseListener = true;
             }
             
-            // Fallback: Also remove it after a delay in case mouseleave doesn't fire correctly
+            // Fallback: Also remove it after a delay
             setTimeout(() => {
                 dropdown.classList.remove('hide-menu');
                 dropdown.hasLeaseListener = false;

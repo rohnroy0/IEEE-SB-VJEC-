@@ -310,6 +310,15 @@ body.overflow-hidden {
     transform: translateX(-50%) translateY(0);
 }
 
+/* Instant close state when selection occurs */
+.nav-links li.hide-menu .dropdown-menu {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateX(-50%) translateY(15px) !important;
+    transition: none !important;
+    pointer-events: none !important;
+}
+
 /* Bridge to prevent menu closing when moving mouse */
 .dropdown-menu::before {
     content: '';
@@ -374,6 +383,12 @@ body.overflow-hidden {
 .nav-links li:hover:not(.hide-menu) .dropdown-toggle i {
     transform: rotate(180deg);
     opacity: 1;
+}
+
+/* Instant arrow reset when selection occurs */
+.nav-links li.hide-menu .dropdown-toggle i {
+    transform: rotate(0deg) !important;
+    transition: none !important;
 }
 
 /* Mobile Toggle Button */
