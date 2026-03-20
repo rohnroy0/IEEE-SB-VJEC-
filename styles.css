@@ -609,6 +609,106 @@ body.overflow-hidden {
     color: var(--light) !important;
 }
 
+/* About Section Styles */
+.about-section {
+    padding: 100px 0;
+    position: relative;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.about-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.glass-image-container {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 40px;
+    padding: 40px;
+    backdrop-filter: blur(15px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.glass-image-container:hover {
+    transform: translateY(-10px) rotate(2deg);
+    border-color: var(--primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.about-img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    background: white;
+    padding: 10px;
+}
+
+.orb-glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: var(--primary);
+    filter: blur(90px);
+    opacity: 0.4;
+    z-index: 1;
+}
+
+.about-lead {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--primary-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+    font-family: var(--font-heading);
+}
+
+.about-text {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+@media (max-width: 992px) {
+    .about-section {
+        padding: 60px 0;
+    }
+    
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+        text-align: center;
+    }
+    
+    .about-content-wrapper .section-header {
+        text-align: center !important;
+        align-items: center !important;
+    }
+
+    .about-content-wrapper .section-header .title-underline {
+        margin: 0 auto !important;
+    }
+    
+    .about-visual {
+        display: none;
+    }
+}
+
 .section-title,
 .main-heading,
 .brand-name,
