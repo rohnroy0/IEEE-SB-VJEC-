@@ -686,7 +686,7 @@ body.overflow-hidden {
 
 @media (max-width: 992px) {
     .about-section {
-        padding: 60px 0;
+        padding: 60px 1.5rem;
     }
     
     .about-grid {
@@ -1465,8 +1465,9 @@ section:nth-child(even)::before {
 }
 
 .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
 }
 
@@ -1543,7 +1544,6 @@ section:nth-child(even)::before {
 
 @media (max-width: 992px) {
     .stats-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
         gap: 1.5rem;
     }
     
@@ -1560,8 +1560,8 @@ section:nth-child(even)::before {
 
 /* Events Grid */
 .events-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     max-width: 1000px;
     margin: 0 auto;
