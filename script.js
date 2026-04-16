@@ -207,4 +207,73 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.event-card, .section-header, .vision-card, .mission-card, .offer-item, .society-item, .stat-item').forEach(el => {
         standardObserver.observe(el);
     });
+
+    // 6. Search Functionality
+    const searchInputs = document.querySelectorAll('.search-input');
+    const searchData = [
+        { title: "Home", url: "index.html", keywords: "home main vjec landing" },
+        { title: "Chapters & Societies", url: "chapters.html", keywords: "chapters societies cs ras cis wie pes ias pels cass sps" },
+        { title: "Computer Society (CS)", url: "chapters.html#cs", keywords: "computer society cs programming software" },
+        { title: "Robotics & Automation (RAS)", url: "chapters.html#ras", keywords: "robotics automation ras hardware robots" },
+        { title: "Computational Intelligence (CIS)", url: "chapters.html#cis", keywords: "computational intelligence cis ai machine learning" },
+        { title: "Women in Engineering (WIE)", url: "chapters.html#wie", keywords: "women in engineering wie female tech" },
+        { title: "Power & Energy Society (PES)", url: "chapters.html#pes", keywords: "power energy pes electrical" },
+        { title: "Industry Applications Society (IAS)", url: "chapters.html#ias", keywords: "industry applications ias" },
+        { title: "Power Electronics Society (PELS)", url: "chapters.html#pels", keywords: "power electronics pels hardware" },
+        { title: "Circuits & Systems Society (CASS)", url: "chapters.html#cass", keywords: "circuits systems cass hardware analog" },
+        { title: "Signal Processing Society (SPS)", url: "chapters.html#sps", keywords: "signal processing sps" },
+        { title: "The Team", url: "team.html", keywords: "team members execom chairs webmaster faculty branch counselor" },
+        { title: "Achievements", url: "achievements.html", keywords: "achievements awards prizes recognition" },
+        { title: "Contact Us", url: "contact.html", keywords: "contact email phone location map reach" },
+        { title: "Upcoming Events", url: "index.html#events", keywords: "events upcoming summer school internship workshop webinar seminar" },
+        { title: "Summer School", url: "https://summerschool.ieeesbvjec.in", keywords: "event summer school intensive technical program workshop" },
+        { title: "Internship Program", url: "index.html#events", keywords: "event internship program project mentorship skills" },
+        { title: "Who We Are (About)", url: "index.html#about", keywords: "about vision mission history who we are" }
+    ];
+
+    searchInputs.forEach(input => {
+        const resultsContainer = input.nextElementSibling;
+        
+        input.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            
+            if (query.length === 0) {
+                resultsContainer.classList.add('hidden');
+                resultsContainer.innerHTML = '';
+                return;
+            }
+
+            const matches = searchData.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.keywords.toLowerCase().includes(query)
+            );
+
+            if (matches.length > 0) {
+                resultsContainer.innerHTML = matches.map(match => 
+                    `<a href="${match.url}" class="search-result-item">
+                        ${match.title}
+                    </a>`
+                ).join('');
+                resultsContainer.classList.remove('hidden');
+            } else {
+                resultsContainer.innerHTML = `<div class="search-result-item" style="color: var(--gray);">No results found</div>`;
+                resultsContainer.classList.remove('hidden');
+            }
+        });
+
+        // Hide results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!input.contains(e.target) && !resultsContainer.contains(e.target)) {
+                resultsContainer.classList.add('hidden');
+            }
+        });
+        
+        // Show results when focusing back if there's text
+        input.addEventListener('focus', () => {
+            if (input.value.trim().length > 0) {
+                resultsContainer.classList.remove('hidden');
+            }
+        });
+    });
 });
+
