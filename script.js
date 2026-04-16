@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: "Contact Us", url: "contact.html", keywords: "contact email phone location map reach" },
         { title: "Upcoming Events", url: "index.html#events", keywords: "events upcoming summer school internship workshop webinar seminar" },
         { title: "Summer School", url: "https://summerschool.ieeesbvjec.in", keywords: "event summer school intensive technical program workshop" },
-        { title: "Internship Program", url: "index.html#events", keywords: "event internship program project mentorship skills" },
+        { title: "Hands-On Summer Internship", url: "index.html#events", keywords: "event internship program project mentorship skills ai machine learning data science web development" },
         { title: "Who We Are (About)", url: "index.html#about", keywords: "about vision mission history who we are" }
     ];
 
