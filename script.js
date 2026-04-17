@@ -228,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: "Upcoming Events", url: "index.html#events", keywords: "events upcoming summer school internship workshop webinar seminar" },
         { title: "Summer Camp 2026", url: "https://summerschool.ieeesbvjec.in", keywords: "event summer school camp intensive technical program workshop computational intelligence cis ai" },
         { title: "Hands-On Summer Internship", url: "index.html#events", keywords: "event internship program project mentorship skills ai machine learning data science web development" },
-        { title: "Second IEEE SB VJEC Two-Week Internship Training Program", url: "index.html#events", keywords: "event internship iot robotics drone 3d printing industrial robot hands-on training programme" },
+        { title: "Two-Week Internship Training Programme on IoT Robotics, Drone & 3D Printing", url: "index.html#events", keywords: "event internship iot robotics drone 3d printing industrial robot hands-on training programme" },
         { title: "Who We Are (About)", url: "index.html#about", keywords: "about vision mission history who we are" }
 
     ];
