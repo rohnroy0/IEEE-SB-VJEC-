@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self'; frame-src https://docs.google.com;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self'; frame-src https://docs.google.com https://www.google.com;">
     <meta name="google-site-verification" content="NwfqTwrtKRhwRC7SSNof9eREsBLUwWLEEgNpHxheOnc" />
     
     <!-- Primary Meta Tags -->
@@ -36,53 +36,124 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
-        .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 4rem;
-            margin-top: 4rem;
+        /* Modern Contact Page Styles */
+        .page-main {
+            padding-bottom: 80px;
         }
 
         .contact-info-grid {
             display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
+            margin-bottom: 4rem;
         }
 
-        .info-item {
+        .info-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem 2rem;
+            border-radius: 24px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
-            gap: 1.5rem;
+            flex-direction: column;
             align-items: center;
+            gap: 1.2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-light);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(14, 165, 233, 0.1);
+        }
+
+        .info-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(14, 165, 233, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .info-card:hover::after {
+            opacity: 1;
         }
 
         .info-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            border-radius: 12px;
+            width: 65px;
+            height: 65px;
+            background: rgba(14, 165, 233, 0.1);
+            border: 1px solid rgba(14, 165, 233, 0.2);
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.8rem;
+            color: var(--primary-light);
+            transition: all 0.4s ease;
+        }
+
+        .info-card:hover .info-icon {
+            background: var(--accent-gradient);
+            color: white;
+            transform: rotate(-5deg) scale(1.1);
+            border-color: transparent;
         }
 
         .info-text h4 {
-            margin-bottom: 0.2rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #fff;
+            font-family: var(--font-heading);
         }
 
         .info-text p {
             color: var(--gray);
             font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .info-text a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .info-text a:hover {
+            color: var(--primary-light);
+        }
+
+        .contact-main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: stretch;
         }
 
         .contact-form {
             background: var(--glass);
-            padding: 3rem;
-            border-radius: 24px;
+            padding: 3.5rem;
+            border-radius: 32px;
             border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .form-group {
             margin-bottom: 2rem;
+            position: relative;
         }
 
         .form-group label {
@@ -90,42 +161,101 @@
             margin-bottom: 0.8rem;
             font-weight: 600;
             color: var(--gray);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-left: 5px;
         }
 
         .form-control {
             width: 100%;
-            padding: 1rem 1.5rem;
+            padding: 1.1rem 1.5rem;
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
+            border-radius: 16px;
             color: white;
             font-family: inherit;
-            transition: var(--transition);
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--primary-light);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.1);
+            transform: translateY(-2px);
         }
 
         textarea.form-control {
-            min-height: 150px;
+            min-height: 160px;
             resize: vertical;
         }
 
-        @media (max-width: 992px) {
-            .contact-wrapper {
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            padding: 1.2rem;
+            font-weight: 700;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 25px rgba(0, 98, 155, 0.4);
+            width: 100%;
+            height: auto !important;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 98, 155, 0.6);
+            filter: brightness(1.1);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        .map-wrapper {
+            border-radius: 32px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            min-height: 500px;
+            height: 100%;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            /* Grayscale filter for a more modern integrated look, becomes color on hover */
+            filter: grayscale(0.2) contrast(1.1);
+            transition: all 0.6s ease;
+        }
+
+        .map-wrapper:hover iframe {
+            filter: none;
+        }
+
+        @media (max-width: 1100px) {
+            .contact-main-grid {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
             }
+            .map-wrapper {
+                min-height: 450px;
+            }
+        }
 
+        @media (max-width: 850px) {
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
             .contact-form {
-                padding: 1.5rem;
-            }
-
-            .info-item {
-                gap: 1rem;
+                padding: 2.5rem 1.5rem;
             }
         }
 
@@ -136,15 +266,15 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(8px);
+            background: rgba(10, 10, 12, 0.9);
+            backdrop-filter: blur(15px);
             z-index: 2000;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
         .popup-overlay.active {
@@ -153,18 +283,18 @@
         }
 
         .popup-content {
-            background: linear-gradient(145deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
             border: 1px solid var(--glass-border);
-            padding: 3rem;
-            border-radius: 24px;
+            padding: 4rem 3rem;
+            border-radius: 32px;
             text-align: center;
-            max-width: 400px;
+            max-width: 450px;
             width: 90%;
-            transform: scale(0.9) translateY(20px);
+            transform: scale(0.8) translateY(40px);
             opacity: 0;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
             position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.5);
         }
 
         .popup-overlay.active .popup-content {
@@ -173,79 +303,64 @@
         }
 
         .popup-icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(14, 165, 233, 0.1);
-            color: var(--primary);
-            border-radius: 50%;
+            width: 90px;
+            height: 90px;
+            background: var(--accent-gradient);
+            color: white;
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.5rem;
-            margin: 0 auto 1.5rem;
-            box-shadow: 0 0 20px rgba(14, 165, 233, 0.2);
+            font-size: 3rem;
+            margin: 0 auto 2rem;
+            box-shadow: 0 15px 30px rgba(14, 165, 233, 0.3);
+            transform: rotate(-10deg);
         }
 
         .popup-title {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
             color: #fff;
-            font-weight: 700;
+            font-weight: 800;
+            font-family: var(--font-heading);
         }
 
         .popup-message {
             color: var(--gray);
-            margin-bottom: 2rem;
-            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
         }
 
         .popup-close {
             position: absolute;
-            top: 1rem;
+            top: 1.5rem;
             right: 1.5rem;
-            background: none;
-            border: none;
-            color: var(--gray);
-            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             cursor: pointer;
-            transition: color 0.3s;
+            transition: all 0.3s;
         }
 
         .popup-close:hover {
-            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(90deg);
         }
 
-        /* Button Loading State */
         .btn:disabled {
             opacity: 0.7;
             cursor: not-allowed;
             pointer-events: none;
         }
+    </style>
 
-        .btn-primary {
-            background: var(--accent-gradient);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 5px 15px rgba(0, 98, 155, 0.3);
-            user-select: none;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 98, 155, 0.4);
-        }
-
-        .btn-primary:active {
-            transform: translateY(0) scale(0.98);
-        }
-
-        .btn-primary:focus, .popup-close:focus {
-            outline: none;
-        }
     </style>
 </head>
 
@@ -282,6 +397,7 @@
                 </li>
                 <li><a href="team.html">The Team</a></li>
                 <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="index.html#events">Events</a></li>
                 <li><a href="contact.html" class="active">Contact Us</a></li>
             </ul>
             <!-- Desktop Search -->
@@ -323,6 +439,7 @@
             </li>
             <li><a href="team.html">The Team</a></li>
             <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="index.html#events">Events</a></li>
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </div>
@@ -333,34 +450,33 @@
             <p>Have questions or suggestions? We'd love to hear from you.</p>
         </div>
 
-        <div class="contact-wrapper">
-            <div class="contact-info">
-                <div class="contact-info-grid">
-                    <div class="info-item">
-                        <div class="info-icon">📍</div>
-                        <div class="info-text">
-                            <h4>Location</h4>
-                            <p>Vimal Jyothi Engineering College, Chemperi, Kannur</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">📧</div>
-                        <div class="info-text">
-                            <h4>Email Us</h4>
-                            <p><a href="mailto:ieee.vjecsb@gmail.com">ieee.vjecsb@gmail.com</a></p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon">📞</div>
-                        <div class="info-text">
-                            <h4>Call Us</h4>
-                            <p><a href="tel:+919562183174"><span class="contact-label">SB Chair</span>+91 9562183174</a></p>
-                            <p><a href="tel:+918289840179"><span class="contact-label">SB Webmaster</span>+91 8289840179</a></p>
-                        </div>
-                    </div>
+        <!-- Contact Info Cards -->
+        <div class="contact-info-grid">
+            <div class="info-card">
+                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="info-text">
+                    <h4>Location</h4>
+                    <p>VIMAL JYOTHI ENGINEERING COLLEGE,<br>Chemperi, Kannur, Kerala</p>
                 </div>
             </div>
+            <div class="info-card">
+                <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                <div class="info-text">
+                    <h4>Email Us</h4>
+                    <p><a href="mailto:ieee.vjecsb@gmail.com">ieee.vjecsb@gmail.com</a></p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+                <div class="info-text">
+                    <h4>Contact</h4>
+                    <p><a href="tel:+919562183174"><strong>Chair:</strong> +91 95621 83174</a><br>
+                        <a href="tel:+918289840179"><strong>Webmaster:</strong> +91 82898 40179</a></p>
+                </div>
+            </div>
+        </div>
 
+        <div class="contact-main-grid">
             <div class="contact-form">
                 <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"
                     onload="if(submitted) { showSuccessPopup(); }"></iframe>
@@ -369,23 +485,32 @@
                     method="POST" target="hidden_iframe" onsubmit="handleFormSubmit(this);">
                     <div class="form-group">
                         <label>Your Name</label>
-                        <input type="text" name="entry.341257229" class="form-control" placeholder="Your Name" required>
+                        <input type="text" name="entry.341257229" class="form-control" placeholder="Full Name" required>
                     </div>
                     <div class="form-group">
                         <label>Email Address</label>
-                        <input type="email" name="entry.9002419" class="form-control" placeholder="Your Email" required>
+                        <input type="email" name="entry.9002419" class="form-control" placeholder="name@email.com"
+                            required>
                     </div>
                     <div class="form-group">
-                        <label>Message</label>
-                        <textarea class="form-control" name="entry.1247887709" placeholder="How can we help you?"
+                        <label>Your Message</label>
+                        <textarea class="form-control" name="entry.1247887709" placeholder="How can we help you today?"
                             required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; height: 50px;">Send
-                        Message</button>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
                 </form>
+            </div>
+
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.2081654801705!2d75.55784567480804!3d12.097897033431407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4485fc403e7e9%3A0xd1ae420ddb601073!2sVimal%20Jyothi%20Engineering%20College%2C%20Chemperi%2C%20Kannur!5e0!3m2!1sen!2sin!4v1776404817441!5m2!1sen!2sin"
+                    style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </main>
+
+
 
     <footer class="footer">
         <div class="container">
@@ -413,6 +538,7 @@
                         <li><a href="chapters.html">Chapters</a></li>
                         <li><a href="team.html">The Team</a></li>
                         <li><a href="achievements.html">Achievements</a></li>
+                        <li><a href="index.html#events">Events</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="https://vjec.ac.in/" target="_blank" rel="noopener noreferrer">College Website</a></li>
                     </ul>
