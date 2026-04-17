@@ -259,6 +259,53 @@
             }
         }
 
+        /* Open in Google Maps Button */
+        .map-overlay-btn {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateZ(0); /* Force hardware acceleration and fix layering */
+            background: rgba(10, 10, 12, 0.85); /* Slightly more opaque for mobile readability */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px); /* Safari support */
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: white;
+            padding: 14px 28px; /* Slightly larger padding for easier tapping */
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 999; /* Much higher z-index to stay above iframe */
+            white-space: nowrap;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .map-overlay-btn:hover {
+            background: var(--primary-light);
+            border-color: transparent;
+            transform: translateX(-50%) translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(14, 165, 233, 0.4);
+            color: white;
+        }
+
+        .map-overlay-btn i {
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            transition: color 0.3s ease;
+        }
+
+        .map-overlay-btn:hover i {
+            color: white;
+            transform: rotate(15deg);
+        }
+
         /* Success Popup Styles */
         .popup-overlay {
             position: fixed;
@@ -506,6 +553,11 @@
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.2081654801705!2d75.55784567480804!3d12.097897033431407!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4485fc403e7e9%3A0xd1ae420ddb601073!2sVimal%20Jyothi%20Engineering%20College%2C%20Chemperi%2C%20Kannur!5e0!3m2!1sen!2sin!4v1776404817441!5m2!1sen!2sin"
                     style="border:0;" allowfullscreen="" loading="lazy"
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a href="https://www.google.com/maps/search/?api=1&query=Vimal+Jyothi+Engineering+College+Chemperi+Kannur" 
+                   target="_blank" rel="noopener noreferrer" class="map-overlay-btn">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <span>Open in Google Maps</span>
+                </a>
             </div>
         </div>
     </main>
