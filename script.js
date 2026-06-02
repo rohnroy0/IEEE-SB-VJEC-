@@ -225,10 +225,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: "The Team", url: "team.html", keywords: "team members execom chairs webmaster faculty branch counselor" },
         { title: "Achievements", url: "achievements.html", keywords: "achievements awards prizes recognition" },
         { title: "Contact Us", url: "contact.html", keywords: "contact email phone location map reach" },
-        { title: "Upcoming Events", url: "index.html#events", keywords: "events upcoming summer school internship workshop webinar seminar" },
+        { title: "Upcoming Events", url: "events.html", keywords: "events upcoming summer school internship workshop webinar seminar" },
         { title: "Summer Camp 2026", url: "https://summerschool.ieeesbvjec.in", keywords: "event summer school camp intensive technical program workshop computational intelligence cis ai" },
-        { title: "Hands-On Summer Internship", url: "index.html#events", keywords: "event internship program project mentorship skills ai machine learning data science web development" },
-        { title: "Two-Week Internship Training Programme on IoT Robotics, Drone & 3D Printing", url: "index.html#events", keywords: "event internship iot robotics drone 3d printing industrial robot hands-on training programme" },
+        { title: "Hands-On Summer Internship", url: "events.html", keywords: "event internship program project mentorship skills ai machine learning data science web development" },
+        { title: "Two-Week Internship Training Programme on IoT Robotics, Drone & 3D Printing", url: "events.html", keywords: "event internship iot robotics drone 3d printing industrial robot hands-on training programme" },
         { title: "Who We Are (About)", url: "index.html#about", keywords: "about vision mission history who we are" }
 
     ];
