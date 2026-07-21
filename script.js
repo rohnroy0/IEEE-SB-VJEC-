@@ -277,5 +277,109 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // 7. Auto-manage Upcoming Events based on date
+    const manageEvents = () => {
+        const upcomingSection = document.getElementById('upcoming-events') || document.getElementById('events');
+        if (!upcomingSection) return;
+        
+        const upcomingEventsGrid = upcomingSection.querySelector('.events-grid');
+        if (!upcomingEventsGrid) return;
+        
+        const pastEventsGrid = document.querySelector('#past-projects .events-grid');
+        
+        const upcomingCards = Array.from(upcomingEventsGrid.querySelectorAll('.event-card'));
+        const currentDate = new Date();
+        currentDate.setHours(0, 0, 0, 0);
+
+        const monthMap = {
+            'JAN': 0, 'FEB': 1, 'MAR': 2, 'APR': 3, 'MAY': 4, 'JUN': 5,
+            'JUL': 6, 'AUG': 7, 'SEP': 8, 'OCT': 9, 'NOV': 10, 'DEC': 11,
+            'JANUARY': 0, 'FEBRUARY': 1, 'MARCH': 2, 'APRIL': 3, 'JUNE': 5, 'JULY': 6
+        };
+
+        upcomingCards.forEach(card => {
+            const dayEl = card.querySelector('.day');
+            const monthEl = card.querySelector('.month');
+            const yearEl = card.querySelector('.year');
+            
+            if (!dayEl || !monthEl) return;
+            
+            const dayText = dayEl.textContent.trim();
+            const dayMatch = dayText.match(/\d+/g);
+            let day = 1;
+            if (dayMatch && dayMatch.length > 0) {
+                day = parseInt(dayMatch[dayMatch.length - 1], 10);
+            }
+            
+            const badges = card.querySelectorAll('.badge');
+            badges.forEach(badge => {
+                if (badge.innerHTML.includes('fa-calendar-alt')) {
+                    const text = badge.textContent.trim();
+                    const rangeMatch = text.match(/(\d+)\s*[–-]\s*(\d+)/);
+                    if (rangeMatch) {
+                        day = parseInt(rangeMatch[2], 10);
+                    }
+                }
+            });
+            
+            const monthText = monthEl.textContent.trim().toUpperCase().substring(0, 3);
+            const month = monthMap[monthText] !== undefined ? monthMap[monthText] : 0;
+            const year = yearEl ? parseInt(yearEl.textContent, 10) : new Date().getFullYear();
+            
+            const eventDate = new Date(year, month, day);
+            
+            if (eventDate < currentDate) {
+                if (pastEventsGrid) {
+                    card.style.opacity = '0.9';
+                    
+                    const eventDateDiv = card.querySelector('.event-date');
+                    if (eventDateDiv) {
+                        eventDateDiv.style.background = 'rgba(255,255,255,0.1)';
+                        eventDateDiv.style.borderColor = 'rgba(255,255,255,0.2)';
+                        
+                        if (!yearEl) {
+                            const newYearEl = document.createElement('span');
+                            newYearEl.className = 'year';
+                            newYearEl.textContent = year;
+                            eventDateDiv.appendChild(newYearEl);
+                        }
+                    }
+                    
+                    const eventInfo = card.querySelector('.event-info');
+                    const registerLinks = eventInfo.querySelectorAll('a');
+                    registerLinks.forEach(a => {
+                        if (a.textContent.toLowerCase().includes('register') || a.classList.contains('btn-glow')) {
+                            if (a.parentElement.tagName === 'DIV' && a.parentElement.children.length === 1) {
+                                a.parentElement.remove();
+                            } else {
+                                a.remove();
+                            }
+                        }
+                    });
+                    
+                    const completedDiv = document.createElement('div');
+                    completedDiv.style.marginTop = '2rem';
+                    completedDiv.innerHTML = `
+                        <span class="badge" style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                            <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                            Successfully Completed
+                        </span>
+                    `;
+                    eventInfo.appendChild(completedDiv);
+                    
+                    pastEventsGrid.insertBefore(card, pastEventsGrid.firstChild);
+                } else {
+                    card.remove();
+                }
+            }
+        });
+        
+        if (upcomingEventsGrid.querySelectorAll('.event-card').length === 0) {
+            upcomingSection.style.display = 'none';
+        }
+    };
+
+    manageEvents();
 });
 
