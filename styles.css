@@ -2430,3 +2430,88 @@ section:nth-child(even)::before {
         padding: 6px 12px;
     }
 }
+/* ---------- Committee ---------- */
+.committee-section {
+    padding: 90px 0;
+    background: var(--darker);
+}
+
+.committee-lead {
+    max-width: 620px;
+    margin: 0 auto 48px;
+    text-align: center;
+    color: var(--gray);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.committee-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 22px;
+}
+
+.committee-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 26px 18px 24px;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    text-align: center;
+    color: var(--light);
+    /* Anchors default to underlined; that underline would propagate through the
+       card's heading and role text, since text-decoration can't be reset on
+       descendants. */
+    text-decoration: none;
+    transition: transform .25s ease, border-color .25s ease, background .25s ease;
+}
+
+.committee-card img {
+    width: 132px;
+    height: 176px;
+    object-fit: contain;
+    object-position: center bottom;
+    margin-bottom: 10px;
+    filter: drop-shadow(0 8px 14px rgba(0, 0, 0, .45));
+}
+
+.committee-card h3 {
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--light);
+    letter-spacing: -.01em;
+}
+
+.committee-card .member-role {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: var(--primary-light);
+}
+
+.committee-card:hover {
+    text-decoration: none;
+    transform: translateY(-6px);
+    background: var(--glass-heavy);
+    border-color: var(--primary-light);
+}
+
+@media (max-width: 640px) {
+    .committee-section {
+        padding: 64px 0;
+    }
+
+    .committee-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .committee-card img {
+        width: 100%;
+        height: 132px;
+    }
+}
