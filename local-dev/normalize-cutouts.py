@@ -29,6 +29,7 @@ CASCADE = os.path.join(HERE, 'cascades', 'haarcascade_frontalface_default.xml')
 CANVAS_W, CANVAS_H = 900, 1200
 FACE_H_FRACTION = 0.20   # face height as a share of canvas height
 FACE_TOP_FRACTION = 0.13 # distance from canvas top to the top of the face
+MIN_TOP_MARGIN = 44      # keep hair off the canvas edge
 OUTLINE_PX = 13          # fixed canvas, so a fixed px is a fixed thickness
 
 # Used when the detector finds nothing. The head is at the very top of the
@@ -117,7 +118,7 @@ os.makedirs(WEBP, exist_ok=True)
 # Faces the cascade cannot find (sunglasses, side-on pose) are pinned by hand.
 # Coordinates are in the clean cutout's pixel space from finalize-cutouts.py.
 OVERRIDES = {
-    'aswin': (1120, 700, 640, 680),   # profile: temple to nose, forehead to chin
+    'aswin': (914, 481, 1052, 1118),  # profile: temple to nose, forehead to chin
 }
 
 only = set(sys.argv[1:])
@@ -177,6 +178,22 @@ for member in json.load(open(os.path.join(HERE, 'data', 'members.clean.json'))):
                                max(1, round(original.height * scale))), Image.LANCZOS)
     canvas = Image.new('RGBA', (CANVAS_W, CANVAS_H), (0, 0, 0, 0))
     canvas.paste(resized, (round(px), round(py)), resized)
+
+    # The face box is the forehead, not the hair. Voluminous hair can sit well
+    # above it and be clipped by the canvas edge. Shrink and re-place until the
+    # hair clears the top with headroom -- shifting down would not help, because
+    # the trim below crops any margin straight back off.
+    for _ in range(12):
+        box = canvas.getchannel('A').getbbox()
+        if not box or box[1] >= MIN_TOP_MARGIN:
+            break
+        scale *= 0.95
+        resized = original.resize((max(1, round(original.width * scale)),
+                                   max(1, round(original.height * scale))), Image.LANCZOS)
+        px = CANVAS_W / 2 - (fx + fw / 2) * scale
+        py = FACE_TOP_FRACTION * CANVAS_H - fy * scale
+        canvas = Image.new('RGBA', (CANVAS_W, CANVAS_H), (0, 0, 0, 0))
+        canvas.paste(resized, (round(px), round(py)), resized)
 
     matte = canvas.getchannel('A')
     ring = Image.new('RGBA', canvas.size, (255, 255, 255, 0))

@@ -39,6 +39,9 @@ const CUTOUTS = {
   'abhiram-m-s': '/cutouts/member-14.webp',
   'simon-joseph': '/cutouts/member-15.webp',
   'alan-antony': '/cutouts/member-16.webp',
+  'vaishnavi-sasi': '/cutouts/member-17.webp',
+  'rohn-roy': '/cutouts/member-18.webp',
+  'abhinav-r': '/cutouts/member-19.webp',
 };
 function Portrait({ profile }) {
   const cutout = CUTOUTS[profile.slug];
