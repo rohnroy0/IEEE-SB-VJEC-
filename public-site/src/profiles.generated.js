@@ -2,6 +2,7 @@
 // Static fallback so the badge pages work before an admin API is deployed.
 export const FALLBACK_PROFILES = [
  {
+  "id": 1,
   "slug": "abdul-basith-p-v",
   "name": "ABDUL BASITH P V",
   "designation": "MDC",
@@ -19,6 +20,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 2,
   "slug": "aswin",
   "name": "ASWIN",
   "designation": "PUBLICLY COORDINATOR",
@@ -36,6 +38,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 3,
   "slug": "adarsh-k-biju",
   "name": "ADARSH K BIJU",
   "designation": "Technical Coordinator",
@@ -53,6 +56,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 4,
   "slug": "sandra-nambiar",
   "name": "SANDRA NAMBIAR",
   "designation": "Social Media Manager",
@@ -70,6 +74,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 5,
   "slug": "milan-biju",
   "name": "MILAN BIJU",
   "designation": "Event Coordinator",
@@ -87,6 +92,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 6,
   "slug": "tessa-mariya",
   "name": "TESSA MARIYA",
   "designation": "Joint secretary",
@@ -104,6 +110,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 7,
   "slug": "ajith-mathew",
   "name": "AJITH MATHEW",
   "designation": "EVENT COORDINATOR",
@@ -121,6 +128,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 8,
   "slug": "shiva-keshav-v",
   "name": "SHIVA KESHAV V",
   "designation": "Treasurer",
@@ -138,6 +146,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 9,
   "slug": "abhin-k-shibu-james",
   "name": "ABHIN K SHIBU JAMES",
   "designation": "Joint technical coordinator",
@@ -155,6 +164,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 10,
   "slug": "elsitta-binu",
   "name": "ELSITTA BINU",
   "designation": "Event Coordinator",
@@ -172,6 +182,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 11,
   "slug": "samanway-t-k",
   "name": "SAMANWAY T K",
   "designation": "Secretary",
@@ -189,6 +200,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 12,
   "slug": "leo-mathew-roy",
   "name": "LEO MATHEW ROY",
   "designation": "Content Lead",
@@ -206,6 +218,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 13,
   "slug": "sanju-santy",
   "name": "SANJU SANTY",
   "designation": "Publicity Coordinator",
@@ -223,6 +236,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 14,
   "slug": "abhiram-m-s",
   "name": "ABHIRAM M S",
   "designation": "Technical Coordinator",
@@ -240,6 +254,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 15,
   "slug": "simon-joseph",
   "name": "SIMON JOSEPH",
   "designation": "Vice Chair",
@@ -257,6 +272,7 @@ export const FALLBACK_PROFILES = [
   "status": "active"
  },
  {
+  "id": 16,
   "slug": "alan-antony",
   "name": "ALAN ANTONY",
   "designation": "Chairperson",
@@ -270,6 +286,60 @@ export const FALLBACK_PROFILES = [
   "phone": "9562183174",
   "instagram": "",
   "linkedin": "",
+  "links": [],
+  "status": "active"
+ },
+ {
+  "id": 17,
+  "slug": "vaishnavi-sasi",
+  "name": "VAISHNAVI SASI",
+  "designation": "Link Representative",
+  "team_role": "",
+  "department": "",
+  "society": "",
+  "organization": "IEEE SB VJEC",
+  "event": "",
+  "bio": "IEEE Member ID: 102185500",
+  "email": "vaishnavisasi08@gmail.com",
+  "phone": "9400179826",
+  "instagram": "https://www.instagram.com/v_aishna_",
+  "linkedin": "",
+  "links": [],
+  "status": "active"
+ },
+ {
+  "id": 18,
+  "slug": "rohn-roy",
+  "name": "ROHN ROY",
+  "designation": "Web Master",
+  "team_role": "",
+  "department": "",
+  "society": "",
+  "organization": "IEEE SB VJEC",
+  "event": "",
+  "bio": "IEEE Member ID: 100115042",
+  "email": "rohnroy007@gmail.com",
+  "phone": "8289840179",
+  "instagram": "https://www.instagram.com/rohnr0y/",
+  "linkedin": "https://linkedin.com/in/rohnroy007",
+  "links": [],
+  "status": "active"
+ },
+ {
+  "id": 19,
+  "slug": "abhinav-r",
+  "name": "ABHINAV R",
+  "designation": "DESIGN LEAD",
+  "team_role": "",
+  "department": "",
+  "society": "",
+  "organization": "IEEE SB VJEC",
+  "event": "",
+  "bio": "IEEE Member ID: 102183283",
+  "email": "abhinavieeevjec@gmail.com",
+  "phone": "8590320353",
+  "instagram": "https://www.instagram.com/achu_abhi05?stkn=MWZ1eHJiMmllejZkaA==",
+  "linkedin": "https://www.linkedin.com/in/abhinav-r-651351357?utm_source=share_via&utm_content=profile&utm_medium=member_android",
   "links": [],
   "status": "active"
  }
