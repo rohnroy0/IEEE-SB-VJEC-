@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self'; frame-src https://docs.google.com https://www.google.com;">
+    <meta name="google-site-verification" content="NwfqTwrtKRhwRC7SSNof9eREsBLUwWLEEgNpHxheOnc" />
+
+    <!-- Primary Meta Tags -->
+    <title>Chapters & Societies | IEEE SB VJEC</title>
+    <meta name="title" content="Chapters & Societies | IEEE SB VJEC">
+    <meta name="description"
+        content="Explore the diverse technical communities under IEEE Student Branch VJEC. Join Computer Society (CS), RAS, CIS, WIE, PES, IAS, PELS, CASS, and SPS.">
+    <meta name="keywords"
+        content="IEEE Societies, IEEE Chapters, CS, RAS, CIS, WIE, PES, IAS, PELS, CASS, SPS, Student Branch, VJEC, Technology Communities">
+    <meta name="author" content="IEEE SB VJEC">
+    <link rel="canonical" href="https://ieeesbvjec.in/chapters.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ieeesbvjec.in/chapters.html">
+    <meta property="og:title" content="Chapters & Societies | IEEE SB VJEC">
+    <meta property="og:description"
+        content="Explore the diverse technical communities under IEEE Student Branch VJEC. Join Computer Society (CS), RAS, CIS, WIE, and more.">
+    <meta property="og:image" content="https://ieeesbvjec.in/assets/vjec_sb_logo.jpeg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ieeesbvjec.in/chapters.html">
+    <meta property="twitter:title" content="Chapters & Societies | IEEE SB VJEC">
+    <meta property="twitter:description"
+        content="Explore the diverse technical communities under IEEE Student Branch VJEC. Join Computer Society (CS), RAS, CIS, WIE, and more.">
+    <meta property="twitter:image" content="https://ieeesbvjec.in/assets/vjec_sb_logo.jpeg">
+
+    <link rel="icon" type="image/jpeg" href="assets/vjec_sb_logo.jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        .chapters-filter {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: 1px solid var(--glass-border);
+            background: var(--glass);
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .filter-btn:active {
+            transform: scale(0.95);
+        }
+
+        .filter-btn:focus {
+            outline: none;
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px var(--primary-glow);
+        }
+
+        @media (hover: hover) {
+            .filter-btn:hover {
+                background: var(--primary);
+                border-color: var(--primary);
+                transform: translateY(-2px);
+            }
+        }
+
+        .chapter-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .chapter-content.active {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .chapter-text h2 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-light);
+        }
+
+        .chapter-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .chapter-content.active {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chapter-team {
+            grid-column: 1 / -1;
+            margin-top: 4rem;
+        }
+
+        .team-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, var(--primary-light), #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .team-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            transition: var(--transition);
+            max-width: 250px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .member-img-container {
+            height: 250px;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .member-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        .placeholder-icon {
+            font-size: 3rem;
+            color: var(--glass-border);
+            position: absolute;
+            z-index: 1;
+        }
+
+        .member-info {
+            padding: 1rem;
+        }
+
+        .member-info h4 {
+            margin: 0;
+            font-size: 1.1rem;
+            color: white;
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body class="loading">
+    <div id="loader" class="loader-overlay">
+        <div class="loader-content">
+            <div class="loader-circle"></div>
+            <div class="loader-text">IEEE SB VJEC</div>
+        </div>
+    </div>
+
+    <header class="header scrolled">
+        <nav class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="assets/vjec_sb_logo.jpeg" alt="Logo" class="logo-img" width="50" height="50"
+                    fetchpriority="high">
+                <span class="brand-name">IEEE SB VJEC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="chapters.html" class="active dropdown-toggle">Chapters <i
+                            class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapters.html#cs"><i class="fas fa-code"></i> CS</a></li>
+                        <li><a href="chapters.html#ras"><i class="fas fa-robot"></i> RAS</a></li>
+                        <li><a href="chapters.html#cis"><i class="fas fa-brain"></i> CIS</a></li>
+                        <li><a href="chapters.html#wie"><i class="fas fa-female"></i> WIE</a></li>
+                        <li><a href="chapters.html#pes"><i class="fas fa-bolt"></i> PES</a></li>
+                        <li><a href="chapters.html#ias"><i class="fas fa-industry"></i> IAS</a></li>
+                        <li><a href="chapters.html#pels"><i class="fas fa-plug"></i> PELS</a></li>
+                        <li><a href="chapters.html#cass"><i class="fas fa-microchip"></i> CASS</a></li>
+                        <li><a href="chapters.html#sps"><i class="fas fa-wave-square"></i> SPS</a></li>
+                    </ul>
+                </li>
+                <li><a href="team.html">The Team</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <!-- Desktop Search -->
+            <div class="nav-search">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search..." class="search-input" aria-label="Search">
+                    <div class="search-results hidden"></div>
+                </div>
+            </div>
+            <button class="mobile-toggle"><span class="bar"></span><span class="bar"></span><span
+                    class="bar"></span></button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu">
+        <div class="mobile-search">
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search..." class="search-input" aria-label="Search">
+                <div class="search-results hidden"></div>
+            </div>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Chapters <i class="fas fa-chevron-down"></i></a>
+                <ul class="mobile-submenu">
+                    <li><a href="chapters.html#cs"><i class="fas fa-code"></i> CS</a></li>
+                    <li><a href="chapters.html#ras"><i class="fas fa-robot"></i> RAS</a></li>
+                    <li><a href="chapters.html#cis"><i class="fas fa-brain"></i> CIS</a></li>
+                    <li><a href="chapters.html#wie"><i class="fas fa-female"></i> WIE</a></li>
+                    <li><a href="chapters.html#pes"><i class="fas fa-bolt"></i> PES</a></li>
+                    <li><a href="chapters.html#ias"><i class="fas fa-industry"></i> IAS</a></li>
+                    <li><a href="chapters.html#pels"><i class="fas fa-plug"></i> PELS</a></li>
+                    <li><a href="chapters.html#cass"><i class="fas fa-microchip"></i> CASS</a></li>
+                    <li><a href="chapters.html#sps"><i class="fas fa-wave-square"></i> SPS</a></li>
+                </ul>
+            </li>
+            <li><a href="team.html">The Team</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <main class="page-main container" style="min-height: 80vh;">
+        <div class="section-header">
+            <h1 class="section-title">Academic Societies & Chapters</h1>
+            <p>Explore the diverse technical communities under our Student Branch.</p>
+        </div>
+
+        <div class="chapters-filter">
+            <button class="filter-btn active" data-target="cs">Computer Society (CS)</button>
+            <button class="filter-btn" data-target="cis">Computational Intelligence (CIS)</button>
+            <button class="filter-btn" data-target="wie">Women in Engineering (WIE)</button>
+            <button class="filter-btn" data-target="ras">Robotics & Automation (RAS)</button>
+            <button class="filter-btn" data-target="pels">Power Electronics Society(PELS)</button>
+            <button class="filter-btn" data-target="pes">Power & Energy Society (PES)</button>
+            <button class="filter-btn" data-target="ias">Industry Applications Society(IAS)</button>
+            <button class="filter-btn" data-target="cass">Circuits and Systems Society(CASS)</button>
+            <button class="filter-btn" data-target="sps">Signal Processing Society (SPS)</button>
+        </div>
+
+        <div id="chapter-details">
+            <!-- CS Chapter -->
+            <div class="chapter-content active" id="cs">
+                <div class="chapter-text">
+                    <h2>IEEE CS</h2>
+                    <p>The IEEE Computer Society is the world’s leading community of computing professionals and
+                        students dedicated to advancing computer science and technology through innovation, research,
+                        and collaboration.
+                        Through workshops, technical events, and knowledge-sharing initiatives, it empowers members to
+                        develop practical skills and stay updated with emerging technologies.
+                    </p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/cs.jpeg" alt="IEEE CS Logo" class="chapter-img" width="200" height="200"
+                        loading="lazy"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+                <div class="chapter-team">
+                    <h3 class="team-title">Computer Society Executive Committee</h3>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/ca1.jpeg" alt="DIVYA K VINOD" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>DIVYA K VINOD</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/ca2.jpeg" alt="SISNA P" width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>SISNA P</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/chair.jpeg" alt="ROHN ROY" width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ROHN ROY</h4>
+                                <p class="member-role">CHAIRPERSON</p>
+                            </div>
+                        </div>
+
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/vc.jpeg" alt="ABDUL BASITH PV" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ABDUL BASITH PV</h4>
+                                <p class="member-role">VICE CHAIRPERSON</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/secretary.jpeg" alt="SANIKA K" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>SANIKA K</h4>
+                                <p class="member-role">SECRETARY</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/js.jpeg" alt="SHIVA KESAV V" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>SHIVA KESAV V</h4>
+                                <p class="member-role">JOINT SECRETARY</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/treasurer.jpeg" alt="VAISHNAVI SASI" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>VAISHNAVI SASI</h4>
+                                <p class="member-role">TREASURER</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/wic.jpeg" alt="Elsitta Binu" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ELSITTA BINU</h4>
+                                <p class="member-role">WIC</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/tc.jpeg" alt="AASISH KRISHNA" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>AASISH KRISHNA</h4>
+                                <p class="member-role">TECHNICAL COORDINATOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/tc2.jpeg" alt="SREEHARSH EK" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>SREEHARSH EK</h4>
+                                <p class="member-role">TECHNICAL COORDINATOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/wm0.jpeg" alt="LEO DEEPAK SHIBU KAITHAKKAL" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>LEO DEEPAK SHIBU KAITHAKKAL</h4>
+                                <p class="member-role">WEBMASTER</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/wm.jpeg" alt="VISMAYA ARUN" width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>VISMAYA ARUN</h4>
+                                <p class="member-role">WEBMASTER</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/ec1.jpeg" alt="IRINE ROSE SAJI" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>IRINE ROSE SAJI</h4>
+                                <p class="member-role">EVENT COORDINATOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cs/ec2.jpeg" alt="MILAN BIJU" width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>MILAN BIJU</h4>
+                                <p class="member-role">EVENT COORDINATOR</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- CIS Chapter -->
+            <div class="chapter-content" id="cis">
+                <div class="chapter-text">
+                    <h2>IEEE CIS</h2>
+                    <p>The IEEE Computational Intelligence Society (CIS) focuses on advancing intelligent systems
+                        inspired by nature and human intelligence. It covers areas such as artificial intelligence,
+                        neural networks, machine learning, fuzzy systems, and evolutionary computation.
+                        Through workshops, technical sessions, and collaborative projects, CIS encourages students to
+                        explore intelligent technologies and develop innovative solutions to real-world problems.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/cis.png" alt="IEEE CIS Logo" class="chapter-img" width="200" height="200"
+                        loading="lazy"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+                <div class="chapter-team">
+                    <h3 class="team-title">CIS Executive Committee</h3>
+
+                    <div class="team-grid">
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/manoj chapter advisor.jpeg" alt="Manoj V Thomas">
+                            </div>
+                            <div class="member-info">
+                                <h4>Dr. Manoj V Thomas</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/vijina miss chapter advisor.jpeg" alt="Vijina Vijayan" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Vijina Vijayan</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/anupama chapter advisor.jpeg" alt="Anupama P M" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Anupama P M</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/chair.jpeg" alt="Leo Mathew Roy" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Leo Mathew Roy</h4>
+                                <p class="member-role">CHAIR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/vice chair.jpeg" alt="Adonna Merin Regi" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Adonna Merin Regi</h4>
+                                <p class="member-role">VICE CHAIR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/joint secretary abhiram.jpeg" alt="Abhiram MS" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Abhiram MS</h4>
+                                <p class="member-role">SECRETARY</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/treasurer.jpeg" alt="Keerthana Nishanth" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Keerthana Nishanth</h4>
+                                <p class="member-role">TREASURER</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/joint secretary.jpeg" alt="Aswin Asok KV" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Aswin Asok KV</h4>
+                                <p class="member-role">JOINT SECRETARY</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/josin .jpeg" alt="Josin Joseph">
+                            </div>
+                            <div class="member-info">
+                                <h4>Josin Joseph</h4>
+                                <p class="member-role">JOINT SECRETARY</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/technical coord samnaway.jpeg" alt="Samanway TK" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Samanway TK</h4>
+                                <p class="member-role">TECHNICAL COORDINATOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/technical coordinator.jpeg" alt="Jishnu Raj M" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Jishnu Raj M</h4>
+                                <p class="member-role">TECHNICAL COORDINATOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/mdc alan antony.jpeg" alt="Alan Antony" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Alan Antony</h4>
+                                <p class="member-role">MEMBERSHIP DEVELOPMENT COORDINATOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/design team ahbhinav i.jpeg" alt="Abhinav I" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Abhinav I</h4>
+                                <p class="member-role">DESIGN LEAD</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/event coord sanju.jpeg" alt="Sanju Santy" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Sanju Santy</h4>
+                                <p class="member-role">EVENT COORDINATOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/event coordinator alanta.jpeg" alt="Alanta Jose" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Alanta Jose</h4>
+                                <p class="member-role">EVENT COORDINATOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/content lead tessa .jpeg" alt="Tessa Mariya" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Tessa Mariya</h4>
+                                <p class="member-role">CONTENT LEAD</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/documentagion team ardra.jpeg" alt="Ardra AS" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Ardra AS</h4>
+                                <p class="member-role">DOCUMENTATION TEAM</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/documentation team anusree.jpeg" alt="Anusree A Kumar" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Anusree A Kumar</h4>
+                                <p class="member-role">DOCUMENTATION TEAM</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/vidoe editor jishnu sabu.jpeg" alt="Jishnu Sabu" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Jishnu Sabu</h4>
+                                <p class="member-role">VIDEO EDITOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cis/video editor.jpeg" alt="Jithin Jaison" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Jithin Jaison</h4>
+                                <p class="member-role">VIDEO EDITOR</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- WIE Chapter -->
+            <div class="chapter-content" id="wie">
+                <div class="chapter-text">
+                    <h2>IEEE WIE</h2>
+                    <p>IEEE Women in Engineering (WIE) is a global network dedicated to supporting and empowering women
+                        in engineering and technology. It aims to promote diversity, leadership, and professional growth
+                        within the engineering community.
+                        Through workshops, mentorship programs, and collaborative initiatives, WIE encourages students
+                        to develop technical skills, build confidence, and create opportunities for women to excel in
+                        STEM fields.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/wie.png" alt="IEEE WIE Logo" class="chapter-img" width="200" height="200"
+                        loading="lazy"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+                <div class="chapter-team">
+                    <h3 class="team-title">Women in Engineering Executive Committee</h3>
+
+                    <div class="team-grid">
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/wie/tinu francis chapter advisor.jpeg" alt="Tinu Francis" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Tinu Francis</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/wie/chair sreelakshmi.jpeg" alt="Sreelakshmi M M" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Sreelakshmi M M</h4>
+                                <p class="member-role">CHAIR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/wie/saniya vice chair.jpeg" alt="Saniya Joseph" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Saniya Joseph</h4>
+                                <p class="member-role">VICE CHAIR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/wie/sandra nambiar secretary.jpeg" alt="Sandra Nambiar" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Sandra Nambiar</h4>
+                                <p class="member-role">SECRETARY</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/wie/athulya joint secretary.jpeg" alt="Athulya K" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Athulya K</h4>
+                                <p class="member-role">JOINT SECRETARY</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/wie/elsitta treasurer.jpeg" alt="Elsitta Binu" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Elsitta Binu</h4>
+                                <p class="member-role">TREASURER</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/wie/jeni technical coordinator.jpeg" alt="Jeni Benoy" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Jeni Benoy</h4>
+                                <p class="member-role">TECHNICAL COORDINATOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/wie/anshwaramol design lead.jpeg" alt="Anshwaramol P" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Anshwaramol P</h4>
+                                <p class="member-role">DESIGN LEAD</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/wie/Joshna webmaster.jpeg" alt="Joshna Mary Joyan" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Joshna Mary Joyan</h4>
+                                <p class="member-role">WEB MASTER</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/wie/vismaya event coordinator.jpeg" alt="Vismaya Pradeep O" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Vismaya Pradeep O</h4>
+                                <p class="member-role">EVENT COORDINATOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/wie/neha content lead.jpeg" alt="Neha R Bineesh" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Neha R Bineesh</h4>
+                                <p class="member-role">CONTENT WRITER</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- RAS Chapter -->
+            <div class="chapter-content" id="ras">
+                <div class="chapter-text">
+                    <h2>IEEE RAS</h2>
+                    <p>The IEEE Robotics and Automation Society (RAS) focuses on advancing robotics, automation, and
+                        intelligent systems that transform industries and everyday life. It promotes innovation in areas
+                        such as robotics, artificial intelligence, autonomous systems, and smart technologies.
+                        Through workshops, hands-on projects, and technical events, RAS provides students with
+                        opportunities to explore robotics technologies and develop practical skills in automation and
+                        intelligent systems.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/ras.png" alt="IEEE RAS Logo" class="chapter-img" width="200" height="200"
+                        loading="lazy"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+                <div class="chapter-team">
+                    <h3 class="team-title">Robotics & Automation Society Executive Committee</h3>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/Dr. Christopher Ezhil Singh_chapter_advisor.jpeg"
+                                    alt="Dr. Christopher Ezhil Singh" width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Dr. Christopher Ezhil Singh</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/rinu_benny_chair.jpeg" alt="RINU BENNY" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>RINU BENNY</h4>
+                                <p class="member-role">CHAIR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/arjun_p_r_vice_chair.jpeg" alt="ARJUN P R" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ARJUN P R</h4>
+                                <p class="member-role">VICE CHAIR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/sreenandh_rajesh_secretary.jpeg" alt="SREENANDH RAJESH" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>SREENANDH RAJESH</h4>
+                                <p class="member-role">SECRETARY</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/chandana_t_kurian_joint_secretary.jpeg" alt="CHANDANA T KURIAN"
+                                    width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>CHANDANA T KURIAN</h4>
+                                <p class="member-role">JOINT SECRETARY</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/kiran_jimmy_joint_secretary.jpeg" alt="KIRAN JIMMY" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>KIRAN JIMMY</h4>
+                                <p class="member-role">JOINT SECRETARY</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/abhinav_shibu_treasurer.jpeg" alt="ABHINAV SHIBU" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ABHINAV SHIBU</h4>
+                                <p class="member-role">TREASURER</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/abin_augustine_technical_coordinator.jpeg" alt="ABIN AUGUSTINE"
+                                    width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ABIN AUGUSTINE</h4>
+                                <p class="member-role">TECHNICAL COORDINATOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/sidhesh_k_technical_coordinator.jpeg" alt="SIDHESH K" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>SIDHESH K</h4>
+                                <p class="member-role">TECHNICAL COORDINATOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/avinash_e_design_head.jpeg" alt="AVINASH E" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>AVINASH E</h4>
+                                <p class="member-role">DESIGN HEAD</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/aditya_n_content_lead.jpeg" alt="ADITYA N" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ADITYA N</h4>
+                                <p class="member-role">CONTENT LEAD</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/albin_sebastian_thomas_content_lead.jpeg"
+                                    alt="ALBIN SEBASTIAN THOMAS" width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ALBIN SEBASTIAN THOMAS</h4>
+                                <p class="member-role">CONTENT LEAD</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/abdul_wadood_web_lead.jpeg" alt="ABDUL WADOOD" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ABDUL WADOOD</h4>
+                                <p class="member-role">WEB LEAD</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/abhiragh_p_mdc.jpeg" alt="ABHIRAGH P" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ABHIRAGH P</h4>
+                                <p class="member-role">MDC</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/ron_joel_regy_link_representative.jpeg" alt="RON JOEL REGY"
+                                    width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>RON JOEL REGY</h4>
+                                <p class="member-role">LINK REPRESENTATIVE</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/sivaprasad_k_documentation.jpeg" alt="SIVAPRASAD K" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>SIVAPRASAD K</h4>
+                                <p class="member-role">DOCUMENTATION</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/josha_manoj_k_social_media_manager.jpeg" alt="JOSHA MANOJ K"
+                                    width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>JOSHA MANOJ K</h4>
+                                <p class="member-role">SOCIAL MEDIA MANAGER</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/abhishek_p_nair_event_coordinator.jpeg" alt="ABHISHEK P NAIR"
+                                    width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ABHISHEK P NAIR</h4>
+                                <p class="member-role">EVENT COORDINATOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/diya_raju_event_coordinator.jpeg" alt="DIYA RAJU" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>DIYA RAJU</h4>
+                                <p class="member-role">EVENT COORDINATOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/ethan_thomas_binu_video_editor.jpeg" alt="ETHAN THOMAS BINU"
+                                    width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ETHAN THOMAS BINU</h4>
+                                <p class="member-role">VIDEO EDITOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ras/jomit_joseph_video_editor.jpeg" alt="JOMIT JOSEPH" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>JOMIT JOSEPH</h4>
+                                <p class="member-role">VIDEO EDITOR</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PELS Chapter -->
+            <div class="chapter-content" id="pels">
+                <div class="chapter-text">
+                    <h2>IEEE PELS</h2>
+                    <p>The IEEE Power Electronics Society (PELS) is a global community dedicated to advancing power
+                        electronics technology and its applications. It promotes innovation in areas such as energy
+                        conversion, renewable energy systems, and efficient power management.
+                        Through workshops, technical talks, and collaborative initiatives, PELS empowers students to
+                        explore modern power electronics technologies and develop practical skills relevant to the
+                        evolving energy and electronics industry.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/pels.png" alt="IEEE PELS Logo" class="chapter-img" width="200" height="200"
+                        loading="lazy"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+                <div class="chapter-team">
+                    <h3 class="team-title">PELS Executive Committee</h3>
+
+                    <div class="team-grid">
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pels/athulya chapter advisor.jpeg" alt="Athulya A P" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Athulya A P</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pels/chair swejith.jpeg" alt="Swejith" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Swejith</h4>
+                                <p class="member-role">CHAIRMAN</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pels/rohith vice chair.jpeg" alt="Rohith Sajeev" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Rohith Sajeev</h4>
+                                <p class="member-role">VICE CHAIRMAN</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pels/sreenidha secretary.jpeg" alt="Sreenandha T V" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Sreenandha T V</h4>
+                                <p class="member-role">SECRETARY</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pels/sreehari joint secretary.jpeg" alt="Sreehari S" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Sreehari S</h4>
+                                <p class="member-role">JOINT SECRETARY</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pels/joel technical coordinator.jpeg" alt="Joel Sebastian" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Joel Sebastian</h4>
+                                <p class="member-role">TECHNICAL COORDINATOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pels/niranjana design lead.jpeg" alt="Niranjana Nishaj" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Niranjana Nishaj</h4>
+                                <p class="member-role">DESIGN LEAD</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- PES Chapter -->
+            <div class="chapter-content" id="pes">
+                <div class="chapter-text">
+                    <h2>IEEE PES</h2>
+                    <p>The IEEE Power & Energy Society (PES) provides the world's largest forum for sharing the latest
+                        in
+                        technological developments in the electric power industry, for developing standards that guide
+                        the
+                        development and construction of equipment and systems, and for educating members of the industry
+                        and the
+                        general public.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/pes.png" alt="IEEE PES Logo" class="chapter-img" width="200" height="200"
+                        loading="lazy"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+                <div class="chapter-team">
+                    <h3 class="team-title">PES Executive Committee</h3>
+
+                    <div class="team-grid">
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pes/chapter advisor .jpeg" alt="Tintu George" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Tintu George</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pes/chair ashwin robinson.jpeg" alt="Ashwin Robinson" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Ashwin Robinson</h4>
+                                <p class="member-role">CHAIR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pes/manu vice chair.jpeg" alt="Manu Joseph Jomy" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Manu Joseph Jomy</h4>
+                                <p class="member-role">VICE CHAIR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pes/merlin secretary.jpeg" alt="Merlin Mathew" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Merlin Mathew</h4>
+                                <p class="member-role">SECRETARY</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pes/secretary joint secretary.jpeg" alt="Arja P" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Arja P</h4>
+                                <p class="member-role">JOINT SECRETARY</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pes/stebin technical coord.jpeg" alt="Stebin Sanil" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Stebin Sanil</h4>
+                                <p class="member-role">TECHNICAL COORDINATOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pes/design lead annsmaria.jpeg" alt="Anns Maria Vinoj" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Anns Maria Vinoj</h4>
+                                <p class="member-role">DESIGN LEAD</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/pes/sayooj treasurer.jpeg" alt="Sayooj M" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Sayooj M</h4>
+                                <p class="member-role">TREASURER</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- IAS Chapter -->
+            <div class="chapter-content" id="ias">
+                <div class="chapter-text">
+                    <h2>IEEE IAS</h2>
+                    <p>The IEEE Industry Applications Society (IAS) focuses on the advancement and practical application
+                        of electrical and electronic systems in industry. It brings together students and professionals
+                        to explore technologies used in industrial automation, energy systems, and electrical
+                        infrastructure.
+                        Through workshops, technical sessions, and industry-oriented initiatives, IAS helps members
+                        develop practical knowledge and skills while connecting them with real-world engineering
+                        applications.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/ias.png" alt="IEEE IAS Logo" class="chapter-img" width="200" height="200"
+                        loading="lazy"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+                <div class="chapter-team">
+                    <h3 class="team-title">IAS Executive Committee</h3>
+
+                    <div class="team-grid">
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ias/shelma chapter advisor.jpeg" alt="Shelma George" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Shelma George</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ias/ajith chair.jpeg" alt="Ajith Mathew" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Ajith Mathew</h4>
+                                <p class="member-role">CHAIR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ias/vice chair krishna.jpeg" alt="Krishna T Sudeesh" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Krishna T Sudeesh</h4>
+                                <p class="member-role">VICE CHAIR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ias/fahima secretary.jpeg" alt="KT Fahima" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>KT Fahima</h4>
+                                <p class="member-role">SECRETARY</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/ias/roshnintha treasurer.jpeg" alt="Roshintha Rojesh" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Roshintha Rojesh</h4>
+                                <p class="member-role">TREASURER</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- CASS Chapter -->
+            <div class="chapter-content" id="cass">
+                <div class="chapter-text">
+                    <h2>IEEE CASS</h2>
+                    <p>The IEEE Circuits and Systems Society (CASS) focuses on advancing the theory, analysis, design,
+                        and practical implementation of circuits and systems. It plays a key role in areas such as
+                        signal processing, electronics, communication systems, and integrated circuit design.
+                        Through workshops, technical talks, and collaborative projects, CASS encourages students to
+                        explore innovative technologies and develop strong foundations in electronic and computational
+                        systems.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/cass_one.jpg" alt="IEEE CASS Logo" class="chapter-img" width="200"
+                        height="200" loading="lazy"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+                <div class="chapter-team">
+                    <h3 class="team-title">CASS Executive Committee</h3>
+
+                    <div class="team-grid">
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cass/roshini chapter advisor.jpeg" alt="Dr. Roshini T V" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Dr. Roshini T V</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cass/chair sanjay.jpeg" alt="Sanjay Sivaprasad" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Sanjay Sivaprasad</h4>
+                                <p class="member-role">CHAIRPERSON</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cass/vice chair adithya sahedevan.jpeg" alt="Adithya Sahadevan"
+                                    width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Adithya Sahadevan</h4>
+                                <p class="member-role">VICE CHAIRPERSON</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cass/yash secretary.jpeg" alt="Yash Kiran VP" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Yash Kiran VP</h4>
+                                <p class="member-role">SECRETARY</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cass/abhinav treasure.jpeg" alt="Abhinav S" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Abhinav S</h4>
+                                <p class="member-role">TREASURER</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cass/nandhana webmaster.jpeg" alt=" Nandhana Ashok" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Nandhana Ashok</h4>
+                                <p class="member-role">WEB MASTER</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/cass/navneeth event coord.jpeg" alt="Navaneeth P" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>Navaneeth P</h4>
+                                <p class="member-role">EVENT COORDINATOR</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- SPS Chapter -->
+            <div class="chapter-content" id="sps">
+                <div class="chapter-text">
+                    <h2>IEEE SPS</h2>
+                    <p>The IEEE Signal Processing Society (SPS) focuses on advancing technologies related to the
+                        analysis, processing, and interpretation of signals such as audio, images, and data. It promotes
+                        innovation in areas like digital signal processing, machine learning, speech and image
+                        processing, and communication systems. Through workshops, technical sessions, and hands-on
+                        activities, SPS provides students with opportunities to explore modern signal processing
+                        techniques and develop practical skills in data analysis, multimedia processing, and intelligent
+                        signal-based applications.</p>
+                </div>
+                <div class="chapter-visual" style="display: flex; align-items: center; justify-content: center;">
+                    <img src="assets/family/sps.png" alt="IEEE SPS Logo" class="chapter-img" width="200" height="200"
+                        loading="lazy"
+                        style="background: white; padding: 15px; max-height: 200px; width: auto; object-fit: contain;">
+                </div>
+                <div class="chapter-team">
+                    <h3 class="team-title">Signal Processing Society Executive Committee</h3>
+                    <div class="team-grid">
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/sps/shimna_p_k_chapter_advisor.jpeg" alt="SHIMNA P K" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>SHIMNA P K</h4>
+                                <p class="member-role">CHAPTER ADVISOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/sps/abin_anoj_chair.jpg" alt="ABIN ANOJ" width="200" height="250"
+                                    loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ABIN ANOJ</h4>
+                                <p class="member-role">CHAIR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/sps/adin_jo_krist_vice_chair.jpeg" alt="ADIN JO KRIST" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ADIN JO KRIST</h4>
+                                <p class="member-role">VICE CHAIR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/sps/thomas_jefry_secretary.jpeg" alt="THOMAS JEFRY" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>THOMAS JEFRY</h4>
+                                <p class="member-role">SECRETARY</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/sps/vishnu_P_P_treasurer.jpeg" alt="VISHNU P P" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>VISHNU P P</h4>
+                                <p class="member-role">TREASURER</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/sps/emily_joseph_technical_coordinator.jpeg" alt="EMILY JOSEPH"
+                                    width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>EMILY JOSEPH</h4>
+                                <p class="member-role">TECHNICAL COORDINATOR</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/sps/abhinav_r_design_lead.jpeg" alt="ABHINAV R" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ABHINAV R</h4>
+                                <p class="member-role">DESIGN LEAD</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/sps/finny_m_binoy_web_master.jpeg" alt="FINNY M BINOY" width="200"
+                                    height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>FINNY M BINOY</h4>
+                                <p class="member-role">WEB MASTER</p>
+                            </div>
+                        </div>
+                        <div class="team-card">
+                            <div class="member-img-container">
+                                <span class="placeholder-icon">👤</span>
+                                <img src="assets/sps/angelin_maria_event_coordinator.jpeg" alt="ANGELIN MARIA"
+                                    width="200" height="250" loading="lazy">
+                            </div>
+                            <div class="member-info">
+                                <h4>ANGELIN MARIA</h4>
+                                <p class="member-role">EVENT COORDINATOR</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand" style="padding: 0; margin-bottom: 1.5rem;">
+                        <img src="assets/vjec_sb_logo.jpeg" alt="IEEE SB VJEC Logo" class="logo-img" width="40"
+                            height="40" loading="lazy">
+                        <span class="brand-name">IEEE SB VJEC</span>
+                    </a>
+                    <p class="footer-desc">Empowering students through technology and innovation. Join our community to
+                        learn, share, and grow.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/ieeesbvjec" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/ieee-sb-vjec/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://youtube.com/@ieeesbvjec" target="_blank" rel="noopener noreferrer"
+                            aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="chapters.html">Chapters</a></li>
+                        <li><a href="team.html">The Team</a></li>
+                        <li><a href="achievements.html">Achievements</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="https://vjec.ac.in/" target="_blank" rel="noopener noreferrer">College Website</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Vimal Jyothi Engineering College, Chemperi, Kannur</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p><a href="mailto:ieee.vjecsb@gmail.com">ieee.vjecsb@gmail.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p><a href="tel:+919562183174"><span class="contact-label">SB Chair</span>+91 9562183174</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p><a href="tel:+918289840179"><span class="contact-label">SB Webmaster</span>+91 8289840179</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 IEEE SB VJEC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Chapter switching logic
+        const switchChapter = (target) => {
+            // Update buttons
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('active');
+                if (b.getAttribute('data-target') === target) {
+                    b.classList.add('active');
+                    // Blur to prevent persistent focus styles on some mobile browsers
+                    b.blur();
+                }
+            });
+
+            // Update content
+            document.querySelectorAll('.chapter-content').forEach(c => {
+                c.classList.remove('active');
+                if (c.id === target) c.classList.add('active');
+            });
+        };
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.getAttribute('data-target');
+                switchChapter(target);
+                history.pushState(null, null, `#${target}`);
+            });
+        });
+
+        // Handle initial hash, hash changes, and popstate
+        const handleHash = () => {
+            const hash = window.location.hash.slice(1);
+            if (hash) {
+                switchChapter(hash);
+                // Smooth scroll to the filter section if a hash is present
+                const filterSection = document.querySelector('.chapters-filter');
+                if (filterSection && window.location.hash) {
+                    filterSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            } else {
+                // If no hash, default to the first chapter (cs)
+                switchChapter('cs');
+            }
+        };
+
+        window.addEventListener('load', handleHash);
+        window.addEventListener('hashchange', handleHash);
+        window.addEventListener('popstate', handleHash);
+        // Handle Back/Forward from Bfcache
+        window.addEventListener('pageshow', (event) => {
+            handleHash();
+        });
+    </script>
+</body>
+
+</html>

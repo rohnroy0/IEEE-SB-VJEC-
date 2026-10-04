@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data: https://images.unsplash.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self'; frame-src https://docs.google.com https://www.google.com;">
+    <meta name="google-site-verification" content="NwfqTwrtKRhwRC7SSNof9eREsBLUwWLEEgNpHxheOnc" />
+
+    <title>Events | IEEE SB VJEC</title>
+    <meta name="title" content="Events | IEEE SB VJEC">
+    <meta name="description"
+        content="Upcoming and completed events by IEEE Student Branch VJEC (Vimal Jyothi Engineering College).">
+
+    <link rel="icon" type="image/jpeg" href="assets/vjec_sb_logo.jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body class="loading">
+    <!-- Page Loader -->
+    <div id="loader" class="loader-overlay">
+        <div class="loader-content">
+            <div class="loader-circle"></div>
+            <div class="loader-text">IEEE SB VJEC</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="assets/vjec_sb_logo.jpeg" alt="IEEE SB VJEC Logo" class="logo-img" id="logo-placeholder"
+                    width="50" height="50" fetchpriority="high" decoding="async">
+                <span class="brand-name">IEEE SB VJEC</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="chapters.html" class="dropdown-toggle">Chapters <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapters.html#cs"><i class="fas fa-code"></i> CS</a></li>
+                        <li><a href="chapters.html#ras"><i class="fas fa-robot"></i> RAS</a></li>
+                        <li><a href="chapters.html#cis"><i class="fas fa-brain"></i> CIS</a></li>
+                        <li><a href="chapters.html#wie"><i class="fas fa-female"></i> WIE</a></li>
+                        <li><a href="chapters.html#pes"><i class="fas fa-bolt"></i> PES</a></li>
+                        <li><a href="chapters.html#ias"><i class="fas fa-industry"></i> IAS</a></li>
+                        <li><a href="chapters.html#pels"><i class="fas fa-plug"></i> PELS</a></li>
+                        <li><a href="chapters.html#cass"><i class="fas fa-microchip"></i> CASS</a></li>
+                        <li><a href="chapters.html#sps"><i class="fas fa-wave-square"></i> SPS</a></li>
+                    </ul>
+                </li>
+                <li><a href="team.html">The Team</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+
+            <!-- Desktop Search -->
+            <div class="nav-search">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search..." class="search-input" aria-label="Search">
+                    <div class="search-results hidden"></div>
+                </div>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu">
+        <div class="mobile-search">
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search..." class="search-input" aria-label="Search">
+                <div class="search-results hidden"></div>
+            </div>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Chapters <i class="fas fa-chevron-down"></i></a>
+                <ul class="mobile-submenu">
+                    <li><a href="chapters.html#cs"><i class="fas fa-code"></i> CS</a></li>
+                    <li><a href="chapters.html#ras"><i class="fas fa-robot"></i> RAS</a></li>
+                    <li><a href="chapters.html#cis"><i class="fas fa-brain"></i> CIS</a></li>
+                    <li><a href="chapters.html#wie"><i class="fas fa-female"></i> WIE</a></li>
+                    <li><a href="chapters.html#pes"><i class="fas fa-bolt"></i> PES</a></li>
+                    <li><a href="chapters.html#ias"><i class="fas fa-industry"></i> IAS</a></li>
+                    <li><a href="chapters.html#pels"><i class="fas fa-plug"></i> PELS</a></li>
+                    <li><a href="chapters.html#cass"><i class="fas fa-microchip"></i> CASS</a></li>
+                    <li><a href="chapters.html#sps"><i class="fas fa-wave-square"></i> SPS</a></li>
+                </ul>
+            </li>
+            <li><a href="team.html">The Team</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <main class="content-fade">
+        <section class="page-hero" style="padding-top: 150px; padding-bottom: 50px; text-align: center;">
+            <div class="container">
+                <div class="badge-wrapper" style="animation: fadeUp 0.8s ease-out;">
+                    <span class="hero-badge">
+                        <span class="pulse-dot"></span> IEEE SB VJEC
+                    </span>
+                </div>
+                <h1 class="main-heading" style="animation: fadeUp 1s ease-out 0.2s both; font-size: 3.5rem;">
+                    <span class="text-gradient">Our Events</span>
+                </h1>
+                <p class="hero-description"
+                    style="animation: fadeUp 1s ease-out 0.4s both; max-width: 700px; margin: 1.5rem auto 0;">
+                    Discover our upcoming workshops, internships, and past technical events.
+                </p>
+            </div>
+        </section>
+
+        <!-- Upcoming Events Section -->
+        <section id="upcoming-events" class="events-section" style="padding-top: 2rem;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Upcoming Events</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <div class="events-grid">
+
+                    <div class="event-card" style="max-width: 600px;">
+    <img src="assets/upcoming events/vyora26.jpeg"
+        alt="VYORA'26 Poster"
+        style="width: 100%; max-width: 320px; display: block; margin: 0 auto 20px; border-radius: 12px; border: 1px solid var(--glass-border);">
+
+    <div class="event-date">
+        <span class="day">09</span>
+        <span class="month">OCT</span>
+    </div>
+
+    <div class="event-info">
+        <h3>VYORA'26</h3>
+
+        <p>IEEE SB VJEC, in collaboration with IEEE CIS SBC VJEC, presents <strong>VYORA'26</strong>, a two-day celebration of ideas, innovation, technology, and experiences, bringing together students and curious minds at Vimal Jyothi Engineering College. Join us to learn, collaborate, explore, and belong.</p>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem;">
+            <span class="badge"
+                style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                <i class="fas fa-calendar-alt"></i> 09–10 October 2026
+            </span>
+
+            <span class="badge"
+                style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                <i class="fas fa-map-marker-alt"></i> VJEC, Kannur
+            </span>
+
+            <span class="badge"
+                style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                <i class="fas fa-lightbulb"></i> Innovation & Technology
+            </span>
+
+            <span class="badge"
+                style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                <i class="fas fa-users"></i> Two-Day Event
+            </span>
+        </div>
+
+        <div style="margin-top: 2rem;">
+            <a href="https://vyora.ieeesbvjec.in" target="_blank" rel="noopener noreferrer"
+                class="btn-glow"
+                style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; font-size: 0.95rem;">
+                <span>Register Now</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+                    <div class="event-card" style="max-width: 600px;">
+                        <img src="assets/upcoming events/quantity_survey.jpeg" alt="Quantity Surveying Webinar Poster"
+                            style="width: 100%; max-width: 320px; display: block; margin: 0 auto 20px; border-radius: 12px; border: 1px solid var(--glass-border);">
+
+                        <div class="event-date">
+                            <span class="day">08</span>
+                            <span class="month">AUG</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Webinar Session on Quantity Surveying</h3>
+
+                            <p>IEEE SB VJEC, in association with ENTRI App, IEEE SB SBCE, IEEE SB Toc H, and IEEE SB
+                                GECI, presents an insightful webinar on <strong>Quantity Surveying</strong>. Explore the
+                                field, understand its opportunities, and gain valuable insights from an expert speaker.
+                            </p>
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem;">
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-user-tie"></i> Speaker: Mrs. Mini Pramod
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-video"></i> Google Meet
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-certificate"></i> Certificate Provided
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-clock"></i> 7:00 PM
+                                </span>
+                            </div>
+
+                            <div style="margin-top: 2rem;">
+                                <a href="https://forms.gle/1y3o8fsJL1DFuxc2A" target="_blank" rel="noopener noreferrer"
+                                    class="btn-glow"
+                                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; font-size: 0.95rem;">
+                                    <span>Register Now</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px;">
+                        <img src="assets/upcoming events/entri.jpeg" alt="AI & Robotics Webinar Poster"
+                            style="width: 100%; max-width: 320px; display: block; margin: 0 auto 20px; border-radius: 12px; border: 1px solid var(--glass-border);">
+
+                        <div class="event-date">
+                            <span class="day">25</span>
+                            <span class="month">JUL</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Webinar on AI & Robotics</h3>
+
+                            <p>IEEE SB VJEC, in association with ENTRI App, presents an engaging webinar on <strong>AI &
+                                    Robotics</strong>. Discover the rapidly evolving world of Artificial Intelligence
+                                and Robotics, explore emerging career opportunities, and gain valuable insights from
+                                industry experts.</p>
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem;">
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-user-tie"></i> Speaker: Ms. Ardra Babu
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-video"></i> Google Meet
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-certificate"></i> E-Certificate
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-clock"></i> 8:30 PM
+                                </span>
+                            </div>
+
+                            <div style="margin-top: 2rem;">
+                                <a href="https://forms.gle/hhaePq1RAUowLfKP7" target="_blank" rel="noopener noreferrer"
+                                    class="btn-glow"
+                                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; font-size: 0.95rem;">
+                                    <span>Register Now</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px;">
+                        <img src="assets/events/inter_lecture_26.jpeg"
+                            alt="A Multi-Criteria Framework for Optimal Solar Farm Site Selection Poster"
+                            style="width: 100%; max-width: 320px; display: block; margin: 0 auto 20px; border-radius: 12px; border: 1px solid var(--glass-border);">
+
+                        <div class="event-date">
+                            <span class="day">11</span>
+                            <span class="month">JUL</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>A Multi-Criteria Framework for Optimal Solar Farm Site Selection</h3>
+
+                            <p>IEEE PES Kerala Chapter presents an insightful international lecture on the future of
+                                solar energy planning. The session explores how GIS-based multi-criteria decision-making
+                                and intelligent approaches can identify optimal solar farm locations, enabling smarter
+                                and more sustainable renewable energy solutions.</p>
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem;">
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-user-tie"></i> Speaker: Dr. Vishnu Suresh
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-globe"></i> International Lecture
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-video"></i> Google Meet
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-clock"></i> 6:00 PM IST
+                                </span>
+                            </div>
+
+                            <div style="margin-top: 2rem;">
+                                <a href="https://forms.gle/2eQ5hsDi24o9HcPH8" target="_blank" rel="noopener noreferrer"
+                                    class="btn-glow"
+                                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; font-size: 0.95rem;">
+                                    <span>Register Now</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px;">
+                        <img src="assets/upcoming events/usizo_solutions.jpeg"
+                            alt="LayerX - PCB Designing using KiCad Poster"
+                            style="width: 100%; max-width: 320px; display: block; margin: 0 auto 20px; border-radius: 12px; border: 1px solid var(--glass-border);">
+
+                        <div class="event-date">
+                            <span class="day">24</span>
+                            <span class="month">JUL</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>LayerX: Hands-on Workshop on PCB Designing using KiCad</h3>
+
+                            <p>IEEE CASS SBC VJEC, in association with Usizo Solutions Pvt. Ltd., presents LayerX, an
+                                immersive two-day workshop designed to introduce participants to the complete PCB design
+                                workflow using KiCad. Learn schematic design, PCB layout, routing techniques,
+                                industry-oriented practices, and gain hands-on experience with one of the most powerful
+                                open-source EDA tools.</p>
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem;">
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-laptop-code"></i> Hands-on Workshop
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-microchip"></i> PCB Design using KiCad
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-calendar-alt"></i> 24–25 July 2026
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-tag"></i> Starting from ₹199
+                                </span>
+                            </div>
+
+                            <div style="margin-top: 2rem;">
+                                <a href="https://forms.gle/gjoQXfCCeXH3zstN7" target="_blank" rel="noopener noreferrer"
+                                    class="btn-glow"
+                                    style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px; font-size: 0.95rem;">
+                                    <span>Register Now</span>
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Past Projects Section -->
+        <section id="past-projects" class="events-section" style="padding-top: 4rem; padding-bottom: 6rem;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Past Events</h2>
+                    <div class="title-underline"></div>
+                </div>
+
+                <p
+                    style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem; font-size: 1.1rem; max-width: 800px; margin-inline: auto;">
+                    A showcase of our successfully concluded workshops, seminars, and technical projects that have
+                    inspired and empowered our students.
+                </p>
+
+                <div class="events-grid">
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/cargil_26.jpeg"
+                            alt="Kargil Vijay Diwas Poster Design Competition Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">08</span>
+                            <span class="month">JUL</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Kargil Vijay Diwas Poster Design Competition</h3>
+
+                            <p>IEEE SB VJEC organized the Kargil Vijay Diwas Poster Design Competition, providing
+                                participants an opportunity to express their creativity and pay tribute to the courage,
+                                sacrifice, and patriotism of the brave soldiers who fought in the Kargil War.
+                                Participants created meaningful posters based on the theme <strong>"Kargil Victory
+                                    (Kargil Vijay Diwas)"</strong> to honor our nation's heroes through art.</p>
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem;">
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-palette"></i> Poster Design Competition
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-flag"></i> Theme: Kargil Vijay Diwas
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-globe"></i> Online Submission
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-calendar-alt"></i> 08 July 2026
+                                </span>
+                            </div>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/quiz_comp_26.jpeg" alt="National Doctors' Day Observation Quiz Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">05</span>
+                            <span class="month">JUL</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>National Doctors' Day Observation Quiz</h3>
+
+                            <p>IEEE SB VJEC organized an engaging online quiz as part of National Doctors' Day
+                                Observation, celebrating the invaluable contributions of doctors and healthcare
+                                professionals. The quiz encouraged participants to test their knowledge through
+                                interesting facts and awareness about the medical field while honoring the dedication of
+                                healthcare heroes.</p>
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem;">
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-question-circle"></i> Online Quiz
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-calendar-alt"></i> 05 July 2026
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-clock"></i> 6:00 PM
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-globe"></i> Google Form
+                                </span>
+                            </div>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px;">
+                        <img src="assets/events/workshop.jpeg" alt="Workshop Poster"
+                            style="width: 100%; max-width: 320px; display: block; margin: 0 auto 20px; border-radius: 12px; border: 1px solid var(--glass-border);">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">2</span>
+                            <span class="month">JULY</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>From Research to Publication: Start Your IEEE Journey</h3>
+
+                            <p>IEEE SB VJEC, in collaboration with IEEE CIS SBC VJEC and IEDC VJEC, presents a workshop
+                                on IEEE Paper Submission exclusively for S7 ADS students. The session will provide a
+                                comprehensive introduction to the research publication process, covering paper writing,
+                                formatting, selecting the right publication venue, and successfully submitting an IEEE
+                                paper.</p>
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem;">
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-user-tie"></i> Dr. S. Christopher Ezhil Singh
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-graduation-cap"></i> Exclusive for S7 ADS
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-file-alt"></i> IEEE Paper Submission
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(14, 165, 233, 0.1); color: var(--primary-light); padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(14, 165, 233, 0.3);">
+                                    <i class="fas fa-microscope"></i> Research & Publication
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/upcoming events/poster_making_comp.jpeg"
+                            alt="Poster Making Competition - Anti Drug Awareness Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">01</span>
+                            <span class="month">JUL</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Poster Making Competition – Anti Drug Awareness</h3>
+
+                            <p>IEEE SB Vimal Jyothi Engineering College, in association with IEEE PES SBC VJEC and IEEE
+                                PELS SBC VJEC, conducted a Digital Poster Making Competition on the theme <strong>"Anti
+                                    Drug"</strong>. The competition encouraged students to express their creativity and
+                                spread awareness about building a drug-free society through impactful digital posters.
+                            </p>
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem;">
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-palette"></i> Digital Poster Competition
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-users"></i> B.Tech Students
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-trophy"></i> Prize Pool: ₹500
+                                </span>
+                            </div>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/upcoming events/circuitforge 2026 1 .jpeg" alt="CIRCUITFORGE 2026 Poster"
+                            style="width: 100%; max-width: 320px; display: block; margin: 0 auto 20px; border-radius: 12px; border: 1px solid var(--glass-border);">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">30</span>
+                            <span class="month">JUN</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>CIRCUITFORGE 2026</h3>
+
+                            <p>A Circuit Design Competition organized by IEEE IES SBC LBSCEK in collaboration with IEEE
+                                SB VJEC and IEEE PES SBC VJEC. The competition encouraged participants to showcase their
+                                creativity and engineering skills by developing innovative hardware or simulation-based
+                                solutions under the theme <strong>"Innovating Circuits for AI-Driven Smart
+                                    Solutions."</strong></p>
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem;">
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-trophy"></i> Prize Pool: ₹1000
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-users"></i> Individual / Team (up to 4)
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-microchip"></i> Circuit Design Competition
+                                </span>
+                            </div>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/upcoming events/informatyka1.jpeg"
+                            alt="Beyond Automation - Informatyka 6.0 Poster"
+                            style="width: 100%; max-width: 320px; display: block; margin: 0 auto 20px; border-radius: 12px; border: 1px solid var(--glass-border);">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">29</span>
+                            <span class="month">JUN</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Beyond Automation: AI Can Do Your Job—What Can You Do?</h3>
+
+                            <p>IEEE CS SBC VJEC, in collaboration with IEEE Computer Society Kerala Chapter and IEEE
+                                Young Professionals Kerala Section, successfully conducted an insightful session under
+                                the <strong>INFORMATYKA 6.0</strong> initiative. The session explored how to stay
+                                relevant in an AI-driven world by understanding the skills, mindset, and strategies
+                                required to thrive beyond automation.</p>
+
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem;">
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-user-tie"></i> Speaker: Dr. Umesh
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-video"></i> Google Meet
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-certificate"></i> Participation Certificate
+                                </span>
+
+                                <span class="badge"
+                                    style="display: inline-flex; align-items: center; gap: 6px; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-clock"></i> 8:00 PM – 9:00 PM IST
+                                </span>
+                            </div>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/certification_ceremony.jpeg" alt="Certification Ceremony Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">24</span>
+                            <span class="month">JUN</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Certification Ceremony</h3>
+
+                            <p>The Certification Ceremony was organized to recognize and celebrate the achievements of
+                                students who successfully completed various IEEE activities, workshops, and programs.
+                                The event served as an opportunity to acknowledge their dedication, learning, and active
+                                participation while encouraging continued professional and technical growth.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/general_meeting_23_june_26.jpeg"
+                            alt="IEEE SB VJEC General Meeting Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">23</span>
+                            <span class="month">JUN</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>IEEE SB VJEC General Meeting</h3>
+
+                            <p>The IEEE SB VJEC General Meeting brought together members to discuss upcoming activities,
+                                review ongoing initiatives, and strengthen collaboration within the student branch. The
+                                session provided an opportunity for members to share ideas, stay informed about branch
+                                developments, and actively contribute to future plans.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/roadmap_to_success.jpeg" alt="Roadmap to Success in Engineering Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">12</span>
+                            <span class="month">JUN</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Roadmap to Success in Engineering: Does Engineering Suit You?</h3>
+
+                            <p>A webinar organized for higher secondary students and engineering aspirants, offering
+                                valuable insights into engineering education, career pathways, industry expectations,
+                                and future opportunities. The session featured expert talks by Dr. Gilesh M P and Rony
+                                Thomas, helping participants gain clarity and confidence in making informed decisions
+                                about their academic and professional futures.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/internship.jpeg" alt="Hands-On Summer Internship Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">25</span>
+                            <span class="month">MAY</span>
+                            <span class="year">2026</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>TWO-WEEK INTERNSHIP TRAINING PROGRAM ON AI,ML,DS AND FULL STACK WEB DEVELOPMENT</h3>
+                            <p>An intensive and industry-focused internship designed to equip you with practical skills
+                                in emerging technologies.</p>
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);"><i
+                                        class="fas fa-check-circle" style="margin-right: 6px;"></i> Successfully
+                                    Completed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/summer-camp.jpeg" alt="IEEE CIS VJEC Summer Camp 2026 Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">18</span>
+                            <span class="month">MAY</span>
+                            <span class="year">2026</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>Summer Camp 2026</h3>
+                            <p>An immersive learning experience designed to innovate, integrate, and inspire. Join us
+                                for sessions on cutting-edge technologies and expert-led discussions.</p>
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);"><i
+                                        class="fas fa-check-circle" style="margin-right: 6px;"></i> Successfully
+                                    Completed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/iot_robotics_drone_internship.jpeg"
+                            alt="Two-Week Internship Training Programme on IoT Robotics, Drone & 3D Printing Poster"
+                            style="width: 100%; max-width: 320px; display: block; margin: 0 auto 20px; border-radius: 12px; border: 1px solid var(--glass-border);">
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">18</span>
+                            <span class="month">MAY</span>
+                            <span class="year">2026</span>
+                        </div>
+                        <div class="event-info">
+                            <h3>Two-Week Internship Training Programme on IoT Robotics, Drone & 3D Printing</h3>
+                            <p>Gain hands-on experience in IoT, Robotics, Drone Technology, 3D Printing & Industrial
+                                Robot through expert sessions and practical workshops.</p>
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);"><i
+                                        class="fas fa-check-circle" style="margin-right: 6px;"></i> Successfully
+                                    Completed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/profile_to_power.jpeg" alt="Profile to Power Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">19</span>
+                            <span class="month">MAR</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Profile to Power</h3>
+
+                            <p>IEEE CAS SBC VJEC, in association with IEDC VJEC, conducted “Profile to Power,” a
+                                LinkedIn workshop designed to help students strengthen their professional presence. Led
+                                by Sanjay Sivaprasad, Chairperson of IEEE CAS SBC VJEC, the session covered profile
+                                optimization, showcasing skills and projects, personal branding, networking strategies,
+                                and increasing visibility to recruiters and industry professionals.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/annual_general_meeting.jpeg" alt="Annual General Meeting 2026 Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">18</span>
+                            <span class="month">MAR</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Annual General Meeting 2026</h3>
+
+                            <p>The Annual General Meeting brought together members to review the branch's achievements,
+                                discuss future initiatives, and strengthen collaboration for the upcoming year.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/mds.jpeg" alt="Membership Development Session Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">18</span>
+                            <span class="month">MAR</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Membership Development Session</h3>
+
+                            <p>Membership Development Session
+                                As part of the initiative to strengthen the IEEE community at VJEC, IEEE RAS conducted a
+                                Membership Development Session to create awareness about the benefits, opportunities,
+                                and professional growth offered through IEEE membership.
+                                The session highlighted the value of being an IEEE member, including access to global
+                                technical resources, networking opportunities, leadership experiences, scholarships, and
+                                various platforms for skill development.
+                                The program was organized by IEEE RAS in collaboration with IEEE PES, IEEE CAS, and
+                                IEDC, encouraging students to actively engage with IEEE activities and explore
+                                opportunities for technical and professional growth.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/level_up_with_linkedin.jpeg" alt="Level Up with LinkedIn Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">18</span>
+                            <span class="month">MAR</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Level Up with LinkedIn</h3>
+
+                            <p>The IEEE Robotics and Automation Society (RAS) SBC VJEC, in association with IEEE PES SBC
+                                VJEC, IEEE CAS SBC VJEC, IEDC VJEC, and the Institution's Innovation Council,
+                                successfully conducted this engaging workshop focused on enhancing professional
+                                visibility, credibility, and career growth through effective LinkedIn networking and
+                                personal branding.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/cis_metor_meet.jpeg" alt="CIS EXECOM Meet with Mentor Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">10</span>
+                            <span class="month">MAR</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>CIS EXECOM Meet with Mentor</h3>
+
+                            <p>An interactive mentoring session where the CIS Executive Committee engaged with their
+                                mentor, gaining valuable guidance, leadership insights, and direction for future
+                                activities.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/md_session.jpeg" alt="Membership Development Program Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">10</span>
+                            <span class="month">MAR</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Membership Development Program</h3>
+
+                            <p>A member-focused session designed to introduce IEEE opportunities, encourage active
+                                participation, and help students maximize the benefits of professional networking,
+                                technical activities, and leadership development.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/quiz_comp.jpeg"
+                            alt="Wisdom Wave - International Women's Day Quiz Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">08</span>
+                            <span class="month">MAR</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Wisdom Wave – International Women's Day Quiz</h3>
+
+                            <p>Organized as part of International Women's Day celebrations, Wisdom Wave challenged
+                                participants through engaging quiz rounds that celebrated women's achievements, history,
+                                and contributions across diverse fields.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/womens_day_seminar.jpeg" alt="Women's Day Seminar Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">07</span>
+                            <span class="month">MAR</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Women's Day Seminar</h3>
+
+                            <p>Organized in celebration of International Women's Day, this seminar highlighted the
+                                achievements, contributions, and empowerment of women while fostering meaningful
+                                discussions on leadership and equality.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/photo_comp.jpeg" alt="Photography Contest Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">07</span>
+                            <span class="month">MAR</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Photography Contest</h3>
+
+                            <p>A creative competition that encouraged participants to showcase their photography skills,
+                                capture unique perspectives, and express stories through the lens of their cameras.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/poster_making_comp.jpeg" alt="Poster Making Competition Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">07</span>
+                            <span class="month">MAR</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Poster Making Competition</h3>
+
+                            <p>A design-focused competition that provided participants with an opportunity to showcase
+                                their creativity, visual storytelling skills, and innovative ideas through impactful
+                                poster designs.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/cis_md_session.jpeg" alt="CIS Membership Development Program Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">25</span>
+                            <span class="month">FEB</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>CIS Membership Development</h3>
+
+                            <p>A dedicated membership development session organized by the IEEE Computational
+                                Intelligence Society (CIS) to introduce students to the society's activities, benefits,
+                                and opportunities while fostering greater engagement within the CIS community.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/large_lang_model.jpeg"
+                            alt="Understanding Large Language Models: Theory to Practice Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">07</span>
+                            <span class="month">FEB</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Understanding Large Language Models: Theory to Practice</h3>
+
+                            <p>Organized by IEEE CIS as part of the AI India Pre-Summit Event 2026, this hands-on
+                                workshop introduced participants to the fundamentals of Large Language Models (LLMs),
+                                covering key concepts, real-world applications, and practical implementation techniques.
+                            </p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/classroom_to_career.jpeg" alt="Classroom to Career Arena Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">14</span>
+                            <span class="month">JAN</span>
+                            <span class="year">2026</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>Classroom to Career Arena – A Glimpse of Your Journey Ahead</h3>
+
+                            <p>Organized by IEEE CIS SBC VJEC, this webinar provided students with valuable insights
+                                into career development, industry expectations, and the transition from academic
+                                learning to professional success.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="event-card" style="max-width: 600px; opacity: 0.9;">
+                        <img src="assets/events/latex_beginer.jpeg"
+                            alt="LaTeX for Beginners: A Hands-On Workshop Poster"
+                            style="width: 100%; max-width: 300px; display: block; margin: 0 auto 20px; border-radius: 12px;">
+
+                        <div class="event-date"
+                            style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2);">
+                            <span class="day">17</span>
+                            <span class="month">DEC</span>
+                            <span class="year">2025</span>
+                        </div>
+
+                        <div class="event-info">
+                            <h3>LaTeX for Beginners: A Hands-On Workshop</h3>
+
+                            <p>Organized by IEEE CIS SBC VJEC, this hands-on workshop introduced students to LaTeX,
+                                enabling them to create professional technical documents, reports, and research papers
+                                through practical learning and guided exercises.</p>
+
+                            <div style="margin-top: 2rem;">
+                                <span class="badge"
+                                    style="display: inline-block; background: rgba(74, 222, 128, 0.1); color: #4ade80; padding: 8px 16px; border-radius: 30px; font-size: 0.9rem; font-weight: 600; border: 1px solid rgba(74, 222, 128, 0.3);">
+                                    <i class="fas fa-check-circle" style="margin-right: 6px;"></i>
+                                    Successfully Completed
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand" style="padding: 0; margin-bottom: 1.5rem;">
+                        <img src="assets/vjec_sb_logo.jpeg" alt="IEEE SB VJEC Logo" class="logo-img" width="40"
+                            height="40" loading="lazy">
+                        <span class="brand-name">IEEE SB VJEC</span>
+                    </a>
+                    <p class="footer-desc">Empowering students through technology and innovation. Join our community to
+                        learn, share, and grow.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/ieeesbvjec" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/ieee-sb-vjec/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://youtube.com/@ieeesbvjec" target="_blank" rel="noopener noreferrer"
+                            aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="chapters.html">Chapters</a></li>
+                        <li><a href="team.html">The Team</a></li>
+                        <li><a href="achievements.html">Achievements</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="https://vjec.ac.in/" target="_blank" rel="noopener noreferrer">College Website</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Vimal Jyothi Engineering College, Chemperi, Kannur</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p><a href="mailto:ieee.vjecsb@gmail.com">ieee.vjecsb@gmail.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p><a href="tel:+919562183174"><span class="contact-label">SB Chair</span>+91 9562183174</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p><a href="tel:+918289840179"><span class="contact-label">SB Webmaster</span>+91 8289840179</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 IEEE SB VJEC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

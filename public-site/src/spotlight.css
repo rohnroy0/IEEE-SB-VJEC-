@@ -1,0 +1,187 @@
+/* Layered spotlight, title, portrait and banner are built independently. */
+:root{background:#020713;color:#f2f8ff}
+.site{background:#020713;color:#f2f8ff}
+.site-header{position:absolute;z-index:10;inset:0 0 auto;height:82px;background:linear-gradient(180deg,#010614b8,transparent);border:0}
+.brand-text{color:#fff}
+.brand-text strong{color:#74d9ff}
+.brand-text small,.header-label{color:#c7ddf6}
+.header-dot{background:#58d9ff;box-shadow:0 0 12px #58d9ff}
+.brand-mark{background:#fff;padding:2px}
+.hero-stage{position:relative;height:100svh;min-height:720px;overflow:hidden;isolation:isolate;border:0;background:radial-gradient(ellipse 52% 60% at 50% 9%,#1a68ff 0%,#1046be 28%,#0a276d 57%,transparent 100%),linear-gradient(90deg,#030918 0%,#06245f 16%,#0a3287 50%,#06245f 84%,#030918 100%)}
+.hero-stage:before{content:'';position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,transparent 25%,#020510a1 75%,#000 100%);pointer-events:none}
+.hero-stage:after{content:'';position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 78% 69% at 50% 10%,transparent 38%,#01040e77 100%);pointer-events:none}
+.hero-beams{position:absolute;inset:0;z-index:0;opacity:.84;background:linear-gradient(90deg,transparent 0 5%,#000d2a80 7% 9%,transparent 11% 13%,#00144570 14% 17%,transparent 20% 27%,#00123e70 28% 30%,transparent 32% 69%,#00123e75 70% 73%,transparent 76% 82%,#000b2e89 84% 87%,transparent 90% 93%,#00091c99 95% 100%);filter:blur(5px);mask-image:linear-gradient(180deg,#000 8%,#000 70%,transparent 100%)}
+.hero-inner{position:relative;display:block;width:100%;height:100%;min-height:0;padding:0;margin:0}
+.hero-caption{position:absolute;z-index:5;top:108px;left:max(5vw,24px);color:#e3f3ff;font-size:11px;letter-spacing:.24em;background:#031b49a6;padding:8px 10px;text-shadow:0 1px 12px #001634}
+.hero-type-motion{position:absolute;inset:0;z-index:1;pointer-events:none;transform:translate3d(0,var(--type-y,0px),0);will-change:transform}
+.hero-word{position:absolute;top:56%;left:50%;margin:0;display:flex;white-space:nowrap;align-items:center;font:400 min(100svh,980px)/.85 'Anton',Impact,sans-serif;letter-spacing:-.095em;padding-right:.08em;transform:translate(-50%,-50%) scaleX(1.32);transform-origin:center;background:linear-gradient(177deg,#fff 3%,#f5fbff 27%,#bcefff 41%,#36e8fc 59%,#078ef5 74%,#0751d3 93%);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 22px #1baaff75)}
+.hero-word span{display:inline-block;animation:ieeeLetterIn .7s cubic-bezier(.18,.8,.22,1) both}
+.hero-word span:nth-child(1){animation-delay:.08s}.hero-word span:nth-child(2){animation-delay:.22s}.hero-word span:nth-child(3){animation-delay:.36s}.hero-word span:nth-child(4){animation-delay:.5s}
+.hero-word:after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 36%,#fff6 48%,transparent 60%);mix-blend-mode:screen;transform:translateX(-140%);animation:ieeeSweep 1.1s .93s ease-out both}
+@keyframes ieeeLetterIn{from{opacity:0;transform:translateY(70px)}to{opacity:1;transform:translateY(0)}}
+@keyframes ieeeSweep{to{transform:translateX(140%)}}
+.portrait-motion{position:absolute;inset:0;z-index:2;pointer-events:none;transform:translate3d(0,var(--person-y,0px),0);will-change:transform}
+.hero-person{position:absolute;bottom:-10%;left:50%;display:block;width:min(77vw,1050px);height:104%;max-height:none;object-fit:contain;object-position:center bottom;transform:translateX(-50%);filter:drop-shadow(0 16px 25px #0009);animation:spotlightPortraitIn .9s .96s cubic-bezier(.18,.8,.22,1) both}
+.hero-person.profile-photo{width:min(54vw,700px);height:83%;bottom:7%;border:5px solid #fff;border-bottom:0;border-radius:48% 48% 0 0;object-fit:cover;object-position:center 18%}
+
+@keyframes spotlightPortraitIn{from{opacity:0;transform:translate(-50%,70px) scale(.97);filter:blur(6px) drop-shadow(0 16px 25px #0009)}to{opacity:1;transform:translate(-50%,0) scale(1);filter:blur(0) drop-shadow(0 16px 25px #0009)}}
+.banner-motion{position:absolute;inset:0;z-index:3;pointer-events:none;transform:translate3d(0,var(--banner-y,0px),0);will-change:transform}
+.hero-banner{position:absolute;left:-15%;bottom:-18%;width:130%;height:47%;border-radius:50% 50% 0 0/42% 42% 0 0;background:linear-gradient(110deg,#0e4ece 4%,#2771ef 38%,#2f77f4 54%,#1959df 86%,#1049c3 100%);box-shadow:0 -8px 35px #124de877,inset 0 3px 3px #a1cbff55;animation:bannerRise 1s 1.52s cubic-bezier(.15,.78,.18,1) both}
+.hero-banner:after{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(ellipse 40% 55% at 51% 7%,#9bc2ff27,transparent 100%)}
+@keyframes bannerRise{from{opacity:0;transform:translateY(150px) scaleY(.9)}to{opacity:1;transform:translateY(0) scaleY(1)}}
+.banner-content{position:absolute;z-index:4;bottom:30px;left:max(5vw,24px);right:max(5vw,24px);display:flex;align-items:end;justify-content:space-between;gap:30px;animation:bannerTextIn .65s 2.12s both}
+.banner-content>div{min-width:0}
+.banner-kicker,.banner-role{display:block;font-size:11px;font-weight:700;letter-spacing:.16em;color:#dcecff;text-transform:uppercase}
+.banner-content h1{font:800 clamp(30px,3.7vw,56px)/1.05 'Manrope',sans-serif;letter-spacing:-.05em;text-transform:uppercase;margin:7px 0 6px;color:#fff;overflow-wrap:anywhere}
+.banner-role{font-size:12px;letter-spacing:.08em}
+
+@keyframes bannerTextIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.about-section{background:radial-gradient(ellipse 55% 30% at 50% 0%,#0b235d88,transparent),#030918;color:#eff7ff;border:0;padding-top:115px}
+.about-kicker{color:#7cdfff}
+.branch-heading{color:#fff}
+.branch-grid{border-color:#35506f}
+.branch-note,.panel-label{color:#7cdbff}
+.branch-intro h3{color:#fff}
+.branch-role{color:#8bdcff}
+.branch-bio,.empty-accounts{color:#b7c9de}
+.panel-label{border-color:#35506f}
+.panel-label span:last-child{color:#8fa8c3}
+.account-link{color:#f3f9ff;border-color:#2c4465}
+.account-link:hover{color:#70dcff}
+.account-icon{color:#83ddff;border-color:#527494}
+.account-arrow{color:#91c9e6}
+.profile-details{border-color:#35506f}
+.profile-details span{color:#90a9c4}
+.profile-details strong{color:#f3f9ff}
+.profile-actions button,.profile-actions a{background:#0a1e3f;border-color:#517293;color:#e4f6ff}
+.profile-actions button:hover,.profile-actions a:hover{background:#124989;border-color:#7bd7ff;color:#fff}
+.site-footer{background:#020713;border-color:#234466}
+.footer-inner{color:#97afc8}
+.state-page{padding-top:82px;color:#fff}
+.state-page h1{color:#fff}
+.state-page p{color:#bad0e4}
+.loading-profile{background:#030918;color:#a6c3dc}
+@media(max-width:900px){.hero-word{transform:translate(-50%,-50%) scaleX(1.12)}.hero-person{width:95vw}.hero-banner{height:43%;bottom:-14%}}
+@media(max-width:650px){.site-header{height:66px}.hero-stage{height:100svh;min-height:660px}.hero-caption{top:82px;left:20px;font-size:8px}.hero-word{top:50%;font-size:min(68svh,650px);transform:translate(-50%,-50%) scaleX(.7)}.hero-person.cutout{width:145vw;height:88%;bottom:8%}.hero-person.profile-photo,.hero-banner{width:155%;left:-27.5%;height:39%;bottom:-9%;border-radius:50% 50% 0 0/31% 31% 0 0}.banner-content{left:20px;right:20px;bottom:22px;align-items:end;gap:14px}.banner-content h1{font-size:clamp(25px,7.5vw,38px)}.banner-kicker{font-size:8px}.banner-role{font-size:9px}.about-section{padding-top:88px}.profile-details div+div{border-color:#2c4465}}
+@media(max-width:420px){.hero-word{transform:translate(-50%,-50%) scaleX(.6)}.hero-person.cutout{width:154vw;height:86%;bottom:9%}.banner-content{display:block}.banner-content h1{font-size:31px}.hero-banner{height:43%;bottom:-11%}}
+@media(max-width:360px){.hero-word{transform:translate(-50%,-50%) scaleX(.54)}.hero-person.cutout{width:162vw}.banner-content h1{font-size:27px}}
+/* The sticky scene stays in place while the contact banner rises over it. */
+.hero-stage{height:180svh;min-height:0;overflow:clip;background:none}
+.hero-stage:before,.hero-stage:after{display:none}
+.hero-inner{position:sticky;top:0;height:100svh;min-height:600px;overflow:hidden;background:radial-gradient(ellipse 55% 70% at 50% 5%,#216bff, #092966 55%,#01050d 100%)}
+.hero-beams{display:none}
+.hero-inner:before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 8%,#00081e70 9% 11%,transparent 13% 22%);mask-image:linear-gradient(#000,transparent 90%);filter:blur(5px)}
+.hero-word{top:52%;font-size:min(46vw,74svh);letter-spacing:0;padding:0;gap:.065em;line-height:1;transform:translate(-50%,-50%) scaleY(1.25) scaleX(1.35);background:none;filter:drop-shadow(0 0 18px #12aaff66)}
+.hero-word span{flex:none;background:linear-gradient(180deg,#fff 5%,#e9faff 27%,#41e6ff 58%,#0572f0 88%);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+.hero-word:after{display:none}
+.hero-person.cutout{height:94%;bottom:0;width:min(72vw,950px)}
+.rising-panel{position:absolute;z-index:4;top:74%;left:-15%;width:130%;height:125%;border-radius:50% 50% 0 0/11% 11% 0 0;background:linear-gradient(115deg,#05142f,#0a2a5e 52%,#071f47);box-shadow:0 -2px 0 #85baff66;transform:translate3d(0,calc(0px - var(--panel-rise,0px)),0);will-change:transform;animation:panelEntrance .85s 1.35s both}
+@keyframes panelEntrance{from{opacity:0;margin-top:100px}to{opacity:1;margin-top:0}}
+.banner-content{position:relative;inset:auto;width:min(1180px,69%);margin:0 auto;padding:7svh 0 30px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;animation:bannerTextIn .6s 1.75s both}
+.banner-content>div:first-child{flex:1}
+.banner-content h1{font-size:clamp(28px,4vw,48px)}
+
+.banner-social{flex:0 0 100%;width:100%;margin-top:22px;opacity:var(--social-opacity,0);visibility:hidden;transform:translateY(calc(24px * (1 - var(--social-opacity,0))));transition:visibility .1s}
+.banner-social .account-list{max-width:700px}
+.rising-panel{z-index:6}
+.banner-content{padding-top:7svh}
+.social-visible .banner-social{visibility:visible}
+.banner-social h2{font:800 clamp(27px,4vw,42px)/1.1 'Manrope',sans-serif;letter-spacing:-.04em;margin:0 0 17px}
+.banner-social .account-link{border-color:#b1d5ff70;min-height:64px;color:#fff}
+.banner-social .account-icon{border-color:#c6e3ff;color:#fff}
+.banner-social .account-arrow{color:#fff}
+.banner-social .account-link:hover{background:#ffffff0c;transform:translateX(3px)}
+.details-link{display:inline-flex;gap:10px;align-items:center;margin-top:22px;font-size:13px;border-bottom:1px solid #b4d8ff;padding-bottom:7px}
+.about-section{padding:35px 0 48px;scroll-margin-top:15px}
+.about-kicker{margin-bottom:9px}.branch-heading{font-size:clamp(30px,4vw,46px);margin-bottom:20px}
+.branch-grid{grid-template-columns:1fr;padding-top:19px;gap:0}.branch-note{margin-bottom:12px}.branch-intro h3{font-size:28px}.branch-role{margin-top:8px}.branch-bio{margin-top:15px;max-width:760px}
+.profile-details{margin-top:25px}.profile-details div{padding-top:17px;padding-bottom:17px}.profile-actions{margin-top:21px}
+.in-view .branch-intro{animation:gentleIn .55s both}
+@media(max-width:650px){.hero-inner{min-height:600px}.hero-word{top:44%;font-size:37vw;transform:translate(-50%,-50%) scaleY(2.45)}.hero-person.cutout{width:120vw;height:81%;bottom:5%}.hero-caption{top:80px}.rising-panel{border-radius:50% 50% 0 0/8% 8% 0 0}.banner-content{width:70%;padding-top:6svh;gap:8px}.banner-content>div:first-child{flex-basis:100%}.banner-content h1{font-size:29px}.banner-social{margin-top:17px}.banner-social .account-link{min-height:58px}.banner-role{font-size:10px}.about-section{padding:28px 0 38px}.branch-heading{font-size:32px;margin-bottom:18px}.profile-details{margin-top:23px}}
+@media(max-width:650px){.hero-word{font-size:48vw;transform:translate(-50%,-50%) scaleY(2)}.banner-content{padding-top:6svh}}
+@media(prefers-reduced-motion:reduce){.hero-stage{height:auto}.hero-inner{position:relative;height:auto;min-height:100svh}.hero-type-motion,.portrait-motion{height:100svh;transform:none}.rising-panel{position:relative;top:auto;margin-top:74svh;min-height:480px;height:auto;transform:none;animation:none}.banner-content{animation:none}.banner-social{opacity:1;visibility:visible;transform:none}.hero-person{opacity:1;animation:none;transform:translateX(-50%)}.hero-word span{animation:none}}
+
+/* Every cutout is normalised to one 3:4 canvas, so sizing by height alone keeps
+   each face exactly the same size at a given breakpoint. Width follows from the
+   aspect ratio; max-width stops the portrait dominating very wide screens. */
+.hero-person.cutout{height:82%;bottom:0;width:auto;max-width:min(48vw,620px)}
+@media(max-width:900px){.hero-person.cutout{height:76%;max-width:min(64vw,520px)}}
+@media(max-width:650px){.hero-person.cutout{height:64%;bottom:1%;max-width:min(88vw,400px)}}
+@media(max-width:380px){.hero-person.cutout{height:60%;max-width:min(94vw,340px)}}
+
+/* Hide the scrollbar at every breakpoint without losing scrolling. */
+html{scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar{display:none}
+
+/* PHONE PAINT BUDGET
+   These viewport-sized blurred/filtered layers are re-rasterised on every sticky
+   frame, the dominant cost on a phone GPU. The scene still reads without them. */
+@media(max-width:650px){
+  .hero-inner:before{display:none}
+  .hero-word{filter:none}
+  .hero-beams{display:none}
+}
+
+/* COMBINED PROFILE + CONNECT SECTION
+   The socials used to live inside the rising banner; they now sit beside the
+   intro in one section, so the page reads as hero -> one contact block. */
+.branch-grid{grid-template-columns:1fr .94fr;gap:8%;align-items:start}
+.connect-block{margin-top:38px}
+.connect-heading{font:800 clamp(24px,2.5vw,33px)/1.1 'Manrope',sans-serif;letter-spacing:-.03em;color:#fff;margin:0 0 20px}
+.connect-block .account-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.connect-block .account-link{border:1px solid #2c4465;border-radius:12px;padding:15px 17px;min-height:0;background:#0a1a33}
+.connect-block .account-link:hover{background:#123a66;border-color:#3f7cc4}
+.connect-block .empty-accounts{color:#8fa8c3;font-size:14px;line-height:1.6}
+@media(max-width:900px){.branch-grid{grid-template-columns:1fr;gap:0}.connect-block{margin-top:26px}.connect-block .account-list{grid-template-columns:1fr}}
+
+/* QR POPUP ON A DARKER BLUE */
+.modal-overlay{background:#01060ff0}
+.qr-dialog{background:#0a1e3f;border:1px solid #2f5c96;color:#e9f4ff}
+.qr-dialog .eyebrow{color:#7cdfff}
+.qr-dialog h2{color:#fff}
+.qr-dialog p{color:#a8c4e0}
+.qr-frame{background:#061529;border-color:#2f5c96}
+.dialog-close{background:#0a1e3f;color:#cfe6ff;border-color:#2f5c96}
+.dialog-close:hover{background:#123a66;color:#fff}
+.modal-copy{background:#0a1e3f;border-color:#3b6fae;color:#dcecff}
+.modal-copy:hover{background:#123a66;border-color:#63c8ff;color:#fff}
+
+/* EVERYTHING LIVES IN THE RISING PANEL
+   Identity, facts and socials all sit on the light blue arc; the dark
+   Profile & contact section has been removed. */
+.banner-content{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);
+  grid-template-areas:"ident connect" "facts facts";
+  align-items:start;column-gap:8%;row-gap:30px;
+  width:min(1240px,88vw);padding:9svh 0 7svh;
+  transform:translate3d(0,var(--content-offset,0px),0);will-change:transform}
+.banner-identity{grid-area:ident;min-width:0}
+
+.banner-facts{grid-area:facts;margin:28px 0 0;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(128px,max-content));gap:14px 34px}
+.banner-facts dt{font:700 10px/1 'Space Mono',monospace;letter-spacing:.16em;color:#8fb6ea;margin:0 0 8px}
+.banner-facts dd{margin:0;font:800 17px/1.2 'Manrope',sans-serif;color:#fff;overflow-wrap:anywhere}
+.banner-connect{grid-area:connect;min-width:0;padding-top:2px}
+.banner-connect h2{font:800 clamp(26px,2.6vw,36px)/1.1 'Manrope',sans-serif;letter-spacing:-.035em;color:#fff;margin:0 0 20px}
+.banner-connect .account-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(178px,1fr));gap:12px}
+.banner-connect .account-link{border:1px solid #ffffff30;border-radius:12px;padding:15px 17px;
+  min-height:0;background:#ffffff12;color:#fff}
+.banner-connect .account-link:hover{background:#ffffff2e;border-color:#fff}
+.banner-empty{color:#d3e6ff;font-size:14px;line-height:1.6;margin:0}
+.banner-connect .profile-actions{margin-top:24px;padding-top:20px;border-top:1px solid #ffffff2e}
+@media(max-width:900px){
+  .banner-content{grid-template-columns:1fr;grid-template-areas:"ident" "connect" "facts";
+    row-gap:22px;width:min(88vw,520px)}
+  
+  .banner-facts{margin-top:22px}
+  .banner-connect{padding-top:0}
+}
+
+/* AT REST ONLY THE NAME SHOWS. The facts and socials stay hidden until the
+   banner has started rising, so the opening frame is just identity. */
+.banner-facts,.banner-connect{opacity:var(--banner-reveal,0);
+  transform:translateY(calc(20px * (1 - var(--banner-reveal,0))));
+  visibility:hidden;transition:visibility .12s linear}
+.banner-open .banner-facts,.banner-open .banner-connect{visibility:visible}
+@media(prefers-reduced-motion:reduce){
+  .banner-facts,.banner-connect{opacity:1;transform:none;visibility:visible}
+}
