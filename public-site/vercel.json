@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/profile/:slug",
+      "destination": "/index.html"
+    }
+  ]
+}

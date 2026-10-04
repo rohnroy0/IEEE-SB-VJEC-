@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; connect-src 'self'; frame-src https://docs.google.com https://www.google.com;">
+    <meta name="google-site-verification" content="NwfqTwrtKRhwRC7SSNof9eREsBLUwWLEEgNpHxheOnc" />
+
+    <!-- Primary Meta Tags -->
+    <title>The Team | IEEE SB VJEC</title>
+    <meta name="title" content="The Team | IEEE SB VJEC">
+    <meta name="description"
+        content="Meet the dedicated Executive Committee of IEEE Student Branch VJEC. Leadership, innovation, and commitment to technical excellence.">
+    <meta name="keywords"
+        content="IEEE VJEC Team, Executive Committee, Leadership, Student Branch Officers, Simon Joseph, Alan Antony, Rohn Roy, Engineering Leadership">
+    <meta name="author" content="IEEE SB VJEC">
+    <link rel="canonical" href="https://ieeesbvjec.in/team.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ieeesbvjec.in/team.html">
+    <meta property="og:title" content="The Team | IEEE SB VJEC">
+    <meta property="og:description"
+        content="Meet the dedicated Executive Committee of IEEE Student Branch VJEC. Leadership and innovation in action.">
+    <meta property="og:image" content="https://ieeesbvjec.in/assets/vjec_sb_logo.jpeg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ieeesbvjec.in/team.html">
+    <meta property="twitter:title" content="The Team | IEEE SB VJEC">
+    <meta property="twitter:description"
+        content="Meet the dedicated Executive Committee of IEEE Student Branch VJEC. Leadership and innovation in action.">
+    <meta property="twitter:image" content="https://ieeesbvjec.in/assets/vjec_sb_logo.jpeg">
+
+    <link rel="icon" type="image/jpeg" href="assets/vjec_sb_logo.jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+    <style>
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .team-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            text-align: center;
+            transition: var(--transition);
+            max-width: 260px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .member-img {
+            height: 280px;
+            background: #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--glass-border);
+            overflow: hidden;
+        }
+
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-card:hover .member-img img {
+            transform: scale(1.08);
+            /* slight zoom on hover for premium feel */
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid {
+                gap: 2rem;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .member-img {
+                height: 250px;
+            }
+
+            .member-info {
+                padding: 1.2rem;
+            }
+
+            .member-info h3 {
+                font-size: 1.1rem;
+            }
+
+            .member-role {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="loading">
+    <div id="loader" class="loader-overlay">
+        <div class="loader-content">
+            <div class="loader-circle"></div>
+            <div class="loader-text">IEEE SB VJEC</div>
+        </div>
+    </div>
+
+    <header class="header scrolled">
+        <nav class="nav-container">
+            <a href="index.html" class="brand">
+                <img src="assets/vjec_sb_logo.jpeg" alt="Logo" class="logo-img" width="50" height="50"
+                    fetchpriority="high">
+                <span class="brand-name">IEEE SB VJEC</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="chapters.html" class="dropdown-toggle">Chapters <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="chapters.html#cs"><i class="fas fa-code"></i> CS</a></li>
+                        <li><a href="chapters.html#ras"><i class="fas fa-robot"></i> RAS</a></li>
+                        <li><a href="chapters.html#cis"><i class="fas fa-brain"></i> CIS</a></li>
+                        <li><a href="chapters.html#wie"><i class="fas fa-female"></i> WIE</a></li>
+                        <li><a href="chapters.html#pes"><i class="fas fa-bolt"></i> PES</a></li>
+                        <li><a href="chapters.html#ias"><i class="fas fa-industry"></i> IAS</a></li>
+                        <li><a href="chapters.html#pels"><i class="fas fa-plug"></i> PELS</a></li>
+                        <li><a href="chapters.html#cass"><i class="fas fa-microchip"></i> CASS</a></li>
+                        <li><a href="chapters.html#sps"><i class="fas fa-wave-square"></i> SPS</a></li>
+                    </ul>
+                </li>
+                <li><a href="team.html" class="active">The Team</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <!-- Desktop Search -->
+            <div class="nav-search">
+                <div class="search-wrapper">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" placeholder="Search..." class="search-input" aria-label="Search">
+                    <div class="search-results hidden"></div>
+                </div>
+            </div>
+            <button class="mobile-toggle"><span class="bar"></span><span class="bar"></span><span
+                    class="bar"></span></button>
+        </nav>
+    </header>
+
+    <div class="mobile-menu">
+        <div class="mobile-search">
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" placeholder="Search..." class="search-input" aria-label="Search">
+                <div class="search-results hidden"></div>
+            </div>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li class="mobile-dropdown">
+                <a href="#" class="mobile-dropdown-toggle">Chapters <i class="fas fa-chevron-down"></i></a>
+                <ul class="mobile-submenu">
+                    <li><a href="chapters.html#cs"><i class="fas fa-code"></i> CS</a></li>
+                    <li><a href="chapters.html#ras"><i class="fas fa-robot"></i> RAS</a></li>
+                    <li><a href="chapters.html#cis"><i class="fas fa-brain"></i> CIS</a></li>
+                    <li><a href="chapters.html#wie"><i class="fas fa-female"></i> WIE</a></li>
+                    <li><a href="chapters.html#pes"><i class="fas fa-bolt"></i> PES</a></li>
+                    <li><a href="chapters.html#ias"><i class="fas fa-industry"></i> IAS</a></li>
+                    <li><a href="chapters.html#pels"><i class="fas fa-plug"></i> PELS</a></li>
+                    <li><a href="chapters.html#cass"><i class="fas fa-microchip"></i> CASS</a></li>
+                    <li><a href="chapters.html#sps"><i class="fas fa-wave-square"></i> SPS</a></li>
+                </ul>
+            </li>
+            <li><a href="team.html">The Team</a></li>
+            <li><a href="achievements.html">Achievements</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
+    <main class="page-main container">
+        <div class="section-header">
+            <h1 class="section-title">Meet Our Executive Committee</h1>
+            <p>The dedicated team leading IEEE SB VJEC towards excellence.</p>
+        </div>
+
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/councelor.jpeg" alt="Dr. Christopher Ezhil Singh"
+                        width="300" height="300" loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Dr. Christopher Ezhil Singh</h3>
+                    <p class="member-role">Counselor</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/chair.jpeg" alt="Alan Antony" width="300" height="300"
+                        loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Alan Antony</h3>
+                    <p class="member-role">Chairman</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/vicechar.jpeg" alt="Simon Joseph" width="300" height="300"
+                        loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Simon Joseph</h3>
+                    <p class="member-role">Vice Chairman</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/secretery.jpeg" alt="Samanway T K" width="300" height="300"
+                        loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Samanway T K</h3>
+                    <p class="member-role">Secretary</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/joint secretary.jpeg" alt="Tessa Mariya" width="300"
+                        height="300" loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Tessa Mariya</h3>
+                    <p class="member-role">Joint Secretary</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/joint secretary2.jpeg" alt="Lena Jolly" width="300"
+                        height="300" loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Lena Jolly</h3>
+                    <p class="member-role">Joint Secretary</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/treasurer.jpeg" alt="Shiva Keshav V" width="300"
+                        height="300" loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Shiva Keshav V</h3>
+                    <p class="member-role">Treasurer</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/technical coordinator1.jpeg" alt="Abhiram M S" width="300"
+                        height="300" loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Abhiram M S</h3>
+                    <p class="member-role">Technical Coordinator</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/technical coordinator2.jpeg" alt="Adharsh K Biju"
+                        width="300" height="300" loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Adarsh K Biju</h3>
+                    <p class="member-role">Technical Coordinator</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/mdc.jpeg" alt="Abdul Basith P V" width="300" height="300"
+                        loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Abdul Basith P V</h3>
+                    <p class="member-role">Membership Development Coordinator</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/joint tc.jpeg" alt="Abhin K Shibu James" width="300"
+                        height="300" loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Abhin K Shibu James</h3>
+                    <p class="member-role">Joint Technical Coordinator</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/link rep.jpeg" alt="Vaishnavi sasi" width="300" height="300"
+                        loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Vaishnavi sasi</h3>
+                    <p class="member-role">Link Representative</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/design lead1.jpeg" alt="Abhinav R" width="300" height="300"
+                        loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Abhinav R</h3>
+                    <p class="member-role">Design Lead</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/design lead2.jpeg" alt="Abhinav I" width="300" height="300"
+                        loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Abhinav I</h3>
+                    <p class="member-role">Design Lead</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/webmaster.jpeg" alt="Rohn Roy" width="300" height="300"
+                        loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Rohn Roy</h3>
+                    <p class="member-role">Webmaster</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/event coord1.jpeg" alt="Ajith Mathew" width="300"
+                        height="300" loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Ajith Mathew</h3>
+                    <p class="member-role">Event Coordinator</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/event coord2.jpeg" alt="Milan Biju" width="300" height="300"
+                        loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Milan Biju</h3>
+                    <p class="member-role">Event Coordinator</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/event coord3.jpeg" alt="Elsitta Binu" width="300"
+                        height="300" loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Elsitta Binu</h3>
+                    <p class="member-role">Event Coordinator</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/content lead1.jpeg" alt="Leo Mathew Roy" width="300"
+                        height="300" loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Leo Mathew Roy</h3>
+                    <p class="member-role">Content Lead</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/content lead2.jpeg" alt="Sanika K" width="300" height="300"
+                        loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Sanika K</h3>
+                    <p class="member-role">Content Lead</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img"><img src="assets/sb/social media.jpeg" alt="Sandra Nambiar" width="300"
+                        height="300" loading="lazy"></div>
+                <div class="member-info">
+                    <h3>Sandra Nambiar</h3>
+                    <p class="member-role">Social Media Lead</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="assets/sb/Publicity Coordinator.jpeg" alt="Aswin Asok KV" width="300" height="300"
+                        loading="lazy">
+                </div>
+                <div class="member-info">
+                    <h3>Aswin Asok KV</h3>
+                    <p class="member-role">Publicity Coordinator</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="assets/sb/publicity coordinator assistant.jpeg" alt="Sanju Santy" width="300" height="300"
+                        loading="lazy">
+                </div>
+                <div class="member-info">
+                    <h3>Sanju Santy</h3>
+                    <p class="member-role">Publicity Coordinator Assistant</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sub Committee Section -->
+        <div class="section-header" style="margin-top: 6rem;">
+            <h2 class="section-title">Sub Committee</h2>
+            <p>Our junior officers and team members supporting key initiatives.</p>
+        </div>
+
+        <div class="team-grid" style="margin-top: 3rem; margin-bottom: 4rem;">
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="assets/subcommitte/Vishrutha K Vinod.jpeg" alt="Vishrutha K Vinod" width="300"
+                        height="300" loading="lazy">
+                </div>
+                <div class="member-info">
+                    <h3>Vishrutha K Vinod</h3>
+                    <p class="member-role">Junior SB Representative</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="assets/subcommitte/Abhinand C.jpeg" alt="Abhinand C" width="300" height="300"
+                        loading="lazy">
+                </div>
+                <div class="member-info">
+                    <h3>Abhinand C</h3>
+                    <p class="member-role">Junior SB Representative</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="assets/subcommitte/Stiphsy Maria Binu.jpeg" alt="Stiphsy Maria Binu" width="300"
+                        height="300" loading="lazy">
+                </div>
+                <div class="member-info">
+                    <h3>Stiphsy Maria Binu</h3>
+                    <p class="member-role">Junior MDC</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="assets/subcommitte/Abhin Joe Saji.jpeg" alt="Abhin Joe Saji" width="300" height="300"
+                        loading="lazy">
+                </div>
+                <div class="member-info">
+                    <h3>Abhin Joe Saji</h3>
+                    <p class="member-role">Web Team</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="assets/subcommitte/Jis John Sajan.jpeg" alt="Jis John Sajan" width="300" height="300"
+                        loading="lazy">
+                </div>
+                <div class="member-info">
+                    <h3>Jis John Sajan</h3>
+                    <p class="member-role">Web Team</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="assets/subcommitte/Rithul Ravi P.jpeg" alt="Rithul Ravi P" width="300" height="300"
+                        loading="lazy">
+                </div>
+                <div class="member-info">
+                    <h3>Rithul Ravi P</h3>
+                    <p class="member-role">Web Team</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="assets/subcommitte/Treesa Mariya.jpeg" alt="Treesa Mariya" width="300" height="300"
+                        loading="lazy">
+                </div>
+                <div class="member-info">
+                    <h3>Treesa Mariya</h3>
+                    <p class="member-role">Content Team</p>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="member-img">
+                    <img src="assets/subcommitte/Niriksha Rajeevan.jpeg" alt="Niriksha Rajeevan" width="300"
+                        height="300" loading="lazy">
+                </div>
+                <div class="member-info">
+                    <h3>Niriksha Rajeevan</h3>
+                    <p class="member-role">Content Team</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="brand" style="padding: 0; margin-bottom: 1.5rem;">
+                        <img src="assets/vjec_sb_logo.jpeg" alt="IEEE SB VJEC Logo" class="logo-img" width="40"
+                            height="40" loading="lazy">
+                        <span class="brand-name">IEEE SB VJEC</span>
+                    </a>
+                    <p class="footer-desc">Empowering students through technology and innovation. Join our community to
+                        learn, share, and grow.</p>
+                    <div class="social-links">
+                        <a href="https://instagram.com/ieeesbvjec" target="_blank" rel="noopener noreferrer"
+                            aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/ieee-sb-vjec/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://youtube.com/@ieeesbvjec" target="_blank" rel="noopener noreferrer"
+                            aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-nav">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="chapters.html">Chapters</a></li>
+                        <li><a href="team.html">The Team</a></li>
+                        <li><a href="achievements.html">Achievements</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="https://vjec.ac.in/" target="_blank" rel="noopener noreferrer">College Website</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Vimal Jyothi Engineering College, Chemperi, Kannur</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p><a href="mailto:ieee.vjecsb@gmail.com">ieee.vjecsb@gmail.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p><a href="tel:+919562183174"><span class="contact-label">SB Chair</span>+91 9562183174</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p><a href="tel:+918289840179"><span class="contact-label">SB Webmaster</span>+91 8289840179</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 IEEE SB VJEC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

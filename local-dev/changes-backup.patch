@@ -1,0 +1,194 @@
+diff --git a/README.md b/README.md
+index c9a6842..9ebb3e0 100644
+--- a/README.md
++++ b/README.md
+@@ -6,4 +6,4 @@ Set `VITE_API_BASE_URL` to the HTTPS URL of the admin project. It is baked into
+ 
+ Run `npm install && npm run dev` locally, or import this repo into Vercel as a Vite project. Point the admin project's `PUBLIC_BASE_URL` at this project's production URL so QR codes target the public site.
+ 
+-The landing page uses the coordinator record at `/profile/:slug`. Instagram and LinkedIn come from editable profile fields in the admin dashboard. Add YouTube or another account using the dashboard's custom links; links without saved URLs are hidden. The supplied outlined portrait is used for the `arjun` profile, while other coordinators use their uploaded profile photo.
++The landing page uses the coordinator record at `/profile/:slug`. Instagram and LinkedIn come from editable profile fields in the admin dashboard. Add YouTube or another account using the dashboard's custom links; links without saved URLs are hidden. Every coordinator gets the same hero composition: the `IEEE` wordmark, the portrait, and the blue banner that rises on scroll to reveal the social links. Slugs listed in `CUTOUTS` in `src/main.jsx` render a supplied background-removed silhouette; all other coordinators use their uploaded profile photo.
+diff --git a/public/abhinav-cutout.png b/public/abhinav-cutout.png
+deleted file mode 100644
+index 20a6f2d..0000000
+Binary files a/public/abhinav-cutout.png and /dev/null differ
+diff --git a/public/demo-coordinator.png b/public/demo-coordinator.png
+deleted file mode 100644
+index 0cb7e2b..0000000
+Binary files a/public/demo-coordinator.png and /dev/null differ
+diff --git a/src/main.jsx b/src/main.jsx
+index 20912ed..326503a 100644
+--- a/src/main.jsx
++++ b/src/main.jsx
+@@ -14,11 +14,31 @@ async function api(path) {
+ function Logo() {
+   return <a className="brand" href="/" aria-label="IEEE VJEC home"><span className="brand-mark"><img src="/ieee-vjec-logo.png" alt="" /></span><span className="brand-text">IEEE <strong>VJEC</strong><small>Student Branch</small></span></a>;
+ }
++// Slugs with a background-removed silhouette render as a cutout. Everyone else
++// uses their uploaded photo, styled to sit inside the same composition.
++const CUTOUTS = {
++  'abdul-basith-p-v': '/cutouts/abdul-basith-p-v.webp',
++  'adarsh-k-biju': '/cutouts/adarsh-k-biju.webp',
++  'ajith-mathew': '/cutouts/ajith-mathew.webp',
++  'alan-antony': '/cutouts/alan-antony.webp',
++  aswin: '/cutouts/aswin.webp',
++  'elsitta-binu': '/cutouts/elsitta-binu.webp',
++  'leo-mathew-roy': '/cutouts/leo-mathew-roy.webp',
++  'milan-biju': '/cutouts/milan-biju.webp',
++  'samanway-t-k': '/cutouts/samanway-t-k.webp',
++  'sandra-nambiar': '/cutouts/sandra-nambiar.webp',
++  'sanju-santy': '/cutouts/sanju-santy.webp',
++  'shiva-keshav-v': '/cutouts/shiva-keshav-v.webp',
++  'simon-joseph': '/cutouts/simon-joseph.webp',
++  'tessa-mariya': '/cutouts/tessa-mariya.webp',
++  'abhin-k-shibu-james': '/cutouts/abhin-k-shibu-james.webp',
++  'abhiram-m-s': '/cutouts/abhiram-m-s.webp',
++};
+ function Portrait({ profile }) {
+-  const isReferencePortrait = profile.slug === 'arjun';
+-  const src = isReferencePortrait ? '/abhinav-cutout.png' : profile.photo?.startsWith('/') && API_BASE ? `${API_BASE}${profile.photo}` : profile.photo;
+-  if (src) return <img className={`hero-person ${isReferencePortrait ? 'cutout' : 'profile-photo'}`} src={src} alt={profile.name} />;
+-  return <div className="hero-person portrait-fallback" aria-label={profile.name}>{profile.name.split(' ').map(part => part[0]).slice(0, 2).join('')}</div>;
++  const cutout = CUTOUTS[profile.slug];
++  const src = cutout || (profile.photo?.startsWith('/') && API_BASE ? `${API_BASE}${profile.photo}` : profile.photo);
++  if (!src) return null;
++  return <img className={`hero-person ${cutout ? 'cutout' : 'profile-photo'}`} src={src} alt={profile.name} />;
+ }
+ function PublicProfile({ slug }) {
+   const [data, setData] = useState(null);
+@@ -54,28 +74,39 @@ function PublicProfile({ slug }) {
+   useEffect(() => {
+     const hero = heroRef.current;
+     if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+-    let frame = 0;
+-    let current = 0;
+-    let target = 0;
+-    const paint = () => {
+-      current += (target - current) * 0.12;
+-      if (Math.abs(target - current) < 0.002) current = target;
+-      hero.style.setProperty('--type-y', `${Math.round(-95 * current)}px`);
+-      hero.style.setProperty('--person-y', `${Math.round(-42 * current)}px`);
+-      hero.style.setProperty('--panel-rise', `${Math.round(hero.querySelector('.hero-inner').clientHeight * .84 * current)}px`);
+-      hero.style.setProperty('--content-offset', `${Math.round(hero.querySelector('.hero-inner').clientHeight * .1 * current)}px`);
+-      hero.style.setProperty('--social-opacity', String(Math.min(1, Math.max(0, (current - .25) / .35))));
+-      hero.classList.toggle('social-visible', current > .25);
+-      frame = current === target ? 0 : requestAnimationFrame(paint);
++    const inner = hero.querySelector('.hero-inner');
++    let top = 0;
++    let viewport = 1;
++    let range = 1;
++    let ticking = false;
++    let socialShown = false;
++    // Layout is measured once here instead of on every scroll event, which would
++    // force a synchronous reflow each time and starve the frame budget on phones.
++    const measure = () => {
++      top = hero.offsetTop;
++      viewport = inner.clientHeight;
++      range = Math.max(1, hero.offsetHeight - viewport);
+     };
+-    const update = () => {
+-      target = Math.min(1, Math.max(0, -hero.getBoundingClientRect().top / Math.max(1, hero.offsetHeight - hero.querySelector('.hero-inner').clientHeight)));
+-      if (!frame) frame = requestAnimationFrame(paint);
++    measure();
++    // Bound straight to scroll position rather than eased, so the banner tracks the
++    // finger instead of trailing it, and the frame loop stops the moment scrolling does.
++    const apply = () => {
++      ticking = false;
++      const progress = Math.min(1, Math.max(0, (window.scrollY - top) / range));
++      hero.style.setProperty('--type-y', `${Math.round(-95 * progress)}px`);
++      hero.style.setProperty('--person-y', `${Math.round(-42 * progress)}px`);
++      hero.style.setProperty('--panel-rise', `${Math.round(viewport * .84 * progress)}px`);
++      hero.style.setProperty('--content-offset', `${Math.round(viewport * .1 * progress)}px`);
++      hero.style.setProperty('--social-opacity', String(Math.min(1, Math.max(0, (progress - .25) / .35))));
++      const show = progress > .25;
++      if (show !== socialShown) { socialShown = show; hero.classList.toggle('social-visible', show); }
+     };
+-    window.addEventListener('scroll', update, { passive: true });
+-    window.addEventListener('resize', update);
+-    update();
+-    return () => { window.removeEventListener('scroll', update); window.removeEventListener('resize', update); cancelAnimationFrame(frame); };
++    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(apply); } };
++    const onResize = () => { measure(); onScroll(); };
++    window.addEventListener('scroll', onScroll, { passive: true });
++    window.addEventListener('resize', onResize);
++    apply();
++    return () => { window.removeEventListener('scroll', onScroll); window.removeEventListener('resize', onResize); };
+   }, [error]);
+   const profile = data?.profile;
+   const url = data?.url;
+@@ -115,7 +146,7 @@ function PublicProfile({ slug }) {
+             <div className="hero-inner">
+               <p className="eyebrow hero-caption">IEEE STUDENT BRANCH · VJEC</p>
+               <div className="hero-type-motion"><div className="hero-word" aria-hidden="true"><span>I</span><span>E</span><span>E</span><span>E</span></div></div>
+-              <div className="portrait-motion">{(profile || slug === 'arjun') && <Portrait profile={profile || { slug, name: '', photo: null }} />}</div>
++              <div className="portrait-motion">{(profile || CUTOUTS[slug]) && <Portrait profile={profile || { slug, name: '', photo: null }} />}</div>
+               <div className="rising-panel">
+               <div className="banner-content">
+                 <div><span className="banner-kicker">COORDINATOR PROFILE{profile ? ` / ${String(profile.id).padStart(4, '0')}` : ''}</span><h1>{profile?.name || 'Coordinator'}</h1>{profile && <span className="banner-role">{profile.designation}{profile.team_role ? ` · ${profile.team_role}` : ''}</span>}</div>
+@@ -143,5 +174,5 @@ function PublicProfile({ slug }) {
+     {qrOpen && profile && <div className="modal-overlay" onMouseDown={() => setQrOpen(false)}><div className="qr-dialog" role="dialog" aria-modal="true" aria-label={`QR code for ${profile.name}`} onMouseDown={event => event.stopPropagation()}><button className="dialog-close" onClick={() => setQrOpen(false)} aria-label="Close"><X size={20} /></button><span className="eyebrow">SCAN TO CONNECT / {profile.name}</span><h2>{profile.name}</h2><div className="qr-frame"><img src={`${API_BASE}/api/profiles/${encodeURIComponent(profile.slug)}/qr`} alt={`QR code for ${profile.name}`} /></div><p>Scan this code to open the coordinator profile.</p><button className="modal-copy" onClick={copyUrl}><Copy size={18} /> Copy profile link</button></div></div>}
+   </div>;
+ }
+-const slug = window.location.pathname.startsWith('/profile/') ? decodeURIComponent(window.location.pathname.slice(9)) : 'arjun';
++const slug = window.location.pathname.startsWith('/profile/') ? decodeURIComponent(window.location.pathname.slice(9)) : 'alan-antony';
+ createRoot(document.getElementById('root')).render(<PublicProfile slug={slug} />);
+diff --git a/src/minimal.css b/src/minimal.css
+index 7cb7d39..237bd0f 100644
+--- a/src/minimal.css
++++ b/src/minimal.css
+@@ -40,7 +40,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #0874b9;outline-offset:4p
+ .portrait-watermark{position:absolute;z-index:0;left:50%;bottom:13%;transform:translateX(-50%);font:800 clamp(120px,17vw,220px)/1 'Manrope',sans-serif;letter-spacing:-.1em;color:#d5e7f1;white-space:nowrap;user-select:none}
+ .hero-person{position:absolute;z-index:1;bottom:0;left:50%;transform:translateX(-50%);display:block;width:100%;height:93%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 15px 23px #294e6520)}
+ .hero-person.profile-photo{width:80%;height:76%;object-fit:cover;object-position:center 20%;border-radius:45% 45% 0 0}
+-.portrait-fallback{height:73%;width:80%;background:#cbdfea;color:#47718c;display:flex;align-items:center;justify-content:center;font:800 clamp(90px,13vw,170px) 'Manrope',sans-serif;border-radius:45% 45% 0 0}
++
+ .visual-caption{position:absolute;z-index:2;inset:auto 0 0;background:#fff;display:flex;justify-content:space-between;gap:12px;align-items:center;color:#607a8b;padding:15px 20px;border-top:1px solid #d6e4ec;font-size:9px}
+ .visual-caption span:first-child{color:#126da5}
+ @keyframes gentleIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+diff --git a/src/spotlight.css b/src/spotlight.css
+index a93ed3a..1245594 100644
+--- a/src/spotlight.css
++++ b/src/spotlight.css
+@@ -22,8 +22,8 @@
+ @keyframes ieeeSweep{to{transform:translateX(140%)}}
+ .portrait-motion{position:absolute;inset:0;z-index:2;pointer-events:none;transform:translate3d(0,var(--person-y,0px),0);will-change:transform}
+ .hero-person{position:absolute;bottom:-10%;left:50%;display:block;width:min(77vw,1050px);height:104%;max-height:none;object-fit:contain;object-position:center bottom;transform:translateX(-50%);filter:drop-shadow(0 16px 25px #0009);animation:spotlightPortraitIn .9s .96s cubic-bezier(.18,.8,.22,1) both}
+-.hero-person.profile-photo{width:min(54vw,700px);height:83%;bottom:7%;border:5px solid #fff;border-bottom:0;border-radius:48% 48% 0 0;object-fit:cover;object-position:center 18%}
+-.portrait-fallback{width:min(54vw,700px);height:75%;bottom:8%;background:#0c57bc;color:#d4f8ff;display:flex;align-items:center;justify-content:center;border:5px solid #fff;border-bottom:0;border-radius:48% 48% 0 0;font:800 clamp(100px,20vw,240px) 'Manrope',sans-serif}
++.hero-person.profile-photo{width:min(47vw,650px);height:83%;bottom:2%;border:2px solid #ffffff8f;border-bottom:0;border-radius:46% 46% 0 0/38% 38% 0 0;object-fit:cover;object-position:center 16%;filter:saturate(.92) drop-shadow(0 16px 25px #0009);box-shadow:0 -2px 0 #ffffff26}
++
+ @keyframes spotlightPortraitIn{from{opacity:0;transform:translate(-50%,70px) scale(.97);filter:blur(6px) drop-shadow(0 16px 25px #0009)}to{opacity:1;transform:translate(-50%,0) scale(1);filter:blur(0) drop-shadow(0 16px 25px #0009)}}
+ .banner-motion{position:absolute;inset:0;z-index:3;pointer-events:none;transform:translate3d(0,var(--banner-y,0px),0);will-change:transform}
+ .hero-banner{position:absolute;left:-15%;bottom:-18%;width:130%;height:47%;border-radius:50% 50% 0 0/42% 42% 0 0;background:linear-gradient(110deg,#0e4ece 4%,#2771ef 38%,#2f77f4 54%,#1959df 86%,#1049c3 100%);box-shadow:0 -8px 35px #124de877,inset 0 3px 3px #a1cbff55;animation:bannerRise 1s 1.52s cubic-bezier(.15,.78,.18,1) both}
+@@ -63,7 +63,7 @@
+ .state-page p{color:#bad0e4}
+ .loading-profile{background:#030918;color:#a6c3dc}
+ @media(max-width:900px){.hero-word{transform:translate(-50%,-50%) scaleX(1.12)}.hero-person{width:95vw}.hero-banner{height:43%;bottom:-14%}}
+-@media(max-width:650px){.site-header{height:66px}.hero-stage{height:100svh;min-height:660px}.hero-caption{top:82px;left:20px;font-size:8px}.hero-word{top:50%;font-size:min(68svh,650px);transform:translate(-50%,-50%) scaleX(.7)}.hero-person.cutout{width:145vw;height:88%;bottom:8%}.hero-person.profile-photo,.portrait-fallback{width:85vw;height:67%;bottom:16%}.hero-banner{width:155%;left:-27.5%;height:39%;bottom:-9%;border-radius:50% 50% 0 0/31% 31% 0 0}.banner-content{left:20px;right:20px;bottom:22px;align-items:end;gap:14px}.banner-content h1{font-size:clamp(25px,7.5vw,38px)}.banner-kicker{font-size:8px}.banner-role{font-size:9px}.banner-scroll{font-size:11px;gap:5px;padding:9px 0}.banner-scroll svg{width:15px}.about-section{padding-top:88px}.profile-details div+div{border-color:#2c4465}}
++@media(max-width:650px){.site-header{height:66px}.hero-stage{height:100svh;min-height:660px}.hero-caption{top:82px;left:20px;font-size:8px}.hero-word{top:50%;font-size:min(68svh,650px);transform:translate(-50%,-50%) scaleX(.7)}.hero-person.cutout{width:145vw;height:88%;bottom:8%}.hero-person.profile-photo,.hero-banner{width:155%;left:-27.5%;height:39%;bottom:-9%;border-radius:50% 50% 0 0/31% 31% 0 0}.banner-content{left:20px;right:20px;bottom:22px;align-items:end;gap:14px}.banner-content h1{font-size:clamp(25px,7.5vw,38px)}.banner-kicker{font-size:8px}.banner-role{font-size:9px}.banner-scroll{font-size:11px;gap:5px;padding:9px 0}.banner-scroll svg{width:15px}.about-section{padding-top:88px}.profile-details div+div{border-color:#2c4465}}
+ @media(max-width:420px){.hero-word{transform:translate(-50%,-50%) scaleX(.6)}.hero-person.cutout{width:154vw;height:86%;bottom:9%}.banner-content{display:block}.banner-scroll{margin-top:15px}.banner-content h1{font-size:31px}.hero-banner{height:43%;bottom:-11%}}
+ @media(max-width:360px){.hero-word{transform:translate(-50%,-50%) scaleX(.54)}.hero-person.cutout{width:162vw}.banner-content h1{font-size:27px}}
+ /* The sticky scene stays in place while the contact banner rises over it. */
+@@ -72,7 +72,7 @@
+ .hero-inner{position:sticky;top:0;height:100svh;min-height:600px;overflow:hidden;background:radial-gradient(ellipse 55% 70% at 50% 5%,#216bff, #092966 55%,#01050d 100%)}
+ .hero-beams{display:none}
+ .hero-inner:before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 8%,#00081e70 9% 11%,transparent 13% 22%);mask-image:linear-gradient(#000,transparent 90%);filter:blur(5px)}
+-.hero-word{top:52%;font-size:clamp(160px,34vw,480px);letter-spacing:0;padding:0;gap:.065em;line-height:1;transform:translate(-50%,-50%) scaleY(1.3);background:none;filter:drop-shadow(0 0 18px #12aaff66)}
++.hero-word{top:52%;font-size:min(46vw,78svh);letter-spacing:0;padding:0;gap:.065em;line-height:1;transform:translate(-50%,-50%) scaleY(1.25) scaleX(1.35);background:none;filter:drop-shadow(0 0 18px #12aaff66)}
+ .hero-word span{flex:none;background:linear-gradient(180deg,#fff 5%,#e9faff 27%,#41e6ff 58%,#0572f0 88%);background-clip:text;-webkit-background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+ .hero-word:after{display:none}
+ .hero-person.cutout{height:94%;bottom:0;width:min(72vw,950px)}
+@@ -98,6 +98,12 @@
+ .branch-grid{grid-template-columns:1fr;padding-top:19px;gap:0}.branch-note{margin-bottom:12px}.branch-intro h3{font-size:28px}.branch-role{margin-top:8px}.branch-bio{margin-top:15px;max-width:760px}
+ .profile-details{margin-top:25px}.profile-details div{padding-top:17px;padding-bottom:17px}.profile-actions{margin-top:21px}
+ .in-view .branch-intro{animation:gentleIn .55s both}
+-@media(max-width:650px){.hero-inner{min-height:600px}.hero-word{top:44%;font-size:37vw;transform:translate(-50%,-50%) scaleY(2.45)}.hero-person.cutout{width:120vw;height:81%;bottom:5%}.hero-caption{top:80px}.rising-panel{border-radius:50% 50% 0 0/8% 8% 0 0}.banner-content{width:70%;padding-top:6svh;gap:8px}.banner-content>div:first-child{flex-basis:100%}.banner-content h1{font-size:29px}.banner-scroll{margin:2px 0 0;padding:4px 0}.banner-social{margin-top:17px}.banner-social .account-link{min-height:58px}.banner-role{font-size:10px}.about-section{padding:28px 0 38px}.branch-heading{font-size:32px;margin-bottom:18px}.profile-details{margin-top:23px}}
++@media(max-width:650px){.hero-inner{min-height:600px}.hero-word{top:44%;font-size:37vw;transform:translate(-50%,-50%) scaleY(2.45)}.hero-person.cutout{width:120vw;height:81%;bottom:5%}.hero-person.profile-photo{width:62vw;height:74%;bottom:5%;border-width:1.5px;border-radius:46% 46% 0 0/32% 32% 0 0}.hero-caption{top:80px}.rising-panel{border-radius:50% 50% 0 0/8% 8% 0 0}.banner-content{width:70%;padding-top:6svh;gap:8px}.banner-content>div:first-child{flex-basis:100%}.banner-content h1{font-size:29px}.banner-scroll{margin:2px 0 0;padding:4px 0}.banner-social{margin-top:17px}.banner-social .account-link{min-height:58px}.banner-role{font-size:10px}.about-section{padding:28px 0 38px}.branch-heading{font-size:32px;margin-bottom:18px}.profile-details{margin-top:23px}}
+ @media(max-width:650px){.hero-word{font-size:48vw;transform:translate(-50%,-50%) scaleY(2)}.banner-content{padding-top:calc(6svh + var(--content-offset,0px))}}
++/* Hide the scrollbar everywhere without losing scrolling. */
++html{scrollbar-width:none;-ms-overflow-style:none}
++html::-webkit-scrollbar{display:none}
++/* Phones repaint these viewport-sized blurred layers on every sticky frame, so they
++   are dropped below the tablet breakpoint; the base gradients carry the scene on their own. */
++@media(max-width:650px){.hero-inner:before{display:none}.hero-word{filter:none}}
+ @media(prefers-reduced-motion:reduce){.hero-stage{height:auto}.hero-inner{position:relative;height:auto;min-height:100svh}.hero-type-motion,.portrait-motion{height:100svh;transform:none}.rising-panel{position:relative;top:auto;margin-top:74svh;min-height:480px;height:auto;transform:none;animation:none}.banner-content{animation:none}.banner-social{opacity:1;visibility:visible;transform:none}.hero-person{opacity:1;animation:none;transform:translateX(-50%)}.hero-word span{animation:none}}
