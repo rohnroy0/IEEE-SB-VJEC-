@@ -229,6 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { title: "Summer Camp 2026", url: "https://summerschool.ieeesbvjec.in", keywords: "event summer school camp intensive technical program workshop computational intelligence cis ai" },
         { title: "Hands-On Summer Internship", url: "events.html", keywords: "event internship program project mentorship skills ai machine learning data science web development" },
         { title: "Two-Week Internship Training Programme on IoT Robotics, Drone & 3D Printing", url: "events.html", keywords: "event internship iot robotics drone 3d printing industrial robot hands-on training programme" },
+        { title: "AIDEXX - Technical Workshops", url: "events.html", keywords: "event aidexx technical workshops python data science artificial intelligence machine learning git github cis" },
         { title: "Who We Are (About)", url: "index.html#about", keywords: "about vision mission history who we are" }
 
     ];
